@@ -175,7 +175,11 @@ Error message and password prompt
 
 <li>$:/UploadURL</li>
 
+<li>Divergencia</li>
+
 <li>Energía Perturbada</li>
+
+<li>Gradiente</li>
 
 </ul>
 </p>
@@ -5215,7 +5219,7 @@ Error message and password prompt
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="[[Energía Perturbada]]" title="$:/StoryList">
+<div list="Divergencia [[Energía Perturbada]] Gradiente" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5232,7 +5236,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20141119235244269" creator="a9lara" modified="20141121014611341" modifier="a9lara" title="$:/temp/NewTagName">
+<div created="20141119235244269" creator="a9lara" modified="20141121051000339" modifier="a9lara" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.4">
@@ -5321,14 +5325,34 @@ Error message and password prompt
 <div created="20141120213135481" creator="a9lara" modified="20141120213135481" modifier="a9lara" title="$:/UploadURL">
 <pre>http://a9lara.github.io/</pre>
 </div>
-<div created="20141121013211247" creator="a9lara" modified="20141121015820473" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Energía Perturbada" type="text/vnd.tiddlywiki">
-<pre>
-$$
+<div created="20141121051814164" creator="a9lara" modified="20141121052356647" modifier="a9lara" tags="Física" title="Divergencia">
+<pre>La divergencia nos da un escalar.
+
+$ \nabla\cdot\vec A = \frac{\partial A_x}{\partial x}+ \frac{\partial A_y}{\partial y}+
+\frac{\partial A_z}{\partial z}  $
+
+La divergencia mide la diferencia entre el flujo saliente y el flujo entrante sobre una superficie cerrada que encierra un campo vectorial. 
+
+Si el campo tiene &quot;fuentes&quot; la divergencia será positiva, y si tiene &quot;sumideros&quot;, la divergencia será negativa.
+
+</pre>
+</div>
+<div created="20141121013211247" creator="a9lara" modified="20141121050946568" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Energía Perturbada" type="text/vnd.tiddlywiki">
+<pre>$$
 E_n - E_n^{(0)} = \lambda \langle n | \hat V | n \rangle + \sum_m {'} \lambda  \langle n | \hat V | m \rangle \frac{ \langle  m | \psi_n \rangle }{\langle  n | \psi_n \rangle}  
 $$
 
 Esta ecuación nos permite determinar la energía perturbada de un sistema.
 </pre>
+</div>
+<div created="20141121050500840" creator="a9lara" modified="20141121052458250" modifier="a9lara" tags="Física" title="Gradiente">
+<pre>El gradiente nos da un vector.
+
+$ \nabla  \varphi =\hat  i \frac{\partial \varphi}{\partial x} +    \hat  j \frac{\partial \varphi}{\partial y} +\hat  k \frac{\partial \varphi}{\partial z}  $
+
+El gradiente nos indica la dirección en la qué aumenta algo, (por ejemplo, la pendiente, la temperatura, etc...)
+
+La magnitud del gradiente nos dirá cuan rápido aumenta ese algo en esa dirección.</pre>
 </div>
 
 </div>
