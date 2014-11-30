@@ -165,6 +165,8 @@ Error message and password prompt
 
 <li>$:/temp/NewTagName</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -183,6 +185,8 @@ Error message and password prompt
 
 <li>Divergencia</li>
 
+<li>Ecuación de Lorentz para Electromagnetismo</li>
+
 <li>Ecuación de Movimiento de Heisenberg</li>
 
 <li>Ecuación de Shrödinger dependiente del Tiempo</li>
@@ -198,6 +202,12 @@ Error message and password prompt
 <li>Hamiltoniano - Oscilador Armónico Unidimensional</li>
 
 <li>Hamiltoniano Dos Cuerpos</li>
+
+<li>Ley Circuital de Ampere</li>
+
+<li>Ley de Ampere</li>
+
+<li>Ley de Conservación de la Carga</li>
 
 <li>Potencial de Yukawa</li>
 
@@ -5241,7 +5251,7 @@ Error message and password prompt
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="[[Eigenvalores de la Energía para Pozo de Potencial Infinito]] [[Delta de Dirac - Propiedad]] [[Delta de Dirac - Integración]] [[Eigenfuncion de la Onda para Pozo de Potencial Infinito]]" title="$:/StoryList">
+<div list="[[Ecuación de Lorentz para Electromagnetismo]] Gradiente [[Ley de Ampere]] [[Ley de Conservación de la Carga]] Divergencia [[Ley Circuital de Ampere]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5258,7 +5268,10 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20141119235244269" creator="a9lara" modified="20141128032052291" modifier="a9lara" title="$:/temp/NewTagName">
+<div created="20141119235244269" creator="a9lara" modified="20141130211345664" modifier="a9lara" title="$:/temp/NewTagName">
+<pre></pre>
+</div>
+<div created="20141130211138255" creator="a9lara" modified="20141130213318958" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.4">
@@ -5366,13 +5379,12 @@ Además:
 $\int_{-\infty}^{\infty} \delta(x)dx=1$</pre>
 </div>
 <div created="20141128030915284" creator="a9lara" modified="20141128031732632" modifier="a9lara" tags="Matemáticas" title="Delta de Dirac - Propiedad">
-<pre>
-\begin{equation}
+<pre>\begin{equation}
 \delta(x)=
 \begin{cases} \infty, &amp; x = 0 \\ 0, &amp; x \ne 0 \end{cases} 
 \end{equation}</pre>
 </div>
-<div created="20141121051814164" creator="a9lara" modified="20141124001300094" modifier="a9lara" tags="Física Matemáticas" title="Divergencia">
+<div created="20141121051814164" creator="a9lara" modified="20141130211238387" modifier="a9lara" tags="Física Matemáticas" title="Divergencia">
 <pre>La divergencia nos da un escalar.
 
 $ \nabla\cdot\vec A = \frac{\partial A_x}{\partial x}+ \frac{\partial A_y}{\partial y}+
@@ -5382,7 +5394,16 @@ La divergencia mide la diferencia entre el flujo saliente y el flujo entrante so
 
 Si el campo tiene &quot;fuentes&quot; la divergencia será positiva, y si tiene &quot;sumideros&quot;, la divergencia será negativa.
 
+La divergencia de cualquier rotacional es cero.
+
 </pre>
+</div>
+<div created="20141130215211985" creator="a9lara" modified="20141130215532168" modifier="a9lara" tags="Electromagnetismo Física" title="Ecuación de Lorentz para Electromagnetismo">
+<pre>La ecuación de Lorentz describe la acción de los campos sobre partículas cargadas.
+
+$\vec F= q(\vec E + \vec v \times   \vec B )$
+
+Es decir partículas que interactuan electromagnéticamente</pre>
 </div>
 <div created="20141121112550780" creator="a9lara" modified="20141121112853979" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Ecuación de Movimiento de Heisenberg">
 <pre>$i\hbar\frac{d\hat f}{dt}=[\hat f, \hat H]$</pre>
@@ -5459,6 +5480,35 @@ $\hat H=\frac{\hat p_1^2}{2m_1}+\frac{\hat p_2^2}{2m_2}+V(\hat r)+V(\hat r_1)+V(
 Donde 
 
 $\hat r = \hat r_1 - \hat r_2$</pre>
+</div>
+<div created="20141130205159660" creator="a9lara" modified="20141130212834045" modifier="a9lara" tags="Electromagnetismo Física" title="Ley Circuital de Ampere">
+<pre>La Ley Circuital de Ampere señala la relación que hay entre la corriente a travez de un circuito y el campo magnetico que genera.
+
+$\oint \vec H \cdot d \vec l = \int \vec J \cdot \hat n da = I$</pre>
+</div>
+<div created="20141130212514544" creator="a9lara" modified="20141130213248967" modifier="a9lara" tags="Electromagnetismo Física" title="Ley de Ampere">
+<pre>La ley de Ampére explica, que la circulación de la intensidad del campo magnético en un contorno cerrado es igual a la corriente que recorre en ese contorno.
+
+$\vec\nabla\times\vec H =  \vec J $
+
+En física del magnetismo, la ley de Ampère, modelada por André-Marie Ampère en 1831,1 relaciona un campo magnético estático con la causa que la produce, es decir, una corriente eléctrica estacionaria. James Clerk Maxwell la corrigió posteriormente y ahora es una de las ecuaciones de Maxwell, formando parte del electromagnetismo de la física clásica.
+
+La Ley de Ampere corregida por Maxwell es:
+
+$\vec\nabla\times\vec H =  \vec J + \frac{\partial \vec D}{\partial t} $
+
+Donde :
+
+$\frac{\partial \vec D}{\partial t}$ = Corriente de Desplazamiento.</pre>
+</div>
+<div created="20141130211316666" creator="a9lara" modified="20141130211755174" modifier="a9lara" tags="Electromagnetismo Física" title="Ley de Conservación de la Carga">
+<pre>La ecuación de la Conservación de la Carga es:
+
+$ \nabla\cdot\vec J + \frac{\partial \rho}{\partial t} = 0$
+
+
+Esta Ley establece que no hay destrucción ni creación neta de carga eléctrica, y afirma que en todo proceso electromagnético la carga total de un sistema aislado se conserva. 
+</pre>
 </div>
 <div created="20141128021320617" creator="a9lara" modified="20141128022237701" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Potencial de Yukawa">
 <pre>El Potencial de Yukawa representa la aproximación estática al potencial de interacción nuclear.
