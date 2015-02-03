@@ -229,6 +229,8 @@ Error message and password prompt
 
 <li>Potencial de Yukawa</li>
 
+<li>Sacar URL de Hipervínculo en LibreOffice Calc</li>
+
 <li>Teoría de Sistemas Perturbativos (Estacionarios)</li>
 
 </ul>
@@ -5269,7 +5271,7 @@ Error message and password prompt
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="" title="$:/StoryList">
+<div list="[[Sacar URL de Hipervínculo en LibreOffice Calc]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5286,7 +5288,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20141119235244269" creator="a9lara" modified="20150203122616258" modifier="a9lara" title="$:/temp/NewTagName">
+<div created="20141119235244269" creator="a9lara" modified="20150203135409178" modifier="a9lara" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20141130211138255" creator="a9lara" modified="20141201004347126" modifier="a9lara" title="$:/temp/search">
@@ -5653,6 +5655,65 @@ $\mu_0 = 4\pi \times 10 ^{-7} \frac{N}{A^2}$
 $V=V_0R\frac{e^{\frac{-r}{R}}}{r}$
 
 También describe el potencial coulombiano parcialmente blindado. </pre>
+</div>
+<div created="20150203135353924" creator="a9lara" modified="20150203141618314" modifier="a9lara" tags="Computación" title="Sacar URL de Hipervínculo en LibreOffice Calc">
+<pre>Lo que queremos hacer es copiar una lista de nombres que traen hipervínculos y dejar en una columna los nombres y en otra la URL. 
+
+ Para ello se hace lo siguiente:
+
+1. Abrimos Libre Office Calc
+
+2. Tools &gt; Macros &gt; Organize Macros &gt;  Libre Office Basic Macros &gt; My Macros &gt; Standard &gt; Module1 &gt; Edit
+
+3. Borramos el texto que hay que dice:
+
+REM  * * * * *  BASIC  * * * * *
+
+Sub Main
+
+End Sub
+
+Y pegamos el siguiente texto (Recomiendo darle en &quot;editar&quot; este Wiki para poder copiar y pegar el siguiente texto conla estructura original) :
+
+Function ExtraerURL( Hoja as string, Celda as string ) As String
+    Dim oCampos As Object, oCampo As Object
+    Dim oCelda as object
+    
+    oCelda = ThisComponent.Sheets.getByName( Hoja ).getCellRangeByName( Celda )
+    
+    oCampos = oCelda.TextFields
+    If oCampos.Count &gt; 0 Then
+        oCampo = oCampos(0)
+        If oCampo.URL &gt; &quot;&quot; Then
+            ExtraerURL = oCampo.URL
+        EndIf
+    EndIf    
+
+End Function
+
+4. Cerramos el editor de Marcos.
+
+5. Copiamos en una columna los nombres que traen el hipervínculo.
+
+6. Para cada celda de la columna de alado y con su correspondiente entrada de celda, (por ejemplo, aquí pondré &quot;D5&quot; que es la celda de la cuál quiero sacar el hipervínculo) escribimos:
+
+=ExtraerURL( &quot;Sheet1&quot;;&quot;D5&quot;)
+
+y le damos Enter
+
+7. Seleccionamos y copiamos toda la lista de nombres (los hipervínculos) y la de las URL (Donde había escribimos lo que va en el paso 6.)
+
+8. Abrimos un nuevo documento y le damos click derecho sobre la selda que va a empezar la lisa, luego:
+
+Paste Only &gt; Text
+
+9. Ahora seleccionamos la columna de los nombres con los hipervínculos. Damos click derecho sobre la selección y luego:
+
+Clear Direct Formatting
+
+10. Listo, nombramos y guardamos el documento.
+
+</pre>
 </div>
 <div created="20141123231520604" creator="a9lara" modified="20141124002917930" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Teoría de Sistemas Perturbativos (Estacionarios)">
 <pre>Ecuación Estacionaria Para Sistemas Perturbativos.
