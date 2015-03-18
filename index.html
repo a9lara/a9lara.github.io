@@ -213,6 +213,8 @@ Error message and password prompt
 
 <li>Eigenvalores de la Energía para Pozo de Potencial Infinito</li>
 
+<li>Ejercicio Común Trigonométrico en Electromagnetismo.</li>
+
 <li>Energía en un Campo Magnético Estacionario</li>
 
 <li>Energía Perturbada</li>
@@ -5315,7 +5317,7 @@ Error message and password prompt
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="[[Brillo Superficial]]" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5332,7 +5334,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20141119235244269" creator="a9lara" modified="20150316183752894" modifier="a9lara" title="$:/temp/NewTagName">
+<div created="20141119235244269" creator="a9lara" modified="20150318023320097" modifier="a9lara" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20141130211138255" creator="a9lara" modified="20150307124353603" modifier="a9lara" title="$:/temp/search">
@@ -5652,6 +5654,122 @@ $E_n=\frac{n^2\pi^2\hbar^2 }{2ma^2}$
 Esta resultado es el valor de la Energía en el estado $n$ dentro del pozo.
 </pre>
 </div>
+<div created="20150318022608949" creator="a9lara" modified="20150318034016468" modifier="a9lara" tags="Ejercicio Electromagnetismo" title="Ejercicio Común Trigonométrico en Electromagnetismo.">
+<pre>$a)$ Encontrar el campo eléctrico $\vec E$ en un punto arbitrario $P_z$ sobre el eje $z$ provocado por anillo de longitud $M$ situado en el origen paralelo en al plano $xy$ con densidad lineal uniforme $\lambda$ y radio $L$.
+
+$Solución:$
+
+Sabemos que $\vec E= \frac{1}{4\pi\varepsilon_0} \frac{q}{d^2}\hat d$
+
+Recordemos la figura:
+
+[img[https://lh6.googleusercontent.com/-_dAiNuYHMus/VPYTnXkCn8I/AAAAAAAAUUI/rSMnOcL7a3U/w346-h256/tri.jpg]]
+
+Si el punto P está a una distancia $z$ sobre el eje $z$
+
+$cos(\theta)=\frac{z}{d}$
+
+$d=\sqrt{z^2+x^2}$ 
+
+$d=(z^2+x^2)^{\frac{1}{2}}$ 
+
+ $x \epsilon [0,L]$
+
+Entonces, como estamos interesados en la dirección $\hat d$, y esta direcciónla podemos ver como $\hat d = cos(\theta)$, entonces podemos sustituir en la ecuación $d$$\vec E$  y nos queda:
+
+$\vec E= \frac{1}{4\pi\varepsilon_0} \frac{q}{d^2}$ $cos(\theta)$
+
+Recordamos ahora que:
+
+$\lambda=\frac{q}{M}$
+
+$\Rightarrow$ $q=\lambda M$
+
+$\Rightarrow$ $\frac{dq}{dM}=\lambda$
+
+$\Rightarrow$ $dq=\lambda dM$
+
+Sustituyendo nos queda:
+
+$d$$\vec E= \frac{1}{4\pi\varepsilon_0} \frac{dq}{d^2}$ $cos(\theta)$
+
+$d$$\vec E= \frac{1}{4\pi\varepsilon_0} \frac{\lambda dM}{d^2}$ $cos(\theta)$
+
+Ahora, como:
+
+$d=(z^2+x^2)^{\frac{1}{2}}$ 
+
+$\Rightarrow$ $d^2=(z^2+x^2)$ 
+
+Sustituyendola en $d$$\vec E$ obtenemos:
+
+$d$$\vec E= \frac{1}{4\pi\varepsilon_0} \frac{\lambda dM}{(z^2+x^2)}$ $cos(\theta)$
+
+
+Por último, sabemos que la proyección de $d$ sobre el eje $z$ es $d$ $cos(\theta)$, es decir:
+
+ $z$ = $d$ $cos(\theta)$
+
+$\Rightarrow$ $cos(\theta)=\frac{z}{d}$
+
+y sabemos que:
+
+$d=(z^2+x^2)^{\frac{1}{2}}$ 
+
+$\Rightarrow$ $cos(\theta)=\frac{z}{(z^2+x^2)^{\frac{1}{2}}}$
+
+Ahora lo sustituimos en $d$$\vec E$ y nos queda:
+
+$d$$\vec E= \frac{\lambda z dM}{4\pi\varepsilon_0(z^2+x^2)(z^2+x^2)^{\frac{1}{2}}}$
+
+Podemos ver a $(z^2+x^2)$ como:
+
+$(z^2+x^2)=(z^2+x^2)^\frac{2}{2}$
+
+Y como al multiplicar los exponentes, estos se suman 
+
+$\therefore$
+
+ $(z^2+x^2)(z^2+x^2)^{\frac{1}{2}}=(z^2+x^2)^\frac{2}{2}(z^2+x^2)^{\frac{1}{2}}=(z^2+x^2)^{\frac{3}{2}}$
+
+Sustituyendo obtenemos la expresión del campo que vamos a usar:
+
+$d$$\vec E= \frac{\lambda z dM}{4\pi\varepsilon_0(z^2+x^2)^{\frac{3}{2}}}$
+
+Par aobtener el campo eléctrico ya solo queda integrar de $0$ a $R$:
+
+$\vec E=\displaystyle  \int \frac{\lambda z dM}{4\pi\varepsilon_0(z^2+x^2)^{\frac{3}{2}}}$
+
+Como la distancia a la que está el anillo es el radio $L$.
+
+Entonces $x=L$
+
+Sustituyendo nos queda:
+
+$\vec E=\displaystyle  \int \frac{\lambda z dM}{4\pi\varepsilon_0(z^2+L^2)^{\frac{3}{2}}}$
+
+Ahora vamos a analizar la vuelta sobre el anillo. 
+
+Sabemos que el perímetro del anillo es M y como el perímetro de un círculo está dado por: $r2\pi$, con r el radio del círculo, y $2\pi=\theta$ que es el ángulo total del círculo, entonces,para nuestro caso y tomando un diferencial del ángulo tenemos:
+
+$dM=Ld\theta$
+
+Sustituyendo e integramos sobre todo el perímetro del círculo, es decir: $2\pi$
+
+$\vec E=\displaystyle  \int_0^{2\pi} \frac{\lambda z Ld\theta}{4\pi\varepsilon_0(z^2+L^2)^{\frac{3}{2}}}$
+
+Entonces:
+
+$\vec E=\frac{\lambda z L}{4\pi\varepsilon_0(z^2+L^2)^{\frac{3}{2}}}\displaystyle  \int_0^{2\pi} d\theta$
+
+$\vec E=\left(\frac{\lambda z L}{4\pi\varepsilon_0(z^2+L^2)^{\frac{3}{2}}}\right)\left( \theta  \bigg\rvert_0^{2\pi}\right) $
+
+$\vec E=\frac{\lambda z L 2\pi}{4\pi\varepsilon_0(z^2+L^2)^{\frac{3}{2}}}$
+
+$\therefore$ 
+
+$\boxed{\vec E=\frac{\lambda z L 2\pi}{4\pi\varepsilon_0(z^2+L^2)^{\frac{3}{2}}}\hat e_z}$</pre>
+</div>
 <div created="20141201010013168" creator="a9lara" modified="20141201010352671" modifier="a9lara" tags="Electromagnetismo Física" title="Energía en un Campo Magnético Estacionario">
 <pre>La Energía Almacenada en un Campo Magnético Estacionario es:
 
@@ -5957,7 +6075,7 @@ $V(r,\theta)=\displaystyle\sum_{l=1}^\infty (A_l r^l +\frac{B_l}{r^{l+1}})P_l( c
 
 Es una propiedad de los isótopos que son inestables, es decir, se mantienen en un estado excitado y deben perder energía para alcanzar su estado fundamental. </pre>
 </div>
-<div created="20150303195158702" creator="a9lara" modified="20150303200421633" modifier="a9lara" tags="Matemáticas" title="Relación trigonométrica de un triángulo.">
+<div created="20150303195158702" creator="a9lara" modified="20150318022604896" modifier="a9lara" tags="Matemáticas" title="Relación trigonométrica de un triángulo.">
 <pre>[img[https://lh6.googleusercontent.com/-_dAiNuYHMus/VPYTnXkCn8I/AAAAAAAAUUI/rSMnOcL7a3U/w346-h256/tri.jpg]]
 
 Si el punto P está a una distancia $z$ sobre el eje $z$
@@ -5967,6 +6085,8 @@ $cos(\theta)=\frac{z}{d}$
 $d=\sqrt{z^2+x^2}$ 
 
  $x \epsilon [0,L]$
+
+
 </pre>
 </div>
 <div created="20150203135353924" creator="a9lara" modified="20150203141618314" modifier="a9lara" tags="Computación" title="Sacar URL de Hipervínculo en LibreOffice Calc">
