@@ -187,6 +187,8 @@ Error message and password prompt
 
 <li>Comando para poner imágenes en TiddlyWiki</li>
 
+<li>Comandos en Julia</li>
+
 <li>Conjunciones</li>
 
 <li>Corrientes de Desplazamiento.</li>
@@ -5321,7 +5323,7 @@ Error message and password prompt
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="[[Palabras en inglés]]" title="$:/StoryList">
+<div list="[[Comandos en Julia]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5338,10 +5340,10 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20141119235244269" creator="a9lara" modified="20150318023320097" modifier="a9lara" title="$:/temp/NewTagName">
+<div created="20141119235244269" creator="a9lara" modified="20150626213408964" modifier="a9lara" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20141130211138255" creator="a9lara" modified="20150319063423730" modifier="a9lara" title="$:/temp/search">
+<div created="20141130211138255" creator="a9lara" modified="20150626213337354" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.4">
@@ -5531,6 +5533,76 @@ Cationes: átomos cargados positivamente, se ven atraidos por el cátodo.</pre>
 </div>
 <div created="20150303195111648" creator="a9lara" modified="20150303195155288" modifier="a9lara" tags="Computación" title="Comando para poner imágenes en TiddlyWiki">
 <pre>[img[http://tiddlywiki.com/favicon.ico]]</pre>
+</div>
+<div created="20150626213339112" creator="a9lara" modified="20150626215151213" modifier="a9lara" tags="Computación Julia" title="Comandos en Julia">
+<pre>ENCONTRAR EL VALOR MÁS GRANDE:
+
+Si tienes vec = [1,2,3,4] con max(vec...)
+
+Recuerda que los tres puntos ... desempacan el arreglo.
+
+-----
+
+ENCONTRAR EL VALOR DE LA VARIABLE INDEPENDIENTE CORRESPONDIENTE AL VALOR DE LA VARIABLE DEPENDIENTE DENTRO DE DOS LISTAS:
+
+Si tienes un array t con los tiempos y que a cada tiempo le corresponde una entrada en tu array r.
+
+Entonces t[indmin(r)] te dará el tiempo al cual tienes el menor valor
+del radio, y t[indmax(r)] el mayor.
+
+Si te interesa un valor que cumpla otra condición usa t[findin(r,f(r))],
+donde f(r) determina qué valor quieres.
+
+-----
+
+INFORMACIÓN EN LAS GRÁFICAS:
+
+plot(rx,ry,&quot;b.&quot;)
+
+plot(ax,ay,&quot;r.&quot;)
+
+plot(ug,gr,&quot;g.&quot;)
+
+plot(t,-t+2.2,&quot;black&quot;)
+
+suptitle(&quot;Esquema de los colores de las 
+Galaxias en Cúmulo Abell 
+2255&quot;,fontsize=14, fontweight=&quot;bold&quot;)
+
+title(&quot;color-color&quot;)
+
+annotate(&quot;y=-x+2.2&quot;, xy=(-.5, 3))
+
+xlabel(&quot;u-g&quot;)
+
+ylabel(&quot;g-r&quot;)
+
+axis([-4,5,-5,4])
+
+AQUÍ OTRO EJEMPLO
+
+subplot(4,4,4)
+
+plot(iz,z,&quot;b.&quot;)
+
+suptitle(&quot;Diagrama de Color-Desplazamiento al Rojo de Cuásares&quot;,fontsize=14, fontweight=&quot;bold&quot;)
+
+title(&quot;i-z vs. z&quot;)
+
+xlabel(&quot;i-z&quot;)
+
+ylabel(&quot;z&quot;)
+
+axis([-0.8,1.5,0,6,])
+
+xticks([-0.4, .4,  1.2]);
+
+savefig(&quot;F3.jpg&quot;)
+
+ plot(Q[:,x],Q[:,y],&quot;o&quot;,label=&quot;Planeta $i&quot;)
+
+-----
+</pre>
 </div>
 <div created="20150203122604753" creator="a9lara" modified="20150203122638149" modifier="a9lara" tags="Idiomas" title="Conjunciones">
 <pre>Conjunciones
