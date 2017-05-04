@@ -143,6 +143,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -174,6 +176,8 @@ Error message and password prompt
 <li>Delta de Dirac - Propiedad</li>
 
 <li>Densidad de Carga</li>
+
+<li>Descripción de Heisenberg del oscilador armónico</li>
 
 <li>Desintegración Radioactiva</li>
 
@@ -8152,7 +8156,7 @@ Error message and password prompt
 <div created="20141120220030059" creator="a9lara" modified="20141121012035390" modifier="a9lara" title="$:/SiteTitle">
 <pre>Ar. Tiddly Wiki </pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20170422182849817" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20170504023416314" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -8174,6 +8178,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20170504021536989" creator="a9lara" modified="20170504023413630" modifier="a9lara" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.13">
 <pre>{
@@ -8526,6 +8533,19 @@ $\rho=\frac{dq}{dV}$
 
 donde q es la carga total y V es el volumen del cuerpo en cuestión.</pre>
 </div>
+<div created="20170504022137831" creator="a9lara" modified="20170504023121943" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Descripción de Heisenberg del oscilador armónico">
+<pre>El Hamiltoniano del sistema es
+
+$$\hat{H}=\frac{1}{2m}\hat{p}^2+\frac{1}{2}m\omega^2\hat{q}^2$$
+
+$$[\hat{q},\hat{p}]=i\hbar$$
+
+El Hamiltoniano en términos de $$\hat{a}$$ y $$\hat{a}^{\dagger}$$ se escribe como
+
+$$\hat{H}=\hbar\omega(\hat{a}^{\dagger}\hat{a}+\frac{1}{2})$$
+
+$$[\hat{a},\hat{a}^{\dagger}]=1$$</pre>
+</div>
 <div created="20150205173637225" creator="a9lara" modified="20150205173742776" modifier="a9lara" tags="Atómica Física" title="Desintegración Radioactiva">
 <pre>Es la emisión de partículas desde un núcleo atómico inestable. Solo sucede cuando hay un excedente de energía en el radio de la órbita.</pre>
 </div>
@@ -8562,10 +8582,10 @@ $\vec F= q(\vec E + \vec v \times   \vec B )$
 
 Es decir partículas que interactuan electromagnéticamente</pre>
 </div>
-<div created="20141121112550780" creator="a9lara" modified="20141121112853979" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Ecuación de Movimiento de Heisenberg">
-<pre>$i\hbar\frac{d\hat f}{dt}=[\hat f, \hat H]$</pre>
+<div created="20141121112550780" creator="a9lara" modified="20170504021648833" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Ecuación de Movimiento de Heisenberg">
+<pre>$$i\hbar\frac{d\hat f}{dt}=[\hat f, \hat H]$$</pre>
 </div>
-<div created="20141122094049380" creator="a9lara" modified="20170422182502237" modifier="a9lara" tags="Shrödinger [[Mecánica Cuántica]]" title="Ecuación de Shrödinger dependiente del Tiempo">
+<div created="20141122094049380" creator="a9lara" modified="20170504022731571" modifier="a9lara" tags="Shrödinger [[Mecánica Cuántica]]" title="Ecuación de Shrödinger dependiente del Tiempo">
 <pre>$$i \hbar \frac{\partial \psi}{\partial t}=-\frac{\hbar^2}{2m} \nabla  ^2\psi+V\psi$$ 
 
 Recordando qué:
@@ -8574,19 +8594,19 @@ $$\nabla^2 =\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+...+
 
 El cuál es un escalar.</pre>
 </div>
-<div created="20141128024252217" creator="a9lara" modified="20141128025225262" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Eigenfuncion de la Onda para Pozo de Potencial Infinito">
+<div created="20141128024252217" creator="a9lara" modified="20170504021603986" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Eigenfuncion de la Onda para Pozo de Potencial Infinito">
 <pre>La eigenfunción de onda para un pozo unidimensional infinito de anchura a es:
 
-$\psi_n=\sqrt{\frac{2}{a}}sen(\frac{n\pi x}{a})$
+$$\psi_n=\sqrt{\frac{2}{a}}sen(\frac{n\pi x}{a})$$
 
-Esta función es la función de onda del estado $n$ dentro del pozo.
+Esta función es la función de onda del estado $$n$$ dentro del pozo.
 
 </pre>
 </div>
-<div created="20141128031735654" creator="a9lara" modified="20141128032055899" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Eigenvalores de la Energía para Pozo de Potencial Infinito">
+<div created="20141128031735654" creator="a9lara" modified="20170504021629634" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Eigenvalores de la Energía para Pozo de Potencial Infinito">
 <pre>Los eigenvalores de  la Energía para un pozo unidimensional infinito de anchura a es:
 
-$E_n=\frac{n^2\pi^2\hbar^2 }{2ma^2}$
+$$E_n=\frac{n^2\pi^2\hbar^2 }{2ma^2}$$
 
 Esta resultado es el valor de la Energía en el estado $n$ dentro del pozo.
 </pre>
@@ -8836,26 +8856,26 @@ $$ \nabla  \varphi = \frac{\partial \varphi}{\partial x} \hat  i+    \frac{\part
 
 La magnitud del gradiente nos dirá cuan rápido aumenta ese algo en esa dirección.</pre>
 </div>
-<div created="20141124000949816" creator="a9lara" modified="20141124002814844" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Hamiltoniano - Oscilador Armónico Unidimensional">
+<div created="20141124000949816" creator="a9lara" modified="20170504021852718" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Hamiltoniano - Oscilador Armónico Unidimensional">
 <pre>El Hamiltoniano del Oscilador Armónico Unidimensional es:
 
-$\hat H  = \frac{\hat p}{2m} + \frac{m\omega ^2x^2}{2} $
+$$\hat H  = \frac{\hat p}{2m} + \frac{m\omega ^2x^2}{2} $$
 
 Las funciones propias de este hamiltoniano son:
 
-$\psi_n= C_ne^{\frac{-\xi^2}{2}}H_n(\xi)$
+$$\psi_n= C_ne^{\frac{-\xi^2}{2}}H_n(\xi)$$
 
 Donde:
 
-$C_n=(\sqrt{\pi}{2^nn!\alpha_0})^{-\frac{1}{2}}$
+$$C_n=(\sqrt{\pi}{2^nn!\alpha_0})^{-\frac{1}{2}}$$
 
-$\xi=\frac{x}{\alpha_0}$
+$$\xi=\frac{x}{\alpha_0}$$
 
-$\alpha_0=\sqrt{\frac{\hbar}{m\omega}}$
+$$\alpha_0=\sqrt{\frac{\hbar}{m\omega}}$$
 
 Los eigenvalores, (en este caso son las energías propias) son:
 
-$E_n=\hbar\omega(n+\frac{1}{2})$</pre>
+$$E_n=\hbar\omega(n+\frac{1}{2})$$</pre>
 </div>
 <div created="20141121111521554" creator="a9lara" modified="20170422182610717" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Hamiltoniano Dos Cuerpos" type="">
 <pre>El Hamiltoniano para el problema de dos cuerpos interaccionando por medio de un potencial $$V(\hat r)$$ es:
@@ -9040,10 +9060,10 @@ $\mu_0 = 4\pi \times 10 ^{-7} \frac{N}{A^2}$
 
 </pre>
 </div>
-<div created="20141128021320617" creator="a9lara" modified="20141128022237701" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Potencial de Yukawa">
+<div created="20141128021320617" creator="a9lara" modified="20170504021923949" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Potencial de Yukawa">
 <pre>El Potencial de Yukawa representa la aproximación estática al potencial de interacción nuclear.
 
-$V=V_0R\frac{e^{\frac{-r}{R}}}{r}$
+$$V=V_0R\frac{e^{\frac{-r}{R}}}{r}$$
 
 También describe el potencial coulombiano parcialmente blindado. </pre>
 </div>
@@ -9169,10 +9189,10 @@ $$h_\rho=h_z=1,\ h_\varphi=\rho$$
 
 http://quant-econ.net/jl/julia_by_example.html#id6</pre>
 </div>
-<div created="20141123231520604" creator="a9lara" modified="20141124002917930" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Teoría de Sistemas Perturbativos (Estacionarios)">
+<div created="20141123231520604" creator="a9lara" modified="20170504021942373" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Teoría de Sistemas Perturbativos (Estacionarios)">
 <pre>Ecuación Estacionaria Para Sistemas Perturbativos.
 
-$\hat H \Psi_n = (\hat H_0  + \hat V)\Psi _n  $
+$$\hat H \Psi_n = (\hat H_0  + \hat V)\Psi _n  $$
 
 Cuando a un sistema se le perturba, es conveniente estudiar su estado no perturbado, la perturbación y el sistema después de ser perturbado.</pre>
 </div>
