@@ -281,7 +281,7 @@ Error message and password prompt
 
 <li>Tipos de Desintegración (o Radiación).</li>
 
-<li>Transformaciónes entre dos marcos de referencia</li>
+<li>Transformaciónes de Lorentz en Electro</li>
 
 </ul>
 </p>
@@ -8172,7 +8172,7 @@ Error message and password prompt
 <div created="20141120220030059" creator="a9lara" modified="20141121012035390" modifier="a9lara" title="$:/SiteTitle">
 <pre>Ar. Tiddly Wiki </pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20170514220751561" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20170514232953099" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -8531,7 +8531,6 @@ Es decir, nos permite saber la corriente total despues de cierto tiempo en un si
 </div>
 <div created="20170514204228416" creator="a9lara" modified="20170514220700439" modifier="a9lara" tags="Constantes" title="Datos frecuentes">
 <pre>
-
 $$M_{\odot}$$: $$2\times10^{30}kg$$
 
 $$M_T$$: $$6\times10^{24}kg$$
@@ -9297,16 +9296,37 @@ $\alpha$ y $\beta$ $\rightarrow$ radiación corpuscular (particulas cargadas)
 
 $\gamma$ $\rightarrow$ radiación electromagnética.</pre>
 </div>
-<div created="20170513234426850" creator="a9lara" modified="20170513234938537" modifier="a9lara" tags="Electromagnetismo Relatividad" title="Transformaciónes entre dos marcos de referencia">
+<div created="20170513234426850" creator="a9lara" modified="20170514232820431" modifier="a9lara" tags="Electromagnetismo Relatividad" title="Transformaciónes de Lorentz en Electro">
 <pre>$$\mathbf{u}$$ : Velocidad que lleva una partícula en el Sistema 2 vista desde el Sistema 1. 
 
 $$\mathbf{u'}$$ : Velocidad que lleva una partícula en el Sistema 2 vista desde el Sistema 2.
 
 $$\mathbf{v}$$ : Velocidad que lleva el Sistema 2 visto desde el Sistema 1.
 
-$$\mathbf{u} = \frac{d\mathbf{r}}{dt} \,,\quad \mathbf{u}' = \frac{d\mathbf{r}'}{dt'} \,,\quad \gamma_\mathbf{v} = \frac{1}{\sqrt{1-\dfrac{\mathbf{v}\cdot\mathbf{v}}{c^2}}}$$
+$$\mathbf{u} = \frac{d\mathbf{r}}{dt}$$
 
-$$\mathbf{u}' = \frac{1}{ 1 - \frac{\mathbf{v}\cdot\mathbf{u}}{c^2} }\left[\frac{\mathbf{u}}{\gamma_\mathbf{v}} - \mathbf{v} + \frac{1}{c^2}\frac{\gamma_\mathbf{v}}{\gamma_\mathbf{v} + 1}\left(\mathbf{u}\cdot\mathbf{v}\right)\mathbf{v}\right] $$</pre>
+$$\mathbf{u}' = \frac{d\mathbf{r}'}{dt'}$$
+
+$$\gamma=\gamma_v $$
+
+$$\gamma_v = \frac{1}{\sqrt{1-\dfrac{v^2}{c^2}}}$$
+
+$$\gamma_u = \frac{1}{\sqrt{1-\dfrac{u^2}{c^2}}}$$
+
+$$\gamma_{u'} = \frac{1}{\sqrt{1-\dfrac{{u'}^2}{c^2}}}$$
+
+$$\gamma_u=\gamma_v \gamma_{u'}\left(1+\dfrac{\mathbf{v}\cdot\mathbf{u'}}{c^2}\right)$$
+
+$$\mathbf{u}' = \frac{1}{\left(1 - \frac{\mathbf{v}\cdot\mathbf{u}}{c^2}\right) }\left[\frac{\mathbf{u}}{\gamma_\mathbf{v}} - \mathbf{v} + \frac{1}{c^2}\frac{\gamma_\mathbf{v}}{\gamma_\mathbf{v} + 1}\left(\mathbf{u}\cdot\mathbf{v}\right)\mathbf{v}\right] $$
+
+$$\mathbf{u}' = \frac{\mathbf{u}+\frac{\gamma}{|\mathbf{v}|^2}\mathbf{v}(\mathbf{v} \cdot\mathbf{u}) -\frac{1}{|\mathbf{v}|^2}\mathbf{v}(\mathbf{v}\cdot\mathbf{u})-\gamma\mathbf{v} }{\gamma\left(1-\frac{\mathbf{v}\cdot\mathbf{u}}{c^2}\right)}$$
+
+$$\mathbf{F}=q(\mathbf{E}+\frac{1}{c} \mathbf{u} \times \mathbf{B})$$
+
+
+$$\mathbf{F'} =q(\mathbf{E'}+\frac{1}{c} \mathbf{u'} \times \mathbf{B'})$$
+
+$$\mathbf{F}=\frac{\gamma_{\mathbf{u'}}}{\gamma_{\mathbf{u}}}\left[\mathbf{F'}  +\frac{\mathbf{v}}{|\mathbf{v}|^2}(\gamma-1)(\mathbf{F'} \cdot\mathbf{v})+\frac{\gamma \mathbf{v}}{c^2}(\mathbf{u '}\cdot\mathbf{F'} )\right]$$</pre>
 </div>
 
 </div>
