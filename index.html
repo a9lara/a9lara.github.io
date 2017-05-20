@@ -265,6 +265,8 @@ Error message and password prompt
 
 <li>Potencial Simetría Esférica con Polinomios de Legendre</li>
 
+<li>Potenciales centrales.</li>
+
 <li>Principio de Superposición en Electromagnetismo</li>
 
 <li>Propiedades de los sistemas termodinámicos</li>
@@ -8174,7 +8176,7 @@ Error message and password prompt
 <div created="20141120220030059" creator="a9lara" modified="20141121012035390" modifier="a9lara" title="$:/SiteTitle">
 <pre>Ar. Tiddly Wiki </pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20170517050636338" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20170520222431805" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -8197,7 +8199,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20170514170449012" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20170520222434779" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.13">
@@ -9080,10 +9082,14 @@ $$\nabla = \hat{\rho}\frac{\partial }{\partial \rho}
 
 </pre>
 </div>
-<div created="20170514170453176" creator="a9lara" modified="20170514171655187" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Operadores Elementales">
+<div created="20170514170453176" creator="a9lara" modified="20170520201400946" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Operadores Elementales">
 <pre>Posición: $$\hat x=x$$
 
 Momento: $$\hat p=-i\hbar \frac{\partial}{\partial x}$$
+
+Momento: $$\hat p^2=-\hbar^2 \frac{\partial^2}{\partial x^2}$$
+
+Momento: $$\hat p^2=-\hbar^2 \nabla^2$$
 
 Energía: $$\hat E=i\hbar \frac{\partial}{\partial t}$$
 
@@ -9171,6 +9177,75 @@ También describe el potencial coulombiano parcialmente blindado. </pre>
 <pre>Si se quiere conocer el potencial de un cuerpo que tiene simetría esférica y no depende de $\phi$. Su potencial se puede expresar como:
 
 $V(r,\theta)=\displaystyle\sum_{l=1}^\infty (A_l r^l +\frac{B_l}{r^{l+1}})P_l( cos(\theta))$</pre>
+</div>
+<div created="20170520201035253" creator="a9lara" modified="20170520221812172" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Potenciales centrales.">
+<pre>Hamiltoniano: $$\hat H(\hat p_1,\hat p_2,\vec r_1,\vec r_2)=\hat H_1(\hat p_1,\vec r_1)+\hat H_2(\hat p_2,\vec r_2)+V(\vec r_1,\vec r_2)$$
+
+Recordando que: Momento: $$\hat p^2=-\hbar^2 \nabla^2$$
+
+$$E\Psi=\hat H\Psi=\left[\frac{\hat p^2_ 1}{2m_1}+\frac{\hat p^2_ 2}{2m_2}+V_1(\vec r_1)+V_2(\vec r_2)+V(\vec r_1,\vec r_2)\right]\Psi$$
+
+$$\Psi=\Psi(\vec r_1,\vec r_2)$$ es una función de seis variables. Aunque puede depender de cualquier número de variables, incluyendo el tiempo. 
+
+Para resolverlo, se asume que el potencial de interacción entre las partíuclas sólo depende de su posición relativa. Por lo que se pasa de las variables $$\vec r_1$$ y $$\vec r_2$$ a las variables de distancia relativa y de centro de masa. 
+
+$$\vec r=\vec r_1-\vec r_2$$
+
+$$\vec R=\frac{m_1\vec r_1+m_2\vec r_2}{M}$$
+
+$$M=m_1+m_2$$
+
+$$\nabla_1=\nabla_r+\frac{m_1}{M}\nabla_R$$
+
+$$\nabla_2=-\nabla_r+\frac{m_2}{M}\nabla_R$$
+
+
+$$\frac{\nabla_1^2}{m_1}+\frac{\nabla_2^2}{m_2}=\frac{\nabla_r^2}{m}+\frac{\nabla_R^2}{M}$$ 
+ 
+Con $$m$$ la masa reducida del sistema.
+
+$$m=\frac{m_1m_2}{m_1+m_2}$$
+
+Por lo que la ecuación se reduce a:
+
+$$E\Psi=\left[-\frac{\hbar^2}{2M}\nabla_R^2-\frac{\hbar^2}{2m}\nabla^2_r+V(\vec r)\right]\Psi$$
+
+Esta ecuación se resuelve con el método de separación de variables, pues al escribir $$\Psi$$ en la forma
+
+$$\Psi(\vec R, \vec r)=\Phi(\vec R)\psi(\vec r)$$ 
+
+y descomponiendo la energía en 2 partes 
+
+$$E=E_R+E_r$$.
+
+Separando la ecuación:
+
+$$E_R\Phi(\vec R)=-\frac{\hbar^2}{2M}\nabla_R^2\Phi(\vec R)$$
+
+$$E_r\psi(\vec r)=-\frac{\hbar^2}{2m}\nabla_r^2\psi(\vec r)+V\psi(\vec r)$$
+
+$$E_R\Phi(\vec R)$$: Se refiere al movimiento libre de una partíucla de masa M llamada cuasipartícula, cuya posición es $$\vec R$$, la coordenada del centro de masa de las partículas 1 y 2. Por lo que el centro de masa se mueve libremente con una energía $$E_R$$. 
+
+Para simplificar el problema se supone un sistema de coordenadas en que el centro de masa esté en reposo tal que
+
+$$E_R=0$$ 
+
+$$\Phi=cte$$
+
+
+$$E_r\psi(\vec r)$$: Describe el movimiento de una cuasipartícula de masa reducida $$m$$, asociada al movimiento relativo de las partículas 1 y 2, afectada por el potencial $$V(\vec r)$$. Esta es la ecuación de Shrödinger para el problema de dos partículas, reducida al caso de una cuasipartícula. 
+
+Esta simplificación que se acaba de realizar se puede hacer para un sistema aisaldo, siempre y cuando el potencial sólo dependa de las posiciones relativas de las partículas, tal como los sistemas clásicos y teniendo que el Hamiltoniano conmuta. 
+
+La solución de $$E_r\psi(\vec r)$$ es:
+
+$$\psi_{nml}=R_{nl}(r)Y_l^m(\theta,\varphi)$$
+
+$$Y_l^m(\theta,\varphi)$$: armónico esférico 
+
+$$R_{nl}(r)$$: solución radial
+
+$$E_rR(r)=\left[\frac{\hat p^2}{2m}+\frac{\hbar^2l(l+1)}{2mr^2}+V(r)\right]R(r)$$</pre>
 </div>
 <div created="20150303181958910" creator="a9lara" modified="20150303182304122" modifier="a9lara" tags="Física Electromagnetismo" title="Principio de Superposición en Electromagnetismo">
 <pre>El Principio de Superposición en Electromagnetismo establece que la interacción entre dos cargas no se ve afectada por la presencia de otras. </pre>
