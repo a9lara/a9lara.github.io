@@ -251,6 +251,8 @@ Error message and password prompt
 
 <li>Operador Diferencial Vectorial Nabla</li>
 
+<li>Operadores de Creación y Aniquilación</li>
+
 <li>Operadores Elementales</li>
 
 <li>Palabras en inglés</li>
@@ -8176,7 +8178,7 @@ Error message and password prompt
 <div created="20141120220030059" creator="a9lara" modified="20141121012035390" modifier="a9lara" title="$:/SiteTitle">
 <pre>Ar. Tiddly Wiki </pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20170520222431805" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20170521012507477" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -8199,7 +8201,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20170520222434779" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20170521013338401" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.13">
@@ -8935,22 +8937,22 @@ $$ \nabla  \varphi = \frac{\partial \varphi}{\partial x} \hat  i+    \frac{\part
 
 La magnitud del gradiente nos dirá cuan rápido aumenta ese algo en esa dirección.</pre>
 </div>
-<div created="20141124000949816" creator="a9lara" modified="20170504021852718" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Hamiltoniano - Oscilador Armónico Unidimensional">
+<div created="20141124000949816" creator="a9lara" modified="20170521010136288" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Hamiltoniano - Oscilador Armónico Unidimensional">
 <pre>El Hamiltoniano del Oscilador Armónico Unidimensional es:
 
 $$\hat H  = \frac{\hat p}{2m} + \frac{m\omega ^2x^2}{2} $$
 
 Las funciones propias de este hamiltoniano son:
 
-$$\psi_n= C_ne^{\frac{-\xi^2}{2}}H_n(\xi)$$
+$$\psi_n=\left(\dfrac{1}{2^nn!}\right)^{\frac{1}{2}}\left(\dfrac{m\omega}{\pi\hbar}\right)^{\frac{1}{4}}\left(e^{\frac{-m\omega x^2}{2\hbar}}\right)H_n(\xi)$$
 
-Donde:
+$$H_n(\xi)$$: Polinomios de Hermite
 
-$$C_n=(\sqrt{\pi}{2^nn!\alpha_0})^{-\frac{1}{2}}$$
+$$H_n(\xi)=(-1)^ne^{\xi^2}\frac{d^n}{d\xi^n}e^{-\xi^2}$$
 
-$$\xi=\frac{x}{\alpha_0}$$
+$$\xi=\left(\dfrac{m\omega}{\hbar}\right)^{\frac{1}{2}}x$$
 
-$$\alpha_0=\sqrt{\frac{\hbar}{m\omega}}$$
+$$\xi^2=\dfrac{m\omega x^2}{\hbar}$$
 
 Los eigenvalores, (en este caso son las energías propias) son:
 
@@ -9082,7 +9084,28 @@ $$\nabla = \hat{\rho}\frac{\partial }{\partial \rho}
 
 </pre>
 </div>
-<div created="20170514170453176" creator="a9lara" modified="20170520201400946" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Operadores Elementales">
+<div created="20170521012509542" creator="a9lara" modified="20170521032934003" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Operadores de Creación y Aniquilación">
+<pre>$$\hat H=\hbar \omega\left(\hat a^{\dagger}\hat a+\frac{1}{2}\right)$$
+
+$$\hat x=\sqrt{\frac{\hbar}{2m\omega}}(\hat a^{\dagger}+\hat a)$$
+
+$$\hat p=i\sqrt{\frac{m\hbar\omega}{2}}(\hat a^{\dagger}-\hat a)$$
+
+$$\hat a|m\rangle=\sqrt{m}|m-1\rangle$$
+
+$$\hat a^{\dagger}|m\rangle=\sqrt{m+1}|m+1\rangle$$
+
+$$\langle n|m\rangle=\delta_{nm}$$
+
+$$[\hat H,\hat a^{\dagger}]=\hbar \omega\hat a^{\dagger}$$
+
+$$[\hat H,\hat a]=-\hbar \omega\hat a$$
+
+$$[\hat a,\hat a^{\dagger}]=1$$
+
+$$[\hat a^{\dagger},\hat a]=-1$$</pre>
+</div>
+<div created="20170514170453176" creator="a9lara" modified="20170521013401337" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Operadores Elementales">
 <pre>Posición: $$\hat x=x$$
 
 Momento: $$\hat p=-i\hbar \frac{\partial}{\partial x}$$
@@ -9097,7 +9120,11 @@ Energía Potencial: $$\hat V=V(x)$$
 
 Energía Cinética: $$\hat T= \frac{-\hbar^2}{2m}\frac{\partial^2}{\partial x^2}=\frac{\hat p^2}{2m}$$
 
-Hamiltoniano $$\hat H=\hat T+\hat V$$</pre>
+Hamiltoniano $$\hat H=\hat T+\hat V$$
+
+$$[\hat x,\hat p]=i\hbar$$
+
+$$[\hat p,\hat x]=-i\hbar$$</pre>
 </div>
 <div created="20150319063424939" creator="a9lara" modified="20170422180026719" modifier="a9lara" tags="Idiomas" title="Palabras en inglés">
 <pre>budget $$\rightarrow$$ presupuesto
