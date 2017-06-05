@@ -195,6 +195,10 @@ Error message and password prompt
 
 <li>Ecuación de Shrödinger dependiente del Tiempo</li>
 
+<li>Ecuaciones de Conservación en Termodinámica</li>
+
+<li>Ecuaciónes de Estado Termodinámicos</li>
+
 <li>Eigenfuncion de la Onda para Pozo de Potencial Infinito</li>
 
 <li>Eigenvalores de la Energía para Pozo de Potencial Infinito</li>
@@ -204,6 +208,8 @@ Error message and password prompt
 <li>Ejercicio Directo Capacitancia Entre Cascarones</li>
 
 <li>Energía en un Campo Magnético Estacionario</li>
+
+<li>Energía Libre de Helmholtz</li>
 
 <li>Energía Perturbada</li>
 
@@ -221,6 +227,8 @@ Error message and password prompt
 
 <li>Fuerza de Coulomb</li>
 
+<li>Funcion de Distrubución Aplicadas</li>
+
 <li>Gradiente</li>
 
 <li>Hamiltoniano - Oscilador Armónico Unidimensional</li>
@@ -230,6 +238,8 @@ Error message and password prompt
 <li>Henri Becquerel</li>
 
 <li>Identidades Rotacionales</li>
+
+<li>Integrales</li>
 
 <li>Ionización</li>
 
@@ -8203,7 +8213,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20170531020729026" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20170604235712805" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.13">
@@ -8649,6 +8659,63 @@ $$\nabla^2 =\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+...+
 
 El cuál es un escalar.</pre>
 </div>
+<div created="20170604235713585" creator="a9lara" modified="20170605003317620" modifier="a9lara" tags="Matemáticas Física Termodinámica" title="Ecuaciones de Conservación en Termodinámica">
+<pre>''Ecuación de continuidad (conservación de momento lineal)''
+
+$$\rho\frac{D\vec{v}}{Dt}=\rho\left(\frac{\partial}{\partial t}+\vec{v} \cdot \nabla\right)\vec{v}=-\nabla P-\nabla\Phi$$
+
+''Ecuación de momento''
+
+$$P_1+\rho_1v_1^2=P_2+\rho_2v_2^2$$
+
+
+''Conservación de masa''
+
+$$\frac{D\rho}{Dt}=\frac{\partial \rho}{\partial t}+\left({\vec{v}\cdot\nabla} \right)\rho=-\rho\left(\nabla\cdot\vec{v}\right)$$
+
+Flujo Incompresible:
+
+$$\frac{D\rho}{Dt}=0 \Leftrightarrow\nabla\cdot\vec{v}=0 $$
+
+''Ecuación de masa''
+
+$$\rho_1 v_1=\rho_2 v_2$$
+
+Unidades:
+
+ $$\left[\frac{kg}{m^2}\frac{1}{s}\right]$$
+
+''Ecuación de Poisson (o de equilibrio hidrostático)''
+
+$$\nabla^2\Phi=-4\pi G\rho$$
+
+En esféricas:
+
+$$\frac{1}{r^2}\frac{d}{dr}\left(\frac{r^2}{\rho}\frac{dP}{dr}\right)\nabla^2\Phi=-4\pi G\rho$$ 
+
+Si se tiene un fluido perfecto, estacionario en un campo de fuerzas externo conservatico, g. Entonces:
+
+$$-\nabla\Phi=g$$
+
+''Conservación de Energía. (Teorema de Bernoulli)''
+
+$$\frac{1}{2}v_1^2+\frac{P_1}{\rho_1}+U_1=\frac{1}{2}v_2^2+\frac{P_2}{\rho_2}+U_2$$
+
+Velocidad de la señal al cuadrado:
+
+$$\frac{P}{\rho}=c^2$$</pre>
+</div>
+<div created="20170605004019144" creator="a9lara" modified="20170605004243290" modifier="a9lara" tags="Termodinámica" title="Ecuaciónes de Estado Termodinámicos">
+<pre>''Para Gases Ideales''
+
+$$PV=NKT$$
+
+$$P=\rho(\gamma-1)U$$
+
+''?''
+
+$$PV=kT\ln(Z)$$</pre>
+</div>
 <div created="20141128024252217" creator="a9lara" modified="20170504021603986" modifier="a9lara" tags="Física [[Mecánica Cuántica]]" title="Eigenfuncion de la Onda para Pozo de Potencial Infinito">
 <pre>La eigenfunción de onda para un pozo unidimensional infinito de anchura a es:
 
@@ -8818,6 +8885,32 @@ $$U=\frac{C(\varphi_2-\varphi_1)^2}{2}$$
 
 $U_B=\frac{1}{2}\int_{V}H\cdot B \ dV$</pre>
 </div>
+<div created="20170605003332965" creator="a9lara" modified="20170605003941155" modifier="a9lara" tags="Termodinámica" title="Energía Libre de Helmholtz">
+<pre>$$F$$: Energía Libre de Helmholtz
+
+$$z$$: Función de Partición
+
+
+$$F=-kT\ln(z)$$
+
+$$dF=-SdT-PdV$$
+
+$$F=U-TS$$
+
+$$S=-\frac{\partial F}{\partial T}$$
+
+Ecuación de Estado:
+
+$$PV=kT\ln(z)$$
+
+En un Proceso reversible: 
+
+(el subindice $$r$$ indica &quot;proceso reversible&quot;)
+
+$$W_r=-\Delta F$$
+
+$$Q_r=\Delta(TS)$$</pre>
+</div>
 <div created="20141121013211247" creator="a9lara" modified="20170422182548957" modifier="a9lara" tags="[[Mecánica Cuántica]] Física" title="Energía Perturbada" type="">
 <pre>$$
 E_n - E_n^{(0)} = \lambda \langle n | \hat V | n \rangle + \sum_m {'} \lambda  \langle n | \hat V | m \rangle \frac{ \langle  m | \psi_n \rangle }{\langle  n | \psi_n \rangle}  
@@ -8930,6 +9023,29 @@ Pero si esta colección de cargas la vemos como una distribución continua de ca
 
 $\vec F(\vec r) = \frac{1}{4\pi\varepsilon_0} \int \frac{Q}{d^2}\hat d dq$</pre>
 </div>
+<div created="20170605004404353" creator="a9lara" modified="20170605005226000" modifier="a9lara" tags="Termodinámica" title="Funcion de Distrubución Aplicadas">
+<pre>Una función de distribución de energía nos dice la probabilidad de que una partícula tenga la energía E
+
+$$f=f(E)$$
+
+En el caso clásico se utiliza la $f$ de Maxwell Boltzman en el que las partículas en el sistema son Idénticas pero distinguibles. Por ejemplo: Distribución de velocidad Molecular
+
+$$f(E)=Ae^{\frac{E}{kT}}$$
+
+$$n=\displaystyle\int_0^\infty f 4\pi v^2 dv$$
+
+$$U=\displaystyle\int_0^\infty f E 4\pi v^2 dv$$
+
+donde
+
+$$n=\frac{N}{V}$$
+
+Se llega a que:
+
+$$A=n\left(\frac{m}{2\pi kT}\right)^{\frac{3}{2}}$$
+
+$$U=\frac{3}{2}nKT$$</pre>
+</div>
 <div created="20141121050500840" creator="a9lara" modified="20170422182130463" modifier="a9lara" tags="Física Matemáticas" title="Gradiente">
 <pre>El gradiente nos da un vector e indica la dirección en la qué aumenta algo, (por ejemplo, la pendiente, la temperatura, etc...)
 
@@ -8980,6 +9096,13 @@ Fue un físico francés descubridor de la radiactividad y galardonado con el Pre
 <pre>$$A\times(B  \times C)=(A \cdot C)B-(A\cdot B)C$$
 
 $$\nabla\times(A  \times B)=(B \cdot \nabla)A-(A\cdot \nabla)B+A(\nabla \cdot B)-B(\nabla \cdot A)$$</pre>
+</div>
+<div created="20170604233727902" creator="a9lara" modified="20170604235708032" modifier="a9lara" tags="Matemáticas" title="Integrales">
+<pre>$$\displaystyle\int_0^{\infty} x^2e^{-b x^2}dx=\dfrac{\sqrt{\pi}}{4b^{\frac{3}{2}}}$$
+
+$$\displaystyle\int_0^{\infty} x^4e^{-b x^2}dx=\dfrac{3\sqrt{\pi}}{8b^{\frac{5}{2}}}$$
+
+$$\displaystyle\int_0^{\infty}  \frac{x^3}{e^x-1} dx=\frac{\pi^4}{15}$$</pre>
 </div>
 <div created="20150205173430213" creator="a9lara" modified="20150205173625701" modifier="a9lara" tags="Física Atómica" title="Ionización">
 <pre>Fenómeno físico por el cual se producen átomos o moléculas cargadas eléctricamente debido al exceso o falta de electrones respecto a un átomo o molécula neutra.
