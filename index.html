@@ -193,6 +193,10 @@ Error message and password prompt
 
 <li>Desintegración Radioactiva</li>
 
+<li>Diferencias Finitas</li>
+
+<li>Differencias Finitas - Cosmología</li>
+
 <li>Distribución de Probabilidad</li>
 
 <li>Divergencia</li>
@@ -8209,7 +8213,7 @@ Error message and password prompt
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="[[Astrofísica Estelar -  Ecuaciones]]" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8378,7 +8382,6 @@ Cuando una estrella se contrae, aumenta su energía y aumenta su luminosidad, lo
 </div>
 <div created="20171008230107233" creator="a9lara" modified="20171008235646872" modifier="a9lara" tags="Estelar Astrofísica Maestría Ecuaciones" title="Astrofísica Estelar -  Ecuaciones">
 <pre>
-
     __ Euleriana__
 
  $$m,P,\rho$$ v.s. $$r,t$$
@@ -8755,6 +8758,173 @@ $$[\hat{a},\hat{a}^{\dagger}]=1$$</pre>
 </div>
 <div created="20150205173637225" creator="a9lara" modified="20150205173742776" modifier="a9lara" tags="Atómica Física" title="Desintegración Radioactiva">
 <pre>Es la emisión de partículas desde un núcleo atómico inestable. Solo sucede cuando hay un excedente de energía en el radio de la órbita.</pre>
+</div>
+<div created="20171010165544737" creator="a9lara" modified="20171010165614141" modifier="a9lara" tags="Matemáticas" title="Diferencias Finitas">
+<pre>$$f=\frac{\dot a}{a}$$
+
+Etonces
+
+$$\frac{\dot a}{a}=f$$
+
+$$\dot a=a\sqrt f$$
+
+$$\frac{da}{dt}=a\sqrt f$$
+
+Usando diferencias finitas tenemos que 
+
+$$\frac{\Delta a}{\Delta t}=a_i\sqrt f$$
+
+Con lo cual
+
+$${\Delta a}=a_i\sqrt f {\Delta t}$$
+
+Donde
+
+$$\Delta a = a_f-a_i$$
+
+Sustituyendo se tiene que
+
+$$a_f-a_i=a_i\sqrt f {\Delta t}$$
+
+Despejando $$a_f$$ queda
+
+$$a_f=a_i+a_i\sqrt f {\Delta t}$$</pre>
+</div>
+<div created="20171010164717858" creator="a9lara" modified="20171010165540660" modifier="a9lara" tags="" title="Differencias Finitas - Cosmología">
+<pre># Tarea: Integrar numéricamente $$H^2=H_0^2\left(\frac{\Omega_M}{a^3}+\frac{\Omega_R}{a^4}+\frac{\Omega_{\Lambda}}{a^0}+\frac{\Omega_k}{a^2}+\frac{\Omega_{DE}}{a^{3(\omega+1)}}\right)$$ tomando $$H_0=75\frac{km}{s}\frac{1}{Mpc}$$ para los siguientes casos:
+
+
+##  Caso 1: $$\Omega_M+\Omega_k=1$$
+
+### Subcaso 1.1): $$\Omega_M=1$$ $$\Rightarrow$$ $$\Omega_k=0$$
+### Subcaso 1.2): $$\Omega_M=0.3$$ $$\Rightarrow$$ $$\Omega_k=0.7$$
+### Subcaso 1.3): $$\Omega_M=2$$ $$\Rightarrow$$ $$\Omega_k=-1$$
+
+
+##  Caso 2: $$\Omega_M+\Omega_{\Lambda}=1$$
+
+### Subcaso 2.1): $$\Omega_M=0.3$$ $$\Rightarrow$$ $$\Omega_{\Lambda}=0.7$$
+### Subcaso 2.2): $$\Omega_M=1$$ $$\Rightarrow$$ $$\Omega_{\Lambda}=0$$
+### Subcaso 2.3): $$\Omega_M=0.1$$ $$\Rightarrow$$ $$\Omega_{\Lambda}=0.9$$
+
+
+##  Caso 3: $$\Omega_M+\Omega_{DE}=1$$ , $$\Omega_M=0.3$$ ,$$\Omega_{DE}=0.7$$
+
+### Subcaso 3.1): $$\omega=-1$$
+### Subcaso 3.2): $$\omega=-\frac{2}{3}$$
+### Subcaso 3.3): $$\omega=-\frac{1}{4}$$
+
+Tenemos la función 
+
+ $$H^2=H_0^2\left(\frac{\Omega_M}{a^3}+\frac{\Omega_R}{a^4}+\frac{\Omega_{\Lambda}}{a^0}+\frac{\Omega_k}{a^2}+\frac{\Omega_{DE}}{a^{3(\omega+1)}}\right)$$ tomando $$H_0=75\frac{km}{s}\frac{1}{Mpc}$$
+ 
+ Definimos la función f de la forma:
+ 
+$$f= H_0^2\left(\frac{\Omega_M}{a^3}+\frac{\Omega_R}{a^4}+\frac{\Omega_{\Lambda}}{a^0}+\frac{\Omega_k}{a^2}+\frac{\Omega_{DE}}{a^{3(\omega+1)}}\right)$$
+ 
+Donde
+
+$$ f=f(\Omega_M,\Omega_R,\Omega_{\Lambda},\Omega_k,\Omega_{DE},\omega,a)$$
+
+Entonces tenemos 
+
+$$H^2=f$$
+
+Como 
+
+$$H=\frac{\dot a}{a}$$
+
+Etonces
+
+$$\frac{\dot a}{a}=f$$
+
+$$\dot a=a\sqrt f$$
+
+$$\frac{da}{dt}=a\sqrt f$$
+
+Usando diferencias finitas tenemos que 
+
+$$\frac{\Delta a}{\Delta t}=a_i\sqrt f$$
+
+Con lo cual
+
+$${\Delta a}=a_i\sqrt f {\Delta t}$$
+
+Donde
+
+$$\Delta a = a_f-a_i$$
+
+Sustituyendo se tiene que
+
+$$a_f-a_i=a_i\sqrt f {\Delta t}$$
+
+Despejando $$a_f$$ queda
+
+$$a_f=a_i+a_i\sqrt f {\Delta t}$$
+
+Esta ecuación es la que se va a usar para los distintos casos que se piden.
+
+Empezamos definiendo la función f en el código de la forma
+
+f=f(a,k,L,w,M,R,DE)
+
+Donde 
+
+$$a=a_i$$
+
+$$M=\Omega_M$$
+
+$$L=\Omega_{\Lambda}$$
+
+$$R=\Omega_R$$
+
+$$w=\omega$$
+
+$$k=\Omega_k$$
+
+$$DE=\Omega_{DE}$$
+
+Con $$H_0=7\times 10^{-11}\frac{1}{years}$$
+
+Y programamos la función tal que se pueda hacer una iteración. 
+
+El valor de $$a(t)$$ que conocemos para $$t$$ es, por construcción:
+
+$$t_o=0$$
+
+$$a(t_o)=1$$
+
+Por lo que se tienen que programar 2 partes, uno que vaya de 0 a un valor fijo de tiempo que por convenciencia pondré 14 Gyrs (pues siendo aproximado la edad del universo a 14 Gyrs tendré una gráfica con límites de ejes más o menos simétricos) y otro que vaya de $$a(t)=1$$ a $$a(t)=0$$, donde además, le pediré que muestre el tiempo para el cuál la $$a(t)\approx 0$$ que es la edad del universo.
+
+
+Ahora, para tener el factor de desaceleración $$q$$ tenemos que despejando $$\dot a$$ se obtiene:
+
+$$\dot a=aH_o\left[\frac{\Omega_M}{a^3}+\frac{\Omega_R}{a^4}+\frac{\Omega_\Lambda}{a^0}+\frac{\Omega_k}{a^2}+\frac{\Omega_{DE}}{a^{3(\omega+1)}}\right]^{\frac{1}{2}}$$
+
+Metiendo la $$a$$ a la raíz queda:
+
+$$\dot a=H_o\left[\frac{\Omega_M}{a}+\frac{\Omega_R}{a^2}+a^2\Omega_\Lambda+\Omega_k+\frac{\Omega_{DE}}{a^{(3\omega+1)}}\right]^{\frac{1}{2}}$$
+
+Ahora, para obtenter $$\ddot a$$ derivamos con respecto al tiempo de tal forma que queda:
+
+$$\ddot a=\frac{H_o}{2}\left[\frac{\Omega_M}{a}+\frac{\Omega_R}{a^2}+a^2\Omega_\Lambda+\Omega_k+\frac{\Omega_{DE}}{a^{(3\omega+1)}}\right]^{-\frac{1}{2}}\left[-\frac{\Omega_M}{a^2}-2\frac{\Omega_R}{a^3}+2a\Omega_\Lambda-(3\omega+1)\frac{\Omega_{DE}}{a^{(3\omega+2)}}\right]\dot a$$
+
+Sustituyendo $$\dot a$$ nos queda que $\ddot a$ es
+
+$$\ddot a=\frac{H_o}{2}\left[\frac{\Omega_M}{a}+\frac{\Omega_R}{a^2}+a^2\Omega_\Lambda+\Omega_k+\frac{\Omega_{DE}}{a^{(3\omega+1)}}\right]^{-\frac{1}{2}}\left[-\frac{\Omega_M}{a^2}-2\frac{\Omega_R}{a^3}+2a\Omega_\Lambda-(3\omega+1)\frac{\Omega_{DE}}{a^{(3\omega+2)}}\right] H_o\left[\frac{\Omega_M}{a}+\frac{\Omega_R}{a^2}+a^2\Omega_\Lambda+\Omega_k+\frac{\Omega_{DE}}{a^{(3\omega+1)}}\right]^{\frac{1}{2}}$$
+
+
+Simplificando queda:
+
+$$\ddot a=\frac{H_o^2}{2}\left[\frac{\Omega_M}{a}+\frac{\Omega_R}{a^2}+a^2\Omega_\Lambda+\Omega_k+\frac{\Omega_{DE}}{a^{(3\omega+1)}}\right]\left[-\frac{\Omega_M}{a^2}-2\frac{\Omega_R}{a^3}+2a\Omega_\Lambda-(3\omega+1)\frac{\Omega_{DE}}{a^{(3\omega+2)}}\right]$$
+
+De tal manera que siendo $q$ de la forma
+
+$$q=-\frac{a \ddot a}{\dot a^2}$$
+
+Se puede encontrar el valor de $$q$$ para cada uno de los casos evaluandola para el tiempo presente $$t_o=0$$ donde $$a(t_o)=1$$
+
+Así, con estas relaciones encontradas programaré la función tal que me arroje los valores de $q$ para cada uno de los casos.</pre>
 </div>
 <div created="20150312184340380" creator="a9lara" modified="20150312194731387" modifier="a9lara" tags="Probabilidad" title="Distribución de Probabilidad">
 <pre>Es la lista de todos los resultados de un experimento y la probabilidad asociada a cada uno de ellos.
