@@ -9582,7 +9582,7 @@ $$ \nabla  \varphi = \frac{\partial \varphi}{\partial x} \hat  i+    \frac{\part
 
 La magnitud del gradiente nos dirá cuan rápido aumenta ese algo en esa dirección.</pre>
 </div>
-<div created="20180216215752739" creator="a9lara" modified="20180216215836098" modifier="a9lara" tags="Julia PyPlot Gráficas" title="Gráficas PyPlot - Julia">
+<div created="20180216215752739" creator="a9lara" modified="20180216233329452" modifier="a9lara" tags="Julia PyPlot Gráficas" title="Gráficas PyPlot - Julia">
 <pre>Φ_J(x)=log(complex(x./(x+1)))
 vc_J(x)=sqrt(complex(1./(x.+1)))
 ve_J(x)=sqrt(complex(2.*log(complex((x)./(x.+1)))))
@@ -9609,6 +9609,10 @@ xlabel(&quot;x &quot;)
 ylim(-5,5)
 xlim(-5,5)
 legend(fontsize = 15)
+
+
+contourf(p,1000)
+colorbar(label=(&quot;[kG]&quot;))
 
 </pre>
 </div>
