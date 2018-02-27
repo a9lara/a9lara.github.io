@@ -291,6 +291,10 @@ Error message and password prompt
 
 <li>Leyes de Kepler</li>
 
+<li>MESA</li>
+
+<li>MESA (Versión Rápida)</li>
+
 <li>Método maxBCG</li>
 
 <li>Núcleo Radioactivo</li>
@@ -9748,6 +9752,116 @@ $\nabla \cdot \vec B =0 $</pre>
 <pre>3° Ley 
 
 $$T=\sqrt{\frac{4\pi^2r^3}{G(M_1+M_2)}}$$</pre>
+</div>
+<div created="20180227182826874" creator="a9lara" modified="20180227182859418" modifier="a9lara" tags="MESA [[Astrofísica Estelar]] Astrofísica" title="MESA">
+<pre>sudo apt-get install binutils
+sudo apt-get install make
+sudo apt-get install perl
+sudo apt-get install libx11-6
+sudo apt-get install libx11-dev
+sudo apt-get install --reinstall zlibc zlib1g zlib1g-dev
+sudo apt-get install tcsh
+
+
+
+Descargar el SDK
+http://www.astro.wisc.edu/~townsend/static.php?ref=mesasdk
+
+Extraerlo en Home
+
+export MESASDK_ROOT=~/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+gfortran --version
+
+
+############################################
+
+Check that the SDK is properly installed by running 
+
+gfortran --version
+
+The first line of the output should look something like this:
+
+GNU Fortran (GCC) 5.3.1 20160129
+If it doesn't, then you should consult the
+
+
+###############################################
+
+
+
+
+
+export MESA_DIR=~/mesa-r10108
+export OMP_NUM_THREADS=2
+export MESASDK_ROOT=~/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+
+cd $MESA_DIR
+./install
+
+
+######################################
+
+Para usarlo:
+
+
+
+export MESA_DIR=~/mesa-r10108
+export OMP_NUM_THREADS=2
+export MESASDK_ROOT=~/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+cd $MESA_DIR
+cd star
+cd work
+gedit inlist_project (para cambiar las masas)
+gedit inlist_pgstar (para cambiar los ejes)
+
+./mk
+./rn
+
+cd work
+</pre>
+</div>
+<div created="20180227182655748" creator="a9lara" modified="20180227182824634" modifier="a9lara" tags="MESA Astrofísica [[Astrofísica Estelar]]" title="MESA (Versión Rápida)">
+<pre>Descargar el SDK y Mesa y extraerlos en Home
+
+
+sudo apt-get install binutils
+sudo apt-get install make
+sudo apt-get install perl
+sudo apt-get install libx11-6
+sudo apt-get install libx11-dev
+sudo apt-get install --reinstall zlibc zlib1g zlib1g-dev
+sudo apt-get install tcsh
+export MESASDK_ROOT=~/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+export MESA_DIR=~/mesa-r10108
+export OMP_NUM_THREADS=2
+export MESASDK_ROOT=~/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+cd $MESA_DIR
+./install
+
+
+Para Usarlo:
+
+
+
+
+
+export MESA_DIR=~/mesa-r10108
+export OMP_NUM_THREADS=2
+export MESASDK_ROOT=~/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+cd $MESA_DIR
+cd star
+cd work
+gedit inlist_project (para cambiar las masas)
+gedit inlist_pgstar (para cambiar los ejes)
+./mk
+./rn
+</pre>
 </div>
 <div created="20171204072825782" creator="a9lara" modified="20171204073246715" modifier="a9lara" tags="Extragaláctica" title="Método maxBCG">
 <pre>Es un método para identificar cúmulos de galaxias. Este método utiliza una combinación de propiedades bien conocidas de los cúmulos ricos: la secuencia roja que forman las galaxias
