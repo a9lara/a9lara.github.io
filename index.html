@@ -9586,7 +9586,7 @@ $$ \nabla  \varphi = \frac{\partial \varphi}{\partial x} \hat  i+    \frac{\part
 
 La magnitud del gradiente nos dirá cuan rápido aumenta ese algo en esa dirección.</pre>
 </div>
-<div created="20180216215752739" creator="a9lara" modified="20180216233329452" modifier="a9lara" tags="Julia PyPlot Gráficas" title="Gráficas PyPlot - Julia">
+<div created="20180216215752739" creator="a9lara" modified="20180305090122425" modifier="a9lara" tags="Julia PyPlot Gráficas" title="Gráficas PyPlot - Julia">
 <pre>Φ_J(x)=log(complex(x./(x+1)))
 vc_J(x)=sqrt(complex(1./(x.+1)))
 ve_J(x)=sqrt(complex(2.*log(complex((x)./(x.+1)))))
@@ -9617,6 +9617,32 @@ legend(fontsize = 15)
 
 contourf(p,1000)
 colorbar(label=(&quot;[kG]&quot;))
+
+
+#####################################################################
+
+                                          [PROYECTO 1 - DINÁMICA]
+
+#TS=collect(1:4300001)
+#TS=TS*1e-6
+plot(TS,ES/1e-1,&quot;-k&quot;)
+plot([TS[1], TS[end]],[0, 0] ,&quot;--k&quot;)
+#title(&quot;Energía&quot;,fontsize=20, y=1.05)
+ylabel(L&quot;\left(\frac{E-E_o}{E_o}\right) \times10^{-1}&quot;,fontsize=20)
+tick_params(axis=&quot;both&quot;, which=&quot;major&quot;, labelsize=23,labelright=&quot;on&quot;,labelleft=&quot;off&quot;)
+xlabel(L&quot;t&quot;,fontsize=20)
+xlim(TS[1],TS[end])
+legend(fontsize = 20)
+
+plot(X,Y,&quot;-k&quot;)
+ylabel(L&quot;y&quot;,fontsize=23)
+xlabel(L&quot;x&quot;,fontsize=23)
+tick_params(axis=&quot;both&quot;, which=&quot;major&quot;, labelsize=23,labelright=&quot;on&quot;,labelleft=&quot;off&quot;)
+xlim(-2,2)
+legend(fontsize = 20)
+axis(&quot;equal&quot;)
+
+#######################################################################
 
 </pre>
 </div>
