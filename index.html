@@ -8877,7 +8877,7 @@ This plugin contains tools to help slice up long texts into individual tiddlers.
 <div created="20190615205728632" creator="a9lara" modified="20190615205741050" modifier="a9lara" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20180926194107881" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20190827165157390" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190615205731476" creator="a9lara" modified="20190615205731476" modifier="a9lara" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/http://tiddlywiki.com/library/v5.1.13/index.html" url="http://tiddlywiki.com/library/v5.1.13/index.html">
@@ -10239,7 +10239,7 @@ $$ \nabla  \varphi = \frac{\partial \varphi}{\partial x} \hat  i+    \frac{\part
 
 La magnitud del gradiente nos dirá cuan rápido aumenta ese algo en esa dirección.</pre>
 </div>
-<div created="20180216215752739" creator="a9lara" modified="20180305090122425" modifier="a9lara" tags="Julia PyPlot Gráficas" title="Gráficas PyPlot - Julia">
+<div created="20180216215752739" creator="a9lara" modified="20190827165200040" modifier="a9lara" tags="Julia PyPlot Gráficas" title="Gráficas PyPlot - Julia">
 <pre>Φ_J(x)=log(complex(x./(x+1)))
 vc_J(x)=sqrt(complex(1./(x.+1)))
 ve_J(x)=sqrt(complex(2.*log(complex((x)./(x.+1)))))
@@ -10296,6 +10296,34 @@ legend(fontsize = 20)
 axis(&quot;equal&quot;)
 
 #######################################################################
+
+
+errorbar(logM, logσ,
+            xerr=(incertidumbre_logM_por_abajo,incertidumbre_logM_por_arriba),
+            yerr=incertidumbre_logσ,
+            fmt=&quot;ok&quot;, ms=3, markeredgewidth=1, linewidth=0.6)
+
+f(x)=0.258855*x-0.861803
+x=collect(4:0.1:7)
+SIGMASs=Float64[]
+Ms=Float64[]
+for M in x
+    sigma=0.258855*M-0.861803
+    push!(SIGMASs,sigma)
+    push!(Ms,M)
+end
+
+plot(Ms,SIGMASs,&quot;-k&quot;,linewidth=0.6)
+ylabel(L&quot;\log(\sigma_{\infty} \ /\mathrm{ \ km \ s}^{-1})&quot;,fontsize=14)
+xlabel(L&quot;\log(M \ / \ M_{\odot})&quot;,fontsize=14)
+ylim(0,1)
+xlim(4.4,6.4)
+#legend(fontsize = 15)
+tick_params(axis=&quot;both&quot;, which=&quot;major&quot;, labelsize=10,labelright=&quot;off&quot;,
+    labelleft=&quot;on&quot;, direction=&quot;in&quot;, right=&quot;on&quot;, top=&quot;on&quot;, labelsize=10)
+    
+
+savefig(&quot;Tully-Fisher.png&quot;)
 
 </pre>
 </div>
