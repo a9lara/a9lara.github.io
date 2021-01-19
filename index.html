@@ -383,6 +383,8 @@ Error message and password prompt
 
 <li>Energía Potencial Electrostática de un conjunto de Cargas</li>
 
+<li>Energy and Density Dilution for Photons</li>
+
 <li>Equilibrio Termodinámico Local</li>
 
 <li>Escalas de Tiempo Característicos</li>
@@ -430,6 +432,8 @@ Error message and password prompt
 <li>Herramientas Obervacionales Astronómicas</li>
 
 <li>Huevos Revueltos Japoneses</li>
+
+<li>Hydrostatic Equilibrium</li>
 
 <li>Identidades Rotacionales</li>
 
@@ -8863,7 +8867,7 @@ This plugin contains tools to help slice up long texts into individual tiddlers.
 <div created="20190615205728632" creator="a9lara" modified="20190615205741050" modifier="a9lara" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20201129204220792" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20210119003504176" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190615205731476" creator="a9lara" modified="20190615205731476" modifier="a9lara" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/http://tiddlywiki.com/library/v5.1.13/index.html" url="http://tiddlywiki.com/library/v5.1.13/index.html">
@@ -10078,6 +10082,15 @@ Esta ecuación nos permite determinar la energía perturbada de un sistema.
 
 $$U_E=\frac{1}{2}\int_{V}E\cdot D \ dV$$</pre>
 </div>
+<div created="20210119003504751" creator="a9lara" modified="20210119003921642" modifier="a9lara" tags="Boxed [[Corrimiento z]] redshift" title="Energy and Density Dilution for Photons">
+<pre>So, when considering the density of photons, we have to introduce a volumetric and expansion factor as function of z.
+
+Entonces, la densidad de fotones disminuye como $$(1+z)^{-3}$$, y la energía de los fotones disminuye como $$(1+z)$$ simplemente por la expansión, entonces cuando pones estas dos juntas te queda como $$(1+z)^{-4}$$
+
+Dilución Volumétrica $$(1+z)^{-3}$$
+
+Dilución por Expansión $$(1+z)^{-1}$$</pre>
+</div>
 <div created="20210114012128433" creator="a9lara" modified="20210115042440918" modifier="a9lara" tags="Yair Astrofísica" title="Equilibrio Termodinámico Local">
 <pre>Local equilibrium means that the Gibbs equation holds for a small region of the space and for changes in the variables that are actually not infinitely slow.
 
@@ -10591,6 +10604,17 @@ Fue un físico francés descubridor de la radiactividad y galardonado con el Pre
 <div created="20180913200332908" creator="a9lara" modified="20180926194118674" modifier="a9lara" tags="Recetas" title="Huevos Revueltos Japoneses">
 <pre>https://food52.com/blog/13102-the-genius-trick-for-magically-creamy-scrambled-eggs-in-15-seconds</pre>
 </div>
+<div created="20210118234942557" creator="a9lara" modified="20210118235803821" modifier="a9lara" tags="[[Equilibrio Hidrostático]] Boxed" title="Hydrostatic Equilibrium">
+<pre>Is the state of balance between ''gravitational force'' and ''pressure force'' in which their sum equals cero, and it is described by:
+
+$$\nabla P = -\rho_g \nabla \Phi$$
+
+$$\Phi$$ is the gravitational potential.
+
+In the spherically symmetric case, in which all quantities depend only on the radius $$r$$ we obtain
+
+$$\frac{1}{\rho_g}\frac{dP}{dr} = -\frac{GM(r)}{r^2}$$</pre>
+</div>
 <div created="20170514005851754" creator="a9lara" modified="20170514011159815" modifier="a9lara" tags="Matemáticas" title="Identidades Rotacionales">
 <pre>$$A\times(B  \times C)=(A \cdot C)B-(A\cdot B)C$$
 
@@ -10645,8 +10669,13 @@ for i in 1:300
 end
 UT</pre>
 </div>
-<div created="20201230184920136" creator="a9lara" modified="20201230185434433" modifier="a9lara" tags="[[l estrella]] Galaxy galaxy" title="L estrella">
-<pre>L* is simply the mean luminosity of central galaxies in halos at the upper end of the selected mass range
+<div created="20201230184920136" creator="a9lara" modified="20210119003156475" modifier="a9lara" tags="[[l estrella]] Galaxy galaxy Boxed" title="L estrella">
+<pre>In the Schechter Luminsoity Function is a characteristic luminosity above which the distribution decreases exponentially.
+
+
+
+
+L* is simply the mean luminosity of central galaxies in halos at the upper end of the selected mass range
 
 • L* is a characteristic galaxy luminosity. An L* galaxy is a bright galaxy, roughly
 comparable in luminosity to the Milky Way. A galaxy with L &lt; 0.1 L* is a dwarf.
@@ -11325,7 +11354,7 @@ $$\hat H \Psi_n = (\hat H_0  + \hat V)\Psi _n  $$
 
 Cuando a un sistema se le perturba, es conveniente estudiar su estado no perturbado, la perturbación y el sistema después de ser perturbado.</pre>
 </div>
-<div created="20210118212407052" creator="a9lara" modified="20210118212528828" modifier="a9lara" tags="Extragaláctica Definition" title="The β-Model.">
+<div created="20210118212407052" creator="a9lara" modified="20210119000059447" modifier="a9lara" tags="Extragaláctica Definition Boxed" title="The β-Model.">
 <pre>The β-Model. A commonly used method consists of fitting the X-ray data by a so-called β-model. This model is based on the assumption that the density profile of
 the total matter (dark and luminous) is described by an isothermal distribution, i.e., it is assumed that the temperature of the gas is independent of radius, and at the same time that the mass distribution in the cluster is described by the isothermal model.</pre>
 </div>
