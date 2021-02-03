@@ -359,6 +359,8 @@ Error message and password prompt
 
 <li>Divergencia</li>
 
+<li>Documentation of a function</li>
+
 <li>Ecuación de Boltzman No-Colisional</li>
 
 <li>Ecuación de Lorentz para Electromagnetismo</li>
@@ -448,6 +450,8 @@ Error message and password prompt
 <li>Intensity - Brilliant</li>
 
 <li>Ionización</li>
+
+<li>Julia</li>
 
 <li>Julia - Read File of Data</li>
 
@@ -8240,7 +8244,7 @@ Error message and password prompt
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
-            &quot;text&quot;: &quot;&lt;span style=\&quot;color: rgb(51, 51, 51); font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, &amp;quot;Lucida Grande&amp;quot;, &amp;quot;DejaVu Sans&amp;quot;, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\&quot;&gt;a emisión Lyα&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&quot;,
+            &quot;text&quot;: &quot;&lt;pre style=\&quot;box-sizing: border-box; overflow: auto; font-family: Monaco, Consolas, &amp;quot;Lucida Console&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, monospace; font-size: 15px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;code style=\&quot;box-sizing: border-box; font-family: Monaco, Consolas, &amp;quot;Lucida Console&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;\&quot;&gt;begin\n\t\&quot;\&quot;\&quot;\n\t\tis_even(x) -&amp;gt; Bool \n\t\t\n\tReturn `true` if  `x` is an even number.\n\tReturn `false` if  `y` is an odd number.\n       \n\t# Example\n\t```jldoctest\n\tjulia&amp;gt; is_even(3)\n\tfalse\n\t\t\n\tjulia&amp;gt; is_even(4)\n\ttrue\n\t```\n\t\&quot;\&quot;\&quot;\t\t\n\tfunction is_even(x) \n\t\treturn x % 2 == 0\n\tend\nend&lt;/code&gt;&lt;/pre&gt;&quot;,
             &quot;title&quot;: &quot;Untitled&quot;
         }
     }
@@ -9226,7 +9230,7 @@ Aniones: átomos cargados negativamente, se ven atraidos por el ánodo.
 
 Cationes: átomos cargados positivamente, se ven atraidos por el cátodo.</pre>
 </div>
-<div created="20210202185401428" creator="a9lara" modified="20210202200424597" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Correlación (r)">
+<div created="20210202185401428" creator="a9lara" modified="20210203192858739" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Correlación (r)">
 <pre>El coeficiente de correlación $$r$$ mide la fuerza y dirección de una [[Regresión Lineal]].
 
 Por ejemplo, una relación lineal perfecta con una tendencia positiva tiene $$r=1$$.
@@ -9235,7 +9239,11 @@ Mientras que si no existe una relación lineal entonces $$r=0$$.
 
 Y una relación lineal perfecta con una tendencia negativa tiene $$r = -1$$.
 
-Ver: [[Scatterplots and Regression]]</pre>
+Ver: [[Scatterplots and Regression]]
+
+PD.
+
+(¿Se puede pensar como la fiabilidad: medida de la consistencia del desempeño de una persona. 0% indica completamente random. 100% indica completamente consistente?)</pre>
 </div>
 <div created="20210202185641979" creator="a9lara" modified="20210202200420373" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Determinación (R²)">
 <pre>$$R^2 = r^2$$. Es decir, el coeficiente de determinación es el cuadrado del [[Coeficiente de Correlación (r)]].
@@ -9830,6 +9838,31 @@ Si el campo tiene &quot;fuentes&quot; la divergencia será positiva, y si tiene 
 La divergencia de cualquier rotacional es cero.
 
 </pre>
+</div>
+<div created="20210203194522453" creator="a9lara" modified="20210203195725697" modifier="a9lara" tags="Julia" title="Documentation of a function">
+<pre>```
+begin
+	&quot;&quot;&quot;
+		is_even(x) -&gt; Bool 
+		
+	Return `true` if  `x` is an even number.
+	Return `false` if  `y` is an odd number.
+       
+	# Example
+	```jldoctest
+	julia&gt; is_even(3)
+	false
+		
+	julia&gt; is_even(4)
+	true
+	```
+	&quot;&quot;&quot;		
+	function is_even(x) 
+		return x % 2 == 0
+	end
+end
+```
+Ver: [[Julia]]</pre>
 </div>
 <div created="20190410103053348" creator="a9lara" modified="20190410110244317" modifier="a9lara" tags="[[Función de Distribución]] Boltzman [[No Colisional]] Ecuación Física Astrofísica Dinámica" title="Ecuación de Boltzman No-Colisional">
 <pre>$$\frac{\partial f}{\partial t}+\vec{v}\nabla$$</pre>
@@ -10706,6 +10739,11 @@ $$I = \sum_{\lambda} I_{\lambda}$$
 
  (catión &lt;&lt; - &lt;&lt; anión).</pre>
 </div>
+<div created="20210203194438279" creator="a9lara" modified="20210203200116186" modifier="a9lara" tags="[[Programming Languages]] Programación" title="Julia">
+<pre>#[[Documentation of a function]].
+
+Ver: [[My Menu]]</pre>
+</div>
 <div created="20201129204221594" creator="a9lara" modified="20201129204256147" modifier="a9lara" tags="Julia" title="Julia - Read File of Data">
 <pre>using Pkg
 
@@ -10940,9 +10978,11 @@ para todos los grupos y cúmulos sino que son más representativas de cúmulos r
 
 Ver: [[Scatterplots and Regression]]</pre>
 </div>
-<div created="20210202200902969" creator="a9lara" modified="20210202201058925" modifier="a9lara" tags="Estadística" title="My Menu">
+<div created="20210202200902969" creator="a9lara" modified="20210203195958572" modifier="a9lara" tags="Estadística" title="My Menu">
 <pre>#''Estadística''
-##[[Scatterplots and Regression]]</pre>
+##[[Scatterplots and Regression]]
+#''Programación''
+##[[Julia]]</pre>
 </div>
 <div created="20150205173304592" creator="a9lara" modified="20150205173428128" modifier="a9lara" tags="Física Atómica" title="Núcleo Radioactivo">
 <pre>Es la parte central de un átomo, tiene carga positiva, concentra más del 99.9% de la masa total del átomo. Está formado por protones y neutrones (denominados nucleones).</pre>
@@ -11359,7 +11399,7 @@ Clear Direct Formatting
 
 </pre>
 </div>
-<div created="20210202200115444" creator="a9lara" modified="20210202200900128" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Scatterplots and Regression">
+<div created="20210202200115444" creator="a9lara" modified="20210203200021888" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Scatterplots and Regression">
 <pre>#[[Regresión Lineal]]
 #[[Coeficiente de Correlación (r)]]
 #[[Coeficiente de Determinación (R²)]]
@@ -11407,8 +11447,7 @@ $$h_\rho=h_z=1,\ h_\varphi=\rho$$
 </pre>
 </div>
 <div created="20210202192238830" creator="a9lara" modified="20210202200412796" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Suma del cuadrado de los residuos (SSR)">
-<pre>
-Es un método para saber cuál es la &quot;mejor&quot; [[Regresión Lineal]].
+<pre>Es un método para saber cuál es la &quot;mejor&quot; [[Regresión Lineal]].
 Consiste en ''minimizar la suma del cuadrado de los residuos (SSR - sum of squared residuals).'' En este método la &quot;mejor&quot; regresión lineal es aquella con la suma más chica de los residuos de los cuadrados. (El residuo es la diferencia entre el valor del data point, $$y$$, y el valor  del dato predicho por la regresión lineal $$\hat{y}$$.
 
 Y se escribe:  
