@@ -289,6 +289,8 @@ Error message and password prompt
 
 <li>Agujeros Negros</li>
 
+<li>ARF</li>
+
 <li>Astringente</li>
 
 <li>Astrofísica Estelar -  A Saber</li>
@@ -533,11 +535,15 @@ Error message and password prompt
 
 <li>Repaso Examen Doctorado</li>
 
+<li>RMF</li>
+
 <li>Sacar URL de Hipervínculo en LibreOffice Calc</li>
 
 <li>Scatterplots and Regression</li>
 
 <li>SED</li>
+
+<li>Sherpa</li>
 
 <li>Sistemas de Coordenadas</li>
 
@@ -9042,6 +9048,21 @@ $$a_{o}=0.388  \frac{\mathrm{pc}}{\mathrm{s}^2}$$</pre>
 <div created="20171202031724658" creator="a9lara" modified="20171202032747872" modifier="a9lara" tags="Extragaláctica" title="Agujeros Negros">
 <pre>$$M_{\bullet}\simeq\frac{r\sigma^2}{G}$$</pre>
 </div>
+<div created="20210206010104910" creator="a9lara" modified="20210206012349558" modifier="a9lara" title="ARF">
+<pre>@@text-align:justify;
+''El ARF ''(Auxiliary Response File)'' que significa Archivo de Respuesta Auxiliar'' ''contiene el área efectiva'' (el área efectiva es la combinación de las áreas del telescopio, el filtro y el detector)en [cm$$^2$$]'' y la eficiencia quántica'' como función de la energía promediada sobre el tiempo en [cuentas/fotón]. ''Estas son multiplicadas para crear el ARF'' resultando en [cm$$^2$$ cuentas/fotones].
+
+Cuando ''el espectro entrante es multiplicado por el ARF'', el resultado es la distribución de cuentas que serán vistas por el detector con perfecta resolución de energía.
+
+''El [[RMF]] es necesario para producir el espectro final observado.''
+
+
+
+
+
+Ver: [[Sherpa]]
+@@</pre>
+</div>
 <div created="20141122093038038" creator="a9lara" modified="20141122093618298" modifier="a9lara" title="Astringente">
 <pre>Cada 100 ml de suspensión contiene:
 
@@ -9230,8 +9251,10 @@ Aniones: átomos cargados negativamente, se ven atraidos por el ánodo.
 
 Cationes: átomos cargados positivamente, se ven atraidos por el cátodo.</pre>
 </div>
-<div created="20210202185401428" creator="a9lara" modified="20210203192858739" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Correlación (r)">
-<pre>El coeficiente de correlación $$r$$ mide la fuerza y dirección de una [[Regresión Lineal]].
+<div created="20210202185401428" creator="a9lara" modified="20210206012425516" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Correlación (r)">
+<pre>
+@@text-align:justify;
+El coeficiente de correlación $$r$$ mide la fuerza y dirección de una [[Regresión Lineal]].
 
 Por ejemplo, una relación lineal perfecta con una tendencia positiva tiene $$r=1$$.
 
@@ -9243,10 +9266,12 @@ Ver: [[Scatterplots and Regression]]
 
 PD.
 
-(¿Se puede pensar como la fiabilidad: medida de la consistencia del desempeño de una persona. 0% indica completamente random. 100% indica completamente consistente?)</pre>
+(¿Se puede pensar como la fiabilidad: medida de la consistencia del desempeño de una persona. 0% indica completamente random. 100% indica completamente consistente?)
+@@</pre>
 </div>
-<div created="20210202185641979" creator="a9lara" modified="20210202200420373" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Determinación (R²)">
-<pre>$$R^2 = r^2$$. Es decir, el coeficiente de determinación es el cuadrado del [[Coeficiente de Correlación (r)]].
+<div created="20210202185641979" creator="a9lara" modified="20210206012442090" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Determinación (R²)">
+<pre>@@text-align:justify;
+$$R^2 = r^2$$. Es decir, el coeficiente de determinación es el cuadrado del [[Coeficiente de Correlación (r)]].
 
 El coeficiente de determinación $$R^2$$ nos permite medir qué tan cerca están los datos del ajuste de la regresión lineal. 
 
@@ -9258,7 +9283,8 @@ Nuestro objetivo es buscar el modelo lineal que genere la [[Suma del cuadrado de
 
 $$R^2 = 1 - \frac{SSR}{SST}$$   
 
-Ver: [[Scatterplots and Regression]]</pre>
+Ver: [[Scatterplots and Regression]]
+@@</pre>
 </div>
 <div created="20150303195111648" creator="a9lara" modified="20150303195155288" modifier="a9lara" tags="Computación" title="Comando para poner imágenes en TiddlyWiki">
 <pre>[img[http://tiddlywiki.com/favicon.ico]]</pre>
@@ -10973,16 +10999,19 @@ que dominan el extremo brillante de la función de luminosidad y que ocupan una 
 brillante (BCG) que se localiza muy cercana al centro. Estas propiedades no son universales
 para todos los grupos y cúmulos sino que son más representativas de cúmulos ricos de galaxias.</pre>
 </div>
-<div created="20210202194920260" creator="a9lara" modified="20210202200400652" modifier="a9lara" tags="Brilliant Ajustes Estadística Sesgo" title="Mismos ajustes en diferentes gráficas">
-<pre>Recordar que cuando uno hace [[Regresión Lineal]], gráficas muy diferentes pueden dar el mismo $$\bar{x}$$, $$\bar{y}$$ y $$r$$, por eso es importante ver la gráfica siempre para ver qué forma tiene.
+<div created="20210202194920260" creator="a9lara" modified="20210206012522788" modifier="a9lara" tags="Brilliant Ajustes Estadística Sesgo" title="Mismos ajustes en diferentes gráficas">
+<pre>@@text-align:justify;
+Recordar que cuando uno hace [[Regresión Lineal]], gráficas muy diferentes pueden dar el mismo $$\bar{x}$$, $$\bar{y}$$ y $$r$$, por eso es importante ver la gráfica siempre para ver qué forma tiene.
 
-Ver: [[Scatterplots and Regression]]</pre>
+Ver: [[Scatterplots and Regression]]
+@@</pre>
 </div>
-<div created="20210202200902969" creator="a9lara" modified="20210203195958572" modifier="a9lara" tags="Estadística" title="My Menu">
+<div created="20210202200902969" creator="a9lara" modified="20210206012320940" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]]" title="My Menu">
 <pre>#''Estadística''
 ##[[Scatterplots and Regression]]
 #''Programación''
-##[[Julia]]</pre>
+##[[Julia]]
+##[[Sherpa]]</pre>
 </div>
 <div created="20150205173304592" creator="a9lara" modified="20150205173428128" modifier="a9lara" tags="Física Atómica" title="Núcleo Radioactivo">
 <pre>Es la parte central de un átomo, tiene carga positiva, concentra más del 99.9% de la masa total del átomo. Está formado por protones y neutrones (denominados nucleones).</pre>
@@ -11287,14 +11316,16 @@ que se puede dejar expresado únicamente en términos de la masa central:
 
 $$\frac{r_\mathrm{MOND}}{\mathrm{pc}}=3.4082\times10^{-2}\sqrt{\frac{M}{\mathrm{M_{\odot}}}}$$</pre>
 </div>
-<div created="20210202184803220" creator="a9lara" modified="20210202200429334" modifier="a9lara" tags="Estadística Ajustes Brilliant [[Scatterplots and Regression]]" title="Regresión Lineal">
-<pre>''La regresión lineal es un método con el cuál se intenta modelar una relación lineal entre la variable dependiente y la variable independiente''. También se conoce como la línea de mejor ajuste. 
+<div created="20210202184803220" creator="a9lara" modified="20210206012405893" modifier="a9lara" tags="Estadística Ajustes Brilliant [[Scatterplots and Regression]]" title="Regresión Lineal">
+<pre>@@text-align:justify;
+''La regresión lineal es un método con el cuál se intenta modelar una relación lineal entre la variable dependiente y la variable independiente''. También se conoce como la línea de mejor ajuste. 
 
 La regresión lineal nos permite estimar la relación entre las variables y generar una predicción. Aún cuando la línea no pase a través de todos los puntos de los datos, o incluso ninguno, nos  puede resumir un patrón general de los datos.  
 
 Para saber cuál es la &quot;mejor&quot; regresión lineal podemos usar varios métodos como [[Suma del cuadrado de los residuos (SSR)]], [[Suma total de los cuadrados (SST)]], etc.
 
-Ver: [[Scatterplots and Regression]]</pre>
+Ver: [[Scatterplots and Regression]]
+@@</pre>
 </div>
 <div created="20150303195158702" creator="a9lara" modified="20190615201817051" modifier="a9lara" tags="Matemáticas" title="Relación trigonométrica de un triángulo.">
 <pre>[img[https://lh6.googleusercontent.com/-_dAiNuYHMus/VPYTnXkCn8I/AAAAAAAAUUI/rSMnOcL7a3U/w346-h256/tri.jpg]]
@@ -11339,6 +11370,15 @@ $$\dfrac{\partial\mathcal{L}}{\partial r}-\dfrac{d}{dt}\dfrac{\partial\mathcal{L
 ''Conservación del Momento Angular:'' $$l=mr^2\dot{\theta}$$
 
 </pre>
+</div>
+<div created="20210206002708187" creator="a9lara" modified="20210206010538886" modifier="a9lara" title="RMF">
+<pre>@@text-align:justify;
+''Cuando el detector recibe las cuentas las guarda en una matriz de datos.'' ''Estas matrices son diagonales.'' A mayor resolución del detector, más fina es la diagonal de la matriz. Esto hace que la matriz contenga muchos ceros que solo estorban.
+
+''Entonces RMF'' (Redistribution Matrix File) ''que significa Archivo de Matriz de Redistribución ''es un formato de archivo que ''comprime esa matriz, quitando todos los ceros''. Lo que hace es mapear del espacio de energía al espacio de altura (o posición) del pulso del detector.
+
+Ver: [[Sherpa]]
+@@</pre>
 </div>
 <div created="20150203135353924" creator="a9lara" modified="20150203141618314" modifier="a9lara" tags="Computación" title="Sacar URL de Hipervínculo en LibreOffice Calc">
 <pre>Lo que queremos hacer es copiar una lista de nombres que traen hipervínculos y dejar en una columna los nombres y en otra la URL. 
@@ -11415,6 +11455,12 @@ Es una gráfica de energía contra frecuencia.
 Se usa para clasificar fuentes astronómicas.
 </pre>
 </div>
+<div created="20210206002623242" creator="a9lara" modified="20210206012040088" modifier="a9lara" tags="Programación" title="Sherpa">
+<pre># [[ARF]]
+# [[RMF]]
+
+</pre>
+</div>
 <div created="20150302223605102" creator="a9lara" modified="20170422182427680" modifier="a9lara" tags="Matemáticas" title="Sistemas de Coordenadas">
 <pre>Coordenadas Esfércias
 
@@ -11446,18 +11492,21 @@ $$h_\rho=h_z=1,\ h_\varphi=\rho$$
 
 </pre>
 </div>
-<div created="20210202192238830" creator="a9lara" modified="20210202200412796" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Suma del cuadrado de los residuos (SSR)">
-<pre>Es un método para saber cuál es la &quot;mejor&quot; [[Regresión Lineal]].
+<div created="20210202192238830" creator="a9lara" modified="20210206012455467" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Suma del cuadrado de los residuos (SSR)">
+<pre>@@text-align:justify;
+Es un método para saber cuál es la &quot;mejor&quot; [[Regresión Lineal]].
 Consiste en ''minimizar la suma del cuadrado de los residuos (SSR - sum of squared residuals).'' En este método la &quot;mejor&quot; regresión lineal es aquella con la suma más chica de los residuos de los cuadrados. (El residuo es la diferencia entre el valor del data point, $$y$$, y el valor  del dato predicho por la regresión lineal $$\hat{y}$$.
 
 Y se escribe:  
 
 $$SSR = \displaystyle \sum_{i=1}^{n}\left(y_i-\hat{y}_i\right)^2$$
 
-Ver: [[Scatterplots and Regression]]</pre>
+Ver: [[Scatterplots and Regression]]
+@@</pre>
 </div>
-<div created="20210202192320532" creator="a9lara" modified="20210202200406507" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Suma total de los cuadrados (SST)">
-<pre>Otra medición importante de los datos del diagrama de dispersión (scatterplot data) cuando se hace [[Regresión Lineal]] es la'' suma total de los cuadrados  total sum of squares (abbreviated either as SST or TSS).''
+<div created="20210202192320532" creator="a9lara" modified="20210206012510404" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Suma total de los cuadrados (SST)">
+<pre>@@text-align:justify;
+Otra medición importante de los datos del diagrama de dispersión (scatterplot data) cuando se hace [[Regresión Lineal]] es la'' suma total de los cuadrados  total sum of squares (abbreviated either as SST or TSS).''
 
 Esta es parecida a  la [[Suma del cuadrado de los residuos (SSR)]], pero utiliza el promedio de los datos predichos por la regresión lineal, $$\bar{y}$$,  en vez de $$\hat{y}$$.
 
@@ -11467,7 +11516,8 @@ Y se escribe:
 
 $$SST = \displaystyle \sum_{i=1}^{n}\left(y_i-\bar{y}_i\right)^2$$
 
-Ver: [[Scatterplots and Regression]]</pre>
+Ver: [[Scatterplots and Regression]]
+@@</pre>
 </div>
 <div created="20201101200334708" creator="a9lara" modified="20201101200416261" modifier="a9lara" tags="Julia Cálculo" title="Sumas rápidas en Julia">
 <pre>sum(1/n for n=1:2)</pre>
