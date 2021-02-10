@@ -8454,8 +8454,8 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210210184816447" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
-<pre>My Menu</pre>
+<div created="20170422063314490" creator="a9lara" modified="20210210185241719" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
@@ -9677,7 +9677,7 @@ $$[\hat{a},\hat{a}^{\dagger}]=1$$</pre>
 <div created="20150205173637225" creator="a9lara" modified="20150205173742776" modifier="a9lara" tags="Atómica Física" title="Desintegración Radioactiva">
 <pre>Es la emisión de partículas desde un núcleo atómico inestable. Solo sucede cuando hay un excedente de energía en el radio de la órbita.</pre>
 </div>
-<div created="20210210183337436" creator="a9lara" modified="20210210185115982" modifier="a9lara" tags="Julia Estadística" title="Desviación Media Absoluta (MAD)">
+<div created="20210210183337436" creator="a9lara" modified="20210210185541536" modifier="a9lara" tags="Julia Estadística" title="Desviación Media Absoluta (MAD)">
 <pre>@@text-align:justify;
 La Desviación Media Absoluta (MAD - Mean Absolute Deviation) nos permite describir en un solo número el promedio de la distancia en un conjunto de datos entre los valores del conjunto y el promedio del conjunto. 
 
@@ -9686,16 +9686,23 @@ Para encontrar la Desviación Media Absoluta lo que se hace es calcular el prome
 Por ejemplo, consideremos el siguiente ejemplo escrito en el lenguaje de programación julia:
 
 ```
-mean(x) = sum(x)/length(x)
-A = [1,1,2,5,5,6,7,9,9,15]
+function MAD(A)
+mean(A) = sum(A)/length(A)
 B = mean(A)
 C = A .- B
 D = abs.(C)
 E = mean(D)
-E = 3.2
+end
 ```
 
-Eso significa que que el conjunto de datos de A tiene valores que en promedio están 3.2 alejados del promerio.
+Entonces:
+
+```
+A = [1,1,2,5,5,6,7,9,9,15]
+MAD(A) = 3.2.
+```
+
+Entonces  Eso significa que que el conjunto de datos de A tiene valores que en promedio están 3.2 alejados del promedio.
 
 Ver: [[Fundamentales de Estadística]]
 
