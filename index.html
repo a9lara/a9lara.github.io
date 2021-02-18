@@ -311,6 +311,8 @@ Error message and password prompt
 
 <li>Cátodo, Ánodo, Ión.</li>
 
+<li>CHANDRA SUMAR ESPECTROS</li>
+
 <li>Coeficiente de Correlación (r)</li>
 
 <li>Coeficiente de Determinación (R²)</li>
@@ -8462,7 +8464,7 @@ Error message and password prompt
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="[[Comandos CHANDRA CIAO]]" title="$:/StoryList">
+<div list="Sherpa [[CHANDRA SUMAR ESPECTROS]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9258,6 +9260,64 @@ $$\vec E(\vec r) = \frac{1}{4\pi\varepsilon_0} \int \frac{1}{d^2}\hat d \alpha {
 Aniones: átomos cargados negativamente, se ven atraidos por el ánodo.
 
 Cationes: átomos cargados positivamente, se ven atraidos por el cátodo.</pre>
+</div>
+<div created="20210218172537665" creator="a9lara" modified="20210218214338382" modifier="a9lara" tags="" title="CHANDRA SUMAR ESPECTROS">
+<pre>Supongamos que acabamos de descargar la observación 17576 de 3C-120. Y que ya hicimos la reducción de datos con lo cuál se nos generó una carpeta llamada ''17576_Work''.
+
+Entonces, adentro de la carpeta ''3C120'' tenemos dos carpeta, una llamada ''17576'' y la otra llamada ''17576_Work''.
+
+Nos situamos en el directorio ''3C120''
+
+''1. Sumamos los espectros.''
+
+Solo vamos a sumar los de orden 1. Primero sumamos los del MEG:
+
+```
+punlearn combine_grating_spectra
+pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
+pset combine_grating_spectra outroot=17576_Work/17576
+pset combine_grating_spectra add_plusminus=yes
+pset combine_grating_spectra garm=MEG
+pset combine_grating_spectra order=1
+pset combine_grating_spectra arf=&quot;17576_Work/tg/*meg*.arf&quot;
+pset combine_grating_spectra rmf=&quot;17576_Work/tg/*meg*.rmf&quot;
+combine_grating_spectra 
+
+```
+
+Luego los del HEG:
+
+```
+punlearn combine_grating_spectra
+pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
+pset combine_grating_spectra outroot=17576_Work/17576
+pset combine_grating_spectra add_plusminus=yes
+pset combine_grating_spectra garm=HEG
+pset combine_grating_spectra order=1
+pset combine_grating_spectra arf=&quot;17576_Work/tg/*heg*.arf&quot;
+pset combine_grating_spectra rmf=&quot;17576_Work/tg/*heg*.rmf&quot;
+combine_grating_spectra 
+
+```
+
+''2. Agrupamos los canales para tener más cuentas.''
+
+Primero para el MEG:
+
+```
+dmgroup infile=&quot;17576_Work/17576_meg_abs1.pha&quot; outfile=17576_Work/17576_meg_abs1_bin4.pha \
+      binspec=&quot;1:16384:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
+      xcolumn=&quot;channel&quot;
+```
+
+Luego para el HEG:
+
+```
+dmgroup infile=&quot;17576_Work/17576_heg_abs1.pha&quot; outfile=17576_Work/17576_heg_abs1_bin4.pha \
+      binspec=&quot;1:16384:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
+      xcolumn=&quot;channel&quot;
+      
+```</pre>
 </div>
 <div created="20210202185401428" creator="a9lara" modified="20210210184708526" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Correlación (r)">
 <pre>@@text-align:justify;
