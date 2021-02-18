@@ -317,6 +317,8 @@ Error message and password prompt
 
 <li>Comando para poner imágenes en TiddlyWiki</li>
 
+<li>Comandos CHANDRA CIAO</li>
+
 <li>Comandos en Julia</li>
 
 <li>Comandos para manejo de archivos</li>
@@ -8256,7 +8258,7 @@ Error message and password prompt
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
-            &quot;text&quot;: &quot;&lt;pre style=\&quot;box-sizing: border-box; overflow: auto; font-family: Monaco, Consolas, &amp;quot;Lucida Console&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, monospace; font-size: 15px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;code style=\&quot;box-sizing: border-box; font-family: Monaco, Consolas, &amp;quot;Lucida Console&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;\&quot;&gt;begin\n\t\&quot;\&quot;\&quot;\n\t\tis_even(x) -&amp;gt; Bool \n\t\t\n\tReturn `true` if  `x` is an even number.\n\tReturn `false` if  `y` is an odd number.\n       \n\t# Example\n\t```jldoctest\n\tjulia&amp;gt; is_even(3)\n\tfalse\n\t\t\n\tjulia&amp;gt; is_even(4)\n\ttrue\n\t```\n\t\&quot;\&quot;\&quot;\t\t\n\tfunction is_even(x) \n\t\treturn x % 2 == 0\n\tend\nend&lt;/code&gt;&lt;/pre&gt;&quot;,
+            &quot;text&quot;: &quot;&lt;pre style=\&quot;box-sizing: border-box; overflow: auto; font-family: Monaco, Consolas, &amp;quot;Lucida Console&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, monospace; font-size: 15px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;code style=\&quot;box-sizing: border-box; font-family: Monaco, Consolas, &amp;quot;Lucida Console&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;\&quot;&gt;punlearn tgdetect2\npset tgdetect2 infile=acisf00459_000N003_evt1.fits\npset tgdetect2 outfile=acis_459_src1a.fits\ntgdetect2&lt;/code&gt;&lt;/pre&gt;&quot;,
             &quot;title&quot;: &quot;Untitled&quot;
         }
     }
@@ -8460,7 +8462,7 @@ Error message and password prompt
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="" title="$:/StoryList">
+<div list="[[Comandos CHANDRA CIAO]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9293,6 +9295,80 @@ Ver: [[Fundamentales de Estadística]]
 </div>
 <div created="20150303195111648" creator="a9lara" modified="20150303195155288" modifier="a9lara" tags="Computación" title="Comando para poner imágenes en TiddlyWiki">
 <pre>[img[http://tiddlywiki.com/favicon.ico]]</pre>
+</div>
+<div created="20210218015606950" creator="a9lara" modified="20210218030539478" modifier="a9lara" tags="" title="Comandos CHANDRA CIAO">
+<pre>@@text-align:justify;
+''1. Iniciamos CIAO.''
+
+```
+CIAO
+
+```
+''2. Descargamos los datos del objeto.''
+
+```
+download_chandra_obsid 459
+
+```
+
+''3. Extraememos los archivos comprimidos que acabamos de descargar.''
+
+Nos situamos en la carpeta ''459'' y escribimos en la terminal:
+
+```
+gzip -d primary/*.gz
+gzip -d secondary/*.gz
+gzip -d secondary/ephem/*.gz
+gzip -d secondary/aspect/*.gz
+
+```
+''4. Buscamos la posición de la imagen de orden cero.''
+
+Para ello utilizamos @@color:blue;tgdetect2@@. Lo que hace es correr los comandos @@color:blue;tg_findzero@@, @@color:blue;tg_choose_method@@ y @@color:blue;tgdetect@@ para proporcionar la mejor interface para determinar el centroide de orden cero.
+
+ Este comando se utiliza cuando se usa el detector @@color:red;ACIS@@; cuando se usa el detector @@color:red;HRC@@ @@color:blue;tgdetect@@ siempre es usado. 
+
+Nos situamos en la carpeta ''459/secondary'' y escribimos en la terminal:
+
+```
+punlearn tgdetect2
+pset tgdetect2 infile=acisf00459_000N003_evt1.fits
+pset tgdetect2 outfile=acis_459_src1a.fits
+tgdetect2
+
+```
+Este comando lo que hace es, a partir del archivo @@color:green;acisf00459_000N003_evt1.fits@@, produce un archivo llamado ''@@color:green;acis_459_src1a.fits@@ ''que contiene una tabla de la posición de orden cero.
+
+''5. Buscar la posición de los brazos.''
+
+Ahora necesitamos encontrar la ubicación de los brazos @@color:red;HEG@@ Y @@color:red;MEG@@. Para ello se utiliza @@color:blue;tg_create_mask@@.
+
+Nos situamos en la carpeta ''459/secondary'' y escribimos en la terminal:
+
+```
+punlearn tg_create_mask
+pset tg_create_mask infile=acisf00459_000N003_evt1.fits
+pset tg_create_mask outfile=acis_459_evt1_L1a.fits
+pset tg_create_mask input_pos_tab=acis_459_src1a.fits
+tg_create_mask
+
+```
+
+Lo que hace @@color:blue;tg_create_mask@@ es que a partir del archivo @@color:green;acisf00459_000N003_evt1.fits@@ y @@color:green;acis_459_src1a.fits@@ produce el archivo ''@@color:green;acis_459_evt1_L1a.fits@@''.
+
+''6. Asignar eventos de rejilla a ordenes espectrales.''
+
+```
+punlearn tg_resolve_events
+pset tg_resolve_events infile=acisf00459_000N003_evt1.fits
+pset tg_resolve_events outfile=acis_459_evt1a.fits
+pset tg_resolve_events regionfile=acis_459_evt1_L1a.fits
+pset tg_resolve_events acaofffile=@pcad_asol1.lis
+tg_resolve_events
+
+```
+
+@@</pre>
 </div>
 <div created="20150626213339112" creator="a9lara" modified="20150626215151213" modifier="a9lara" tags="Computación Julia" title="Comandos en Julia">
 <pre>ENCONTRAR EL VALOR MÁS GRANDE:
