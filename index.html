@@ -285,13 +285,11 @@ Error message and password prompt
 
 <li>1° Ley de la Termodinámica</li>
 
-<li>3. CHANDRA SUMAR ESPECTROS</li>
-
-<li>4. Ajuste de los Datos en Sherpa</li>
-
 <li>Aceleración empírica de Milgrom - MOND</li>
 
 <li>Agujeros Negros</li>
+
+<li>Ajuste de Datos de Rejilla en Sherpa</li>
 
 <li>ARF</li>
 
@@ -314,6 +312,8 @@ Error message and password prompt
 <li>Cardano - ADA</li>
 
 <li>Cátodo, Ánodo, Ión.</li>
+
+<li>Chandra</li>
 
 <li>Coeficiente de Correlación (r)</li>
 
@@ -360,6 +360,8 @@ Error message and password prompt
 <li>Desintegración Radioactiva</li>
 
 <li>Desviación Media Absoluta (MAD)</li>
+
+<li>Diccionario (Chandra)</li>
 
 <li>Diferencias Finitas</li>
 
@@ -555,13 +557,13 @@ Error message and password prompt
 
 <li>SED</li>
 
-<li>Sherpa</li>
-
 <li>Sistemas de Coordenadas</li>
 
 <li>Suma del cuadrado de los residuos (SSR)</li>
 
 <li>Suma total de los cuadrados (SST)</li>
+
+<li>Sumar Espectros</li>
 
 <li>Sumas rápidas en Julia</li>
 
@@ -582,6 +584,8 @@ Error message and password prompt
 <li>Teoría de Sistemas Perturbativos (Estacionarios)</li>
 
 <li>The β-Model.</li>
+
+<li>Threads (CIAO)</li>
 
 <li>Tiempo de Relajación</li>
 
@@ -8460,7 +8464,7 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210219004327057" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20210219010831123" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -8911,7 +8915,7 @@ This plugin contains tools to help slice up long texts into individual tiddlers.
 <div created="20190615205728632" creator="a9lara" modified="20210202195308520" modifier="a9lara" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20210210185119583" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20210219011425660" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190615205731476" creator="a9lara" modified="20190615205731476" modifier="a9lara" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/http://tiddlywiki.com/library/v5.1.13/index.html" url="http://tiddlywiki.com/library/v5.1.13/index.html">
@@ -9048,64 +9052,19 @@ $$dU=\delta Q+PdV+\mu dN$$
 
 $$\mu$$: potencial químico</pre>
 </div>
-<div created="20210218172537665" creator="a9lara" modified="20210218222428594" modifier="a9lara" tags="Astrophysics PhD" title="3. CHANDRA SUMAR ESPECTROS">
-<pre>Supongamos que acabamos de descargar la observación 17576 de 3C120. Y que ya hicimos la reducción de datos con lo cuál se nos generó una carpeta llamada ''17576_Work''.
+<div created="20190615200854324" creator="a9lara" modified="20190615215859398" modifier="a9lara" tags="MOND Astrofísica Cosmología" title="Aceleración empírica de Milgrom - MOND">
+<pre>$$a_{o}=1.2 \times 10 ^{-8} \frac{cm}{s^2}$$
 
-Entonces, adentro de la carpeta ''3C120'' tenemos dos carpeta, una llamada ''17576'' y la otra llamada ''17576_Work''.
+$$a_{o}=1.2 \times 10 ^{-10} \frac{m}{s^2}$$
 
-Nos situamos en el directorio ''3C120''
+$$a_{o}=1.2 \times 10 ^{-13} \frac{km}{s^2}$$
 
-''1. Sumamos los espectros.''
-
-Solo vamos a sumar los de orden 1. Primero sumamos los del MEG:
-
-```
-punlearn combine_grating_spectra
-pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
-pset combine_grating_spectra outroot=17576_Work/17576
-pset combine_grating_spectra add_plusminus=yes
-pset combine_grating_spectra garm=MEG
-pset combine_grating_spectra order=1
-pset combine_grating_spectra arf=&quot;17576_Work/tg/*meg*.arf&quot;
-pset combine_grating_spectra rmf=&quot;17576_Work/tg/*meg*.rmf&quot;
-combine_grating_spectra 
-
-```
-
-Luego los del HEG:
-
-```
-punlearn combine_grating_spectra
-pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
-pset combine_grating_spectra outroot=17576_Work/17576
-pset combine_grating_spectra add_plusminus=yes
-pset combine_grating_spectra garm=HEG
-pset combine_grating_spectra order=1
-pset combine_grating_spectra arf=&quot;17576_Work/tg/*heg*.arf&quot;
-pset combine_grating_spectra rmf=&quot;17576_Work/tg/*heg*.rmf&quot;
-combine_grating_spectra 
-
-```
-
-''2. Agrupamos los canales para tener más cuentas.''
-
-Primero para el MEG:
-
-```
-dmgroup infile=&quot;17576_Work/17576_meg_abs1.pha&quot; outfile=17576_Work/17576_meg_abs1_bin4.pha \
-      binspec=&quot;1:16384:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
-      xcolumn=&quot;channel&quot;
-```
-
-Luego para el HEG:
-
-```
-dmgroup infile=&quot;17576_Work/17576_heg_abs1.pha&quot; outfile=17576_Work/17576_heg_abs1_bin4.pha \
-      binspec=&quot;1:16384:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
-      xcolumn=&quot;channel&quot;    
-```</pre>
+$$a_{o}=0.388  \frac{\mathrm{pc}}{\mathrm{s}^2}$$</pre>
 </div>
-<div created="20210218222149862" creator="a9lara" modified="20210219004311649" modifier="a9lara" tags="Astrophysics PhD" title="4. Ajuste de los Datos en Sherpa">
+<div created="20171202031724658" creator="a9lara" modified="20171202032747872" modifier="a9lara" tags="Extragaláctica" title="Agujeros Negros">
+<pre>$$M_{\bullet}\simeq\frac{r\sigma^2}{G}$$</pre>
+</div>
+<div created="20210218222149862" creator="a9lara" modified="20210219011404101" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa">
 <pre>@@text-align:justify;
 
 Aquí muestro un resumen de lo que viene en el [[Thread de Sherpa Fitting Grating Data|https://cxc.cfa.harvard.edu/sherpa/threads/grating/]].
@@ -9238,21 +9197,19 @@ Y ahora guardamos la figura:
 plt.savefig(&quot;3C120.png&quot;)
 
 ```
+
+''8. Mostrando los resultados estdísticos y guardándolos en un archivo .txt''
+
+
+```
+show_fit(&quot;resutados_de_ajuste_3C120.txt&quot;, clobber=True)
+
+```
+
+Ver [[Threads (CIAO)]]
 @@</pre>
 </div>
-<div created="20190615200854324" creator="a9lara" modified="20190615215859398" modifier="a9lara" tags="MOND Astrofísica Cosmología" title="Aceleración empírica de Milgrom - MOND">
-<pre>$$a_{o}=1.2 \times 10 ^{-8} \frac{cm}{s^2}$$
-
-$$a_{o}=1.2 \times 10 ^{-10} \frac{m}{s^2}$$
-
-$$a_{o}=1.2 \times 10 ^{-13} \frac{km}{s^2}$$
-
-$$a_{o}=0.388  \frac{\mathrm{pc}}{\mathrm{s}^2}$$</pre>
-</div>
-<div created="20171202031724658" creator="a9lara" modified="20171202032747872" modifier="a9lara" tags="Extragaláctica" title="Agujeros Negros">
-<pre>$$M_{\bullet}\simeq\frac{r\sigma^2}{G}$$</pre>
-</div>
-<div created="20210206010104910" creator="a9lara" modified="20210206013300527" modifier="a9lara" title="ARF">
+<div created="20210206010104910" creator="a9lara" modified="20210219011507092" modifier="a9lara" title="ARF">
 <pre>@@text-align:justify;
 ''El ARF ''(Auxiliary Response File)'' que significa Archivo de Respuesta Auxiliar'' ''contiene el área efectiva'' (el área efectiva es la combinación de las áreas del telescopio, el filtro y el detector)en [cm$$^2$$]'' y la eficiencia quántica'' como función de la energía promediada sobre el tiempo en [cuentas/fotón]. ''Estas son multiplicadas para crear el ARF'' resultando en [cm$$^2$$ cuentas/fotones].
 
@@ -9264,7 +9221,7 @@ Cuando ''el espectro entrante es multiplicado por el ARF'', el resultado es la d
 
 
 
-Ver: [[Sherpa]]
+Ver: [[Diccionario (Chandra)]]
 @@</pre>
 </div>
 <div created="20141122093038038" creator="a9lara" modified="20141122093618298" modifier="a9lara" title="Astringente">
@@ -9454,6 +9411,12 @@ $$\vec E(\vec r) = \frac{1}{4\pi\varepsilon_0} \int \frac{1}{d^2}\hat d \alpha {
 Aniones: átomos cargados negativamente, se ven atraidos por el ánodo.
 
 Cationes: átomos cargados positivamente, se ven atraidos por el cátodo.</pre>
+</div>
+<div created="20210219010241892" creator="a9lara" modified="20210219011554483" modifier="a9lara" tags="" title="Chandra">
+<pre>#[[Diccionario (Chandra)]]
+#[[Threads (CIAO)]]
+
+Ver [[Índice]]</pre>
 </div>
 <div created="20210202185401428" creator="a9lara" modified="20210210184708526" modifier="a9lara" tags="Ajustes Estadística Brilliant [[Scatterplots and Regression]]" title="Coeficiente de Correlación (r)">
 <pre>@@text-align:justify;
@@ -9981,6 +9944,13 @@ Ver: [[Fundamentales de Estadística]]
 @@
 
 </pre>
+</div>
+<div created="20210219010045433" creator="a9lara" modified="20210219011543573" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Diccionario (Chandra)">
+<pre># ''ANCRFILE ''- the name of the  [[ARF]] for the source.
+# ''BACKFILE'' - the name of the [[PHA]] file containing the background for the source.
+# ''RESPFILE'' - the name of the  [[RMF]] for the source.
+
+Ver [[Chandra]]</pre>
 </div>
 <div created="20171010165544737" creator="a9lara" modified="20180219200349422" modifier="a9lara" tags="Matemáticas" title="Diferencias Finitas">
 <pre>$$f=\left(\frac{\dot a}{a}\right)^2$$
@@ -11053,14 +11023,15 @@ $$\frac{1}{\rho_g}\frac{dP}{dr} = -\frac{GM(r)}{r^2}$$</pre>
 
 $$\nabla\times(A  \times B)=(B \cdot \nabla)A-(A\cdot \nabla)B+A(\nabla \cdot B)-B(\nabla \cdot A)$$</pre>
 </div>
-<div created="20210202200902969" creator="a9lara" modified="20210210184940683" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]] $:/tags/SideBar" title="Índice">
+<div created="20210202200902969" creator="a9lara" modified="20210219010624020" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]] $:/tags/SideBar" title="Índice">
 <pre>#''Constantes''
 ##[[Prefijo de Unidades]]
 #''Estadística''
 ##[[Fundamentales de Estadística]]
 #''Programación''
 ##[[Julia]]
-##[[Sherpa]]
+#''Reducción y Ajuste de Datos''
+##[[Chandra]]
 </pre>
 </div>
 <div created="20170604233727902" creator="a9lara" modified="20170604235708032" modifier="a9lara" tags="Matemáticas" title="Integrales">
@@ -11495,11 +11466,11 @@ $$\mu_0 = 4\pi \times 10 ^{-7} \frac{N}{A^2}$$
 
 </pre>
 </div>
-<div created="20210206013113328" creator="a9lara" modified="20210206013317327" modifier="a9lara" title="PHA">
+<div created="20210206013113328" creator="a9lara" modified="20210219011522163" modifier="a9lara" title="PHA">
 <pre>@@text-align:justify;
 ''PHA'' (Pulse Height Amplitude) ''que significa Amplitud de Altura de Pulso''
 
-Ver [[Sherpa]]
+Ver: [[Diccionario (Chandra)]]
 @@</pre>
 </div>
 <div created="20180924201535200" creator="a9lara" modified="20180924202127697" modifier="a9lara" tags="Pokémon [[EVs &amp; IVs]]" title="Pokémon EVs &amp; IVs">
@@ -11716,13 +11687,13 @@ $$\dfrac{\partial\mathcal{L}}{\partial r}-\dfrac{d}{dt}\dfrac{\partial\mathcal{L
 
 </pre>
 </div>
-<div created="20210206002708187" creator="a9lara" modified="20210206010538886" modifier="a9lara" title="RMF">
+<div created="20210206002708187" creator="a9lara" modified="20210219011529260" modifier="a9lara" title="RMF">
 <pre>@@text-align:justify;
 ''Cuando el detector recibe las cuentas las guarda en una matriz de datos.'' ''Estas matrices son diagonales.'' A mayor resolución del detector, más fina es la diagonal de la matriz. Esto hace que la matriz contenga muchos ceros que solo estorban.
 
 ''Entonces RMF'' (Redistribution Matrix File) ''que significa Archivo de Matriz de Redistribución ''es un formato de archivo que ''comprime esa matriz, quitando todos los ceros''. Lo que hace es mapear del espacio de energía al espacio de altura (o posición) del pulso del detector.
 
-Ver: [[Sherpa]]
+Ver: [[Diccionario (Chandra)]]
 @@</pre>
 </div>
 <div created="20150203135353924" creator="a9lara" modified="20150203141618314" modifier="a9lara" tags="Computación" title="Sacar URL de Hipervínculo en LibreOffice Calc">
@@ -11792,13 +11763,6 @@ Es una gráfica de energía contra frecuencia.
 Se usa para clasificar fuentes astronómicas.
 </pre>
 </div>
-<div created="20210206002623242" creator="a9lara" modified="20210210184947483" modifier="a9lara" tags="Programación" title="Sherpa">
-<pre># ''ANCRFILE ''- the name of the  [[ARF]] for the source.
-# ''BACKFILE'' - the name of the [[PHA]] file containing the background for the source.
-# ''RESPFILE'' - the name of the  [[RMF]] for the source.
-
-Ver: [[Índice]]</pre>
-</div>
 <div created="20150302223605102" creator="a9lara" modified="20170422182427680" modifier="a9lara" tags="Matemáticas" title="Sistemas de Coordenadas">
 <pre>Coordenadas Esfércias
 
@@ -11857,6 +11821,65 @@ $$SST = \displaystyle \sum_{i=1}^{n}\left(y_i-\bar{y}_i\right)^2$$
 Ver: [[Fundamentales de Estadística]]
 @@</pre>
 </div>
+<div created="20210218172537665" creator="a9lara" modified="20210219010815338" modifier="a9lara" tags="Astrophysics PhD CIAO Chandra" title="Sumar Espectros">
+<pre>Supongamos que acabamos de descargar la observación 17576 de 3C120. Y que ya hicimos la reducción de datos con lo cuál se nos generó una carpeta llamada ''17576_Work''.
+
+Entonces, adentro de la carpeta ''3C120'' tenemos dos carpeta, una llamada ''17576'' y la otra llamada ''17576_Work''.
+
+Nos situamos en el directorio ''3C120''
+
+''1. Sumamos los espectros.''
+
+Solo vamos a sumar los de orden 1. Primero sumamos los del MEG:
+
+```
+punlearn combine_grating_spectra
+pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
+pset combine_grating_spectra outroot=17576_Work/17576
+pset combine_grating_spectra add_plusminus=yes
+pset combine_grating_spectra garm=MEG
+pset combine_grating_spectra order=1
+pset combine_grating_spectra arf=&quot;17576_Work/tg/*meg*.arf&quot;
+pset combine_grating_spectra rmf=&quot;17576_Work/tg/*meg*.rmf&quot;
+combine_grating_spectra 
+
+```
+
+Luego los del HEG:
+
+```
+punlearn combine_grating_spectra
+pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
+pset combine_grating_spectra outroot=17576_Work/17576
+pset combine_grating_spectra add_plusminus=yes
+pset combine_grating_spectra garm=HEG
+pset combine_grating_spectra order=1
+pset combine_grating_spectra arf=&quot;17576_Work/tg/*heg*.arf&quot;
+pset combine_grating_spectra rmf=&quot;17576_Work/tg/*heg*.rmf&quot;
+combine_grating_spectra 
+
+```
+
+''2. Agrupamos los canales para tener más cuentas.''
+
+Primero para el MEG:
+
+```
+dmgroup infile=&quot;17576_Work/17576_meg_abs1.pha&quot; outfile=17576_Work/17576_meg_abs1_bin4.pha \
+      binspec=&quot;1:16384:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
+      xcolumn=&quot;channel&quot;
+```
+
+Luego para el HEG:
+
+```
+dmgroup infile=&quot;17576_Work/17576_heg_abs1.pha&quot; outfile=17576_Work/17576_heg_abs1_bin4.pha \
+      binspec=&quot;1:16384:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
+      xcolumn=&quot;channel&quot;    
+```
+
+Ver [[Threads (CIAO)]]</pre>
+</div>
 <div created="20201101200334708" creator="a9lara" modified="20201101200416261" modifier="a9lara" tags="Julia Cálculo" title="Sumas rápidas en Julia">
 <pre>sum(1/n for n=1:2)</pre>
 </div>
@@ -11912,6 +11935,12 @@ Cuando a un sistema se le perturba, es conveniente estudiar su estado no perturb
 <div created="20210118212407052" creator="a9lara" modified="20210119000059447" modifier="a9lara" tags="Extragaláctica Definition Boxed" title="The β-Model.">
 <pre>The β-Model. A commonly used method consists of fitting the X-ray data by a so-called β-model. This model is based on the assumption that the density profile of
 the total matter (dark and luminous) is described by an isothermal distribution, i.e., it is assumed that the temperature of the gas is independent of radius, and at the same time that the mass distribution in the cluster is described by the isothermal model.</pre>
+</div>
+<div created="20210219010000746" creator="a9lara" modified="20210219011356893" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Threads (CIAO)">
+<pre># [[Sumar Espectros]]
+# [[Ajuste de Datos de Rejilla en Sherpa]]
+
+Ver [[Chandra]]</pre>
 </div>
 <div created="20171202030016836" creator="a9lara" modified="20171202030110353" modifier="a9lara" tags="Extragaláctica" title="Tiempo de Relajación">
 <pre>$$t_{relax}=t_{cross}\frac{N}{\ln N}$$</pre>
