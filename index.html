@@ -289,7 +289,7 @@ Error message and password prompt
 
 <li>Agujeros Negros</li>
 
-<li>Ajuste de Datos de Rejilla en Sherpa</li>
+<li>Ajuste de Datos de Rejilla en Sherpa (CIAO)</li>
 
 <li>ARF</li>
 
@@ -320,8 +320,6 @@ Error message and password prompt
 <li>Coeficiente de Determinación (R²)</li>
 
 <li>Comando para poner imágenes en TiddlyWiki</li>
-
-<li>Comandos CHANDRA CIAO</li>
 
 <li>Comandos en Julia</li>
 
@@ -541,6 +539,8 @@ Error message and password prompt
 
 <li>Ram Pressure</li>
 
+<li>Reducción de Datos (CIAO)</li>
+
 <li>Regímenes MONDianos</li>
 
 <li>Regresión Lineal</li>
@@ -563,7 +563,7 @@ Error message and password prompt
 
 <li>Suma total de los cuadrados (SST)</li>
 
-<li>Sumar Espectros</li>
+<li>Sumar y Agrupar Espectros (CIAO)</li>
 
 <li>Sumas rápidas en Julia</li>
 
@@ -8464,7 +8464,7 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210219010831123" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20210219013746110" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -9064,7 +9064,7 @@ $$a_{o}=0.388  \frac{\mathrm{pc}}{\mathrm{s}^2}$$</pre>
 <div created="20171202031724658" creator="a9lara" modified="20171202032747872" modifier="a9lara" tags="Extragaláctica" title="Agujeros Negros">
 <pre>$$M_{\bullet}\simeq\frac{r\sigma^2}{G}$$</pre>
 </div>
-<div created="20210218222149862" creator="a9lara" modified="20210219011404101" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa">
+<div created="20210218222149862" creator="a9lara" modified="20210219013534310" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
 <pre>@@text-align:justify;
 
 Aquí muestro un resumen de lo que viene en el [[Thread de Sherpa Fitting Grating Data|https://cxc.cfa.harvard.edu/sherpa/threads/grating/]].
@@ -9135,7 +9135,7 @@ Congelamos los parámetros de normalización para bpow1 y pow1d ( bpow1.ref y po
 Modificamos los valores iniciales de los parámetros para abs1.hcol usando:
 
 ```
-abs1.hcol = 1.81e20 
+abs1.hcol = 10.89e20 
 freeze(abs1)
 ```
 
@@ -9412,7 +9412,7 @@ Aniones: átomos cargados negativamente, se ven atraidos por el ánodo.
 
 Cationes: átomos cargados positivamente, se ven atraidos por el cátodo.</pre>
 </div>
-<div created="20210219010241892" creator="a9lara" modified="20210219011554483" modifier="a9lara" tags="" title="Chandra">
+<div created="20210219010241892" creator="a9lara" modified="20210219013445902" modifier="a9lara" tags="" title="Chandra">
 <pre>#[[Diccionario (Chandra)]]
 #[[Threads (CIAO)]]
 
@@ -9454,80 +9454,6 @@ Ver: [[Fundamentales de Estadística]]
 </div>
 <div created="20150303195111648" creator="a9lara" modified="20150303195155288" modifier="a9lara" tags="Computación" title="Comando para poner imágenes en TiddlyWiki">
 <pre>[img[http://tiddlywiki.com/favicon.ico]]</pre>
-</div>
-<div created="20210218015606950" creator="a9lara" modified="20210218030539478" modifier="a9lara" tags="" title="Comandos CHANDRA CIAO">
-<pre>@@text-align:justify;
-''1. Iniciamos CIAO.''
-
-```
-CIAO
-
-```
-''2. Descargamos los datos del objeto.''
-
-```
-download_chandra_obsid 459
-
-```
-
-''3. Extraememos los archivos comprimidos que acabamos de descargar.''
-
-Nos situamos en la carpeta ''459'' y escribimos en la terminal:
-
-```
-gzip -d primary/*.gz
-gzip -d secondary/*.gz
-gzip -d secondary/ephem/*.gz
-gzip -d secondary/aspect/*.gz
-
-```
-''4. Buscamos la posición de la imagen de orden cero.''
-
-Para ello utilizamos @@color:blue;tgdetect2@@. Lo que hace es correr los comandos @@color:blue;tg_findzero@@, @@color:blue;tg_choose_method@@ y @@color:blue;tgdetect@@ para proporcionar la mejor interface para determinar el centroide de orden cero.
-
- Este comando se utiliza cuando se usa el detector @@color:red;ACIS@@; cuando se usa el detector @@color:red;HRC@@ @@color:blue;tgdetect@@ siempre es usado. 
-
-Nos situamos en la carpeta ''459/secondary'' y escribimos en la terminal:
-
-```
-punlearn tgdetect2
-pset tgdetect2 infile=acisf00459_000N003_evt1.fits
-pset tgdetect2 outfile=acis_459_src1a.fits
-tgdetect2
-
-```
-Este comando lo que hace es, a partir del archivo @@color:green;acisf00459_000N003_evt1.fits@@, produce un archivo llamado ''@@color:green;acis_459_src1a.fits@@ ''que contiene una tabla de la posición de orden cero.
-
-''5. Buscar la posición de los brazos.''
-
-Ahora necesitamos encontrar la ubicación de los brazos @@color:red;HEG@@ Y @@color:red;MEG@@. Para ello se utiliza @@color:blue;tg_create_mask@@.
-
-Nos situamos en la carpeta ''459/secondary'' y escribimos en la terminal:
-
-```
-punlearn tg_create_mask
-pset tg_create_mask infile=acisf00459_000N003_evt1.fits
-pset tg_create_mask outfile=acis_459_evt1_L1a.fits
-pset tg_create_mask input_pos_tab=acis_459_src1a.fits
-tg_create_mask
-
-```
-
-Lo que hace @@color:blue;tg_create_mask@@ es que a partir del archivo @@color:green;acisf00459_000N003_evt1.fits@@ y @@color:green;acis_459_src1a.fits@@ produce el archivo ''@@color:green;acis_459_evt1_L1a.fits@@''.
-
-''6. Asignar eventos de rejilla a ordenes espectrales.''
-
-```
-punlearn tg_resolve_events
-pset tg_resolve_events infile=acisf00459_000N003_evt1.fits
-pset tg_resolve_events outfile=acis_459_evt1a.fits
-pset tg_resolve_events regionfile=acis_459_evt1_L1a.fits
-pset tg_resolve_events acaofffile=@pcad_asol1.lis
-tg_resolve_events
-
-```
-
-@@</pre>
 </div>
 <div created="20150626213339112" creator="a9lara" modified="20150626215151213" modifier="a9lara" tags="Computación Julia" title="Comandos en Julia">
 <pre>ENCONTRAR EL VALOR MÁS GRANDE:
@@ -9945,10 +9871,11 @@ Ver: [[Fundamentales de Estadística]]
 
 </pre>
 </div>
-<div created="20210219010045433" creator="a9lara" modified="20210219011543573" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Diccionario (Chandra)">
+<div created="20210219010045433" creator="a9lara" modified="20210219013713133" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Diccionario (Chandra)">
 <pre># ''ANCRFILE ''- the name of the  [[ARF]] for the source.
 # ''BACKFILE'' - the name of the [[PHA]] file containing the background for the source.
 # ''RESPFILE'' - the name of the  [[RMF]] for the source.
+# Ver el Diccionario de [[HETG, MTG, HTG|https://cxc.harvard.edu/proposer/POG/html/chap8.html]]
 
 Ver [[Chandra]]</pre>
 </div>
@@ -11619,6 +11546,82 @@ Es una propiedad de los isótopos que son inestables, es decir, se mantienen en 
 <div created="20171204064336842" creator="a9lara" modified="20171204064434596" modifier="a9lara" tags="Física" title="Ram Pressure">
 <pre>Es una presión ejercida sobre un cuerpo que se mueve a través de un fluido. Causa una fuerza de arrastre ejercida sobre el cuerpo.</pre>
 </div>
+<div created="20210218015606950" creator="a9lara" modified="20210219013440095" modifier="a9lara" tags="" title="Reducción de Datos (CIAO)">
+<pre>@@text-align:justify;
+
+Aquí hago un resumen de lo que viene en el Thread de CIAO [[HETG/ACIS-S Grating Spectra|https://cxc.cfa.harvard.edu/ciao/threads/spectra_hetgacis/index.html#start]]
+''1. Iniciamos CIAO.''
+
+```
+CIAO
+
+```
+''2. Descargamos los datos del objeto.''
+
+```
+download_chandra_obsid 459
+
+```
+
+''3. Extraememos los archivos comprimidos que acabamos de descargar.''
+
+Nos situamos en la carpeta ''459'' y escribimos en la terminal:
+
+```
+gzip -d primary/*.gz
+gzip -d secondary/*.gz
+gzip -d secondary/ephem/*.gz
+gzip -d secondary/aspect/*.gz
+
+```
+''4. Buscamos la posición de la imagen de orden cero.''
+
+Para ello utilizamos @@color:blue;tgdetect2@@. Lo que hace es correr los comandos @@color:blue;tg_findzero@@, @@color:blue;tg_choose_method@@ y @@color:blue;tgdetect@@ para proporcionar la mejor interface para determinar el centroide de orden cero.
+
+ Este comando se utiliza cuando se usa el detector @@color:red;ACIS@@; cuando se usa el detector @@color:red;HRC@@ @@color:blue;tgdetect@@ siempre es usado. 
+
+Nos situamos en la carpeta ''459/secondary'' y escribimos en la terminal:
+
+```
+punlearn tgdetect2
+pset tgdetect2 infile=acisf00459_000N003_evt1.fits
+pset tgdetect2 outfile=acis_459_src1a.fits
+tgdetect2
+
+```
+Este comando lo que hace es, a partir del archivo @@color:green;acisf00459_000N003_evt1.fits@@, produce un archivo llamado ''@@color:green;acis_459_src1a.fits@@ ''que contiene una tabla de la posición de orden cero.
+
+''5. Buscar la posición de los brazos.''
+
+Ahora necesitamos encontrar la ubicación de los brazos @@color:red;HEG@@ Y @@color:red;MEG@@. Para ello se utiliza @@color:blue;tg_create_mask@@.
+
+Nos situamos en la carpeta ''459/secondary'' y escribimos en la terminal:
+
+```
+punlearn tg_create_mask
+pset tg_create_mask infile=acisf00459_000N003_evt1.fits
+pset tg_create_mask outfile=acis_459_evt1_L1a.fits
+pset tg_create_mask input_pos_tab=acis_459_src1a.fits
+tg_create_mask
+
+```
+
+Lo que hace @@color:blue;tg_create_mask@@ es que a partir del archivo @@color:green;acisf00459_000N003_evt1.fits@@ y @@color:green;acis_459_src1a.fits@@ produce el archivo ''@@color:green;acis_459_evt1_L1a.fits@@''.
+
+''6. Asignar eventos de rejilla a ordenes espectrales.''
+
+```
+punlearn tg_resolve_events
+pset tg_resolve_events infile=acisf00459_000N003_evt1.fits
+pset tg_resolve_events outfile=acis_459_evt1a.fits
+pset tg_resolve_events regionfile=acis_459_evt1_L1a.fits
+pset tg_resolve_events acaofffile=@pcad_asol1.lis
+tg_resolve_events
+
+```
+
+@@</pre>
+</div>
 <div created="20190615203538781" creator="a9lara" modified="20190615205009094" modifier="a9lara" tags="MOND Astrofísica Cosmología" title="Regímenes MONDianos">
 <pre>Considerando un sistema virializado en el cuál gira un objeto a una velocidad $$\mathrm{v}$$ alrededor de un objeto de masa $$M$$, la velocidad que este llevará bajo un modelo MONDiano cuando su aceleración, a, sea $$a&lt;&lt;a_{o}$$, donde $$a_{0}=1.2 \times 10 ^{-13} \frac{km}{s^2}$$, será:
 
@@ -11821,8 +11824,10 @@ $$SST = \displaystyle \sum_{i=1}^{n}\left(y_i-\bar{y}_i\right)^2$$
 Ver: [[Fundamentales de Estadística]]
 @@</pre>
 </div>
-<div created="20210218172537665" creator="a9lara" modified="20210219010815338" modifier="a9lara" tags="Astrophysics PhD CIAO Chandra" title="Sumar Espectros">
-<pre>Supongamos que acabamos de descargar la observación 17576 de 3C120. Y que ya hicimos la reducción de datos con lo cuál se nos generó una carpeta llamada ''17576_Work''.
+<div created="20210218172537665" creator="a9lara" modified="20210219013516118" modifier="a9lara" tags="Astrophysics PhD CIAO Chandra" title="Sumar y Agrupar Espectros (CIAO)">
+<pre>Aquí muestro un resumen de lo que viene en los Threads de CIAO [[Extract Coadded and Grouped Nth-Order Source &amp; Background Spectra and ARFs |https://cxc.cfa.harvard.edu/ciao/threads/spectra_grouping/]] y  [[Grouping a Grating Spectrum Thread|https://cxc.cfa.harvard.edu/ciao/threads/spectra_grouping/]].
+
+Supongamos que acabamos de descargar la observación 17576 de 3C120. Y que ya hicimos la reducción de datos con lo cuál se nos generó una carpeta llamada ''17576_Work''.
 
 Entonces, adentro de la carpeta ''3C120'' tenemos dos carpeta, una llamada ''17576'' y la otra llamada ''17576_Work''.
 
@@ -11936,9 +11941,10 @@ Cuando a un sistema se le perturba, es conveniente estudiar su estado no perturb
 <pre>The β-Model. A commonly used method consists of fitting the X-ray data by a so-called β-model. This model is based on the assumption that the density profile of
 the total matter (dark and luminous) is described by an isothermal distribution, i.e., it is assumed that the temperature of the gas is independent of radius, and at the same time that the mass distribution in the cluster is described by the isothermal model.</pre>
 </div>
-<div created="20210219010000746" creator="a9lara" modified="20210219011356893" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Threads (CIAO)">
-<pre># [[Sumar Espectros]]
-# [[Ajuste de Datos de Rejilla en Sherpa]]
+<div created="20210219010000746" creator="a9lara" modified="20210219013507310" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Threads (CIAO)">
+<pre>#[[Reducción de Datos (CIAO)]] 
+#[[Sumar y Agrupar Espectros (CIAO)]]
+# [[Ajuste de Datos de Rejilla en Sherpa (CIAO)]]
 
 Ver [[Chandra]]</pre>
 </div>
