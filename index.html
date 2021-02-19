@@ -9064,7 +9064,7 @@ $$a_{o}=0.388  \frac{\mathrm{pc}}{\mathrm{s}^2}$$</pre>
 <div created="20171202031724658" creator="a9lara" modified="20171202032747872" modifier="a9lara" tags="Extragaláctica" title="Agujeros Negros">
 <pre>$$M_{\bullet}\simeq\frac{r\sigma^2}{G}$$</pre>
 </div>
-<div created="20210218222149862" creator="a9lara" modified="20210219014701649" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
+<div created="20210218222149862" creator="a9lara" modified="20210219015301754" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
 <pre>@@text-align:justify;
 
 Aquí muestro un resumen de lo que viene en el [[Thread de Sherpa Fitting Grating Data|https://cxc.cfa.harvard.edu/sherpa/threads/grating/]].
@@ -9181,13 +9181,13 @@ plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;)
 for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;) 
 plt.gcf().axes[0].text(x=10,y=0.1,s=&quot;MEG&quot;,color=&quot;lime&quot;)
 plt.gcf().axes[1].text(x=10,y=0.1,s=&quot;HEG&quot;,color=&quot;lime&quot;)
-plt.savefig(&quot;3C120_1.png&quot;)
+plt.savefig(&quot;17576_3C120_1.png&quot;)
 ```
 ''8. Mostrando los resultados estdísticos y guardándolos en un archivo .txt''
 
 
 ```
-show_fit(&quot;estdísticas_CSAT_resutados_de_ajuste_3C120.txt&quot;, clobber=True)
+show_fit(&quot;17576_estdísticas_CSAT_resutados_de_ajuste_3C120.txt&quot;, clobber=True)
 ```
 
 Dado que las estadísticas ''CStat'' no calcula los errores para los datos, cambiamos la estadística del ajuste a ''chi2datavar'':
@@ -9196,8 +9196,8 @@ Dado que las estadísticas ''CStat'' no calcula los errores para los datos, camb
 ```
 set_stat('chi2datavar')
 plot_fit_delchi()
-plt.savefig(&quot;3C120_2.png&quot;)
-show_fit(&quot;estdísticas_chi2datavar_resutados_de_ajuste_3C120.txt&quot;, clobber=True)
+plt.savefig(&quot;17576_3C120_2.png&quot;)
+show_fit(&quot;17576_estdísticas_chi2datavar_resutados_de_ajuste_3C120.txt&quot;, clobber=True)
 
 ```
 
