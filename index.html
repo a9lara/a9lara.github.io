@@ -9524,7 +9524,7 @@ savefig(&quot;F3.jpg&quot;)
 -----
 </pre>
 </div>
-<div created="20210219213933367" creator="a9lara" modified="20210219221716162" modifier="a9lara" tags="Terminal" title="Comandos para leer listas (Terminal)">
+<div created="20210219213933367" creator="a9lara" modified="20210219222310160" modifier="a9lara" tags="Terminal" title="Comandos para leer listas (Terminal)">
 <pre>''1. Nuestra lista''
 
 Supongamos que tenemos un archivo que se llama ''lista.txt'' que contiene las vocales.
@@ -9537,9 +9537,11 @@ U
 O
 ```
 
-''2. Elegimos la opción a), b), c) o d), según queramos.''
+''2. Escribimos el script''
 
-''a) Nombrar muchos archivos a partir de una lista de nombres sustituyendo los archivos que ya existieran con ese nombre.''
+Hacemos un archivo de texto que se llame ''read_the_list.csh'' y le ponemos el script ''a), b), c)'' o ''d)'', según queramos.
+
+''a)'' __Nombrar muchos archivos a partir de una lista de nombres sustituyendo los archivos que ya existieran con ese nombre.__
 
 ```
 set numline = `wc list.txt`
@@ -9553,7 +9555,7 @@ EOF
 end
 ```
 
-''b) Nombrar muchos archivos a partir de una lista de nombres conservando la información que ya contenían esos archivos.''
+''b)'' __Nombrar muchos archivos a partir de una lista de nombres conservando la información que ya contenían esos archivos.__
 
 ```
 set numline = `wc list.txt`
@@ -9567,7 +9569,7 @@ EOF
 end
 ```
 
-''c) Hacer un archivo que contenga una lista a partir de otra lista.''
+''c)'' __Hacer un archivo que contenga una lista a partir de otra lista.__
 
 ```
 set numline = `wc list.txt`
@@ -9583,7 +9585,7 @@ EOF
 end
 ```
 
-''d) Hacer un archivo que contenga una lista a partir de otra lista sin que borre nada de lo que hubiera en ese archivo''
+''d)'' __Hacer un archivo que contenga una lista a partir de otra lista sin que borre nada de lo que hubiera en ese archivo.__
 
 ```
 set numline = `wc list.txt`
