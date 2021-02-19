@@ -8460,13 +8460,13 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210218215610160" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20170422063314490" creator="a9lara" modified="20210219004327057" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
 </div>
-<div list="[[4. Ajuste de los Datos en Sherpa]]" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9105,8 +9105,12 @@ dmgroup infile=&quot;17576_Work/17576_heg_abs1.pha&quot; outfile=17576_Work/1757
       xcolumn=&quot;channel&quot;    
 ```</pre>
 </div>
-<div created="20210218222149862" creator="a9lara" modified="20210218225826268" modifier="a9lara" tags="Astrophysics PhD" title="4. Ajuste de los Datos en Sherpa">
-<pre>''1. Cargar los datos ya reducidos de Chandra en Sherpa.''
+<div created="20210218222149862" creator="a9lara" modified="20210219004311649" modifier="a9lara" tags="Astrophysics PhD" title="4. Ajuste de los Datos en Sherpa">
+<pre>@@text-align:justify;
+
+Aquí muestro un resumen de lo que viene en el [[Thread de Sherpa Fitting Grating Data|https://cxc.cfa.harvard.edu/sherpa/threads/grating/]].
+
+''1. Cargar los datos ya reducidos de Chandra en Sherpa.''
 
 Para el MEG
 
@@ -9141,7 +9145,100 @@ notice(2, 12.5)
 plot(&quot;data&quot;, 1, &quot;data&quot;, 2)
 ```
 
-''5. Ahora definimos los modelos para ajustar la fuente y el fondo.''</pre>
+''5. Ahora definimos los modelos para ajustar la fuente y el fondo.''
+
+Modelamos la fuente con una ley de potencias rota utilizando ''@@color:green;xsbknpower@@ '', incluyendo en su argumento la absorción por el medio interestelar ''@@color:green;atten@@''.
+
+Y modelamos el fondo con una ley de potencias de una dimensión utilizando ''@@color:green;xspowerlaw@@'' , incluyendo en su argumento la absorción por el medio interestelar ''@@color:green;atten@@. ''
+
+Primero configuramos las componentes del modelo con ''@@color:green;create_model_component@@'' y establecemos algunos valores iniciales. El modelo de absorción lo llamaremos ''abs1'', la ley de potencias rota la llamaremos ''bpow1'' y la ley de potencias de 1 dimensión la llamaremos ''pow1d''.
+
+```
+create_model_component(&quot;atten&quot;, &quot;abs1&quot;)
+abs1.hcol = 1e+20
+abs1.heiRatio = 0.1 
+abs1.heiiRatio = 0.01
+
+create_model_component(&quot;xsbknpower&quot;, &quot;bpow1&quot;)
+bpow1.PhoIndx1 = 0 
+bpow1.PhoIndx2 = 0 
+bpow1.BreakE = 1.55 # ~8 Angstroms
+bpow1.norm = 0.001
+
+create_model_component(&quot;xspowerlaw&quot;,&quot;pow1d&quot;)
+pow1d.PhoIndex = 1
+pow1d.norm = 1e-5
+
+```
+
+Congelamos los parámetros de normalización para bpow1 y pow1d ( bpow1.ref y pow1d.ref ) sin cambiar los valores predeterminados. 
+
+Modificamos los valores iniciales de los parámetros para abs1.hcol usando:
+
+```
+abs1.hcol = 1.81e20 
+freeze(abs1)
+```
+
+La densidad columnar de hidrógeno ( hcol ) se establece en el valor galáctico. Todos los parámetros de abs1 se congelan , lo que significa que no se permitirá que varíen durante el ajuste.
+
+Ahora que se han establecido los componentes del modelo, el producto de abs1 y bpow1 se asigna como modelo de origen para todos los conjuntos de datos:
+
+```
+mdl = abs1 * bpow1
+set_source (1, mdl)
+set_source (2, mdl)
+
+```
+
+mientras que el modelo de fondo se establece como el producto de abs1 y pow1d :
+
+```
+bmdl = abs1 * pow1d
+set_bkg_model (1, bmdl)
+set_bkg_model (2, bmdl)
+
+```
+La estadística de ajuste y el método de de optimización de ajuste predeterminados que usa Sherpa son ''X$$^2$$- Gehrels'' y ''Levenberg-Marquardt'', respectivamente.
+
+Para este caso utilizamremos la estadística ''CStat'' y el ''método Nelder-Mead Simplex''. Esto es porque ''X$$^2$$- Gehrels'' podría sesgar los resultados del ajuste y esto conllevaría una estadística reducida baja artificial para estos datos, y el las estadísticas ''CSAT'' (y ''Cash'') es apropiada para el ajuste simultaneo de los datos y el fondo. 
+
+```
+set_method(&quot;neldermead&quot;)
+set_stat(&quot;cstat&quot;)
+
+```
+''6. Ajustando los datos.''
+
+```
+fit()
+```
+
+''7. Graficando.''
+
+```
+plot(&quot;fit&quot;, 1, &quot;fit&quot;, 2)
+plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;)
+for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;) 
+plt.gcf().axes[0].text(x=10,y=0.1,s=&quot;MEG&quot;,color=&quot;lime&quot;)
+plt.gcf().axes[1].text(x=10,y=0.1,s=&quot;HEG&quot;,color=&quot;lime&quot;)
+```
+
+Dado que las estadísticas ''CStat'' no calcula los errores para los datos, cambiamos la estadística del ajuste a ''chi2datavar'':
+
+```
+set_stat('chi2datavar')
+plot_fit_delchi()
+
+```
+
+Y ahora guardamos la figura:
+
+```
+plt.savefig(&quot;3C120.png&quot;)
+
+```
+@@</pre>
 </div>
 <div created="20190615200854324" creator="a9lara" modified="20190615215859398" modifier="a9lara" tags="MOND Astrofísica Cosmología" title="Aceleración empírica de Milgrom - MOND">
 <pre>$$a_{o}=1.2 \times 10 ^{-8} \frac{cm}{s^2}$$
