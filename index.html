@@ -359,7 +359,9 @@ Error message and password prompt
 
 <li>Desintegración Radioactiva</li>
 
-<li>Desviación Media Absoluta (MAD)</li>
+<li>Desviación Absoluta Media (MAD)</li>
+
+<li>Desviación Estándar y Varianza</li>
 
 <li>Diccionario (Chandra)</li>
 
@@ -8468,7 +8470,7 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210219013746110" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20210222201732379" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -8919,7 +8921,7 @@ This plugin contains tools to help slice up long texts into individual tiddlers.
 <div created="20190615205728632" creator="a9lara" modified="20210202195308520" modifier="a9lara" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20210219011425660" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20210222193346865" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190615205731476" creator="a9lara" modified="20190615205731476" modifier="a9lara" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/http://tiddlywiki.com/library/v5.1.13/index.html" url="http://tiddlywiki.com/library/v5.1.13/index.html">
@@ -9068,7 +9070,7 @@ $$a_{o}=0.388  \frac{\mathrm{pc}}{\mathrm{s}^2}$$</pre>
 <div created="20171202031724658" creator="a9lara" modified="20171202032747872" modifier="a9lara" tags="Extragaláctica" title="Agujeros Negros">
 <pre>$$M_{\bullet}\simeq\frac{r\sigma^2}{G}$$</pre>
 </div>
-<div created="20210218222149862" creator="a9lara" modified="20210219015301754" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
+<div created="20210218222149862" creator="a9lara" modified="20210222192830184" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
 <pre>@@text-align:justify;
 
 Aquí muestro un resumen de lo que viene en el [[Thread de Sherpa Fitting Grating Data|https://cxc.cfa.harvard.edu/sherpa/threads/grating/]].
@@ -9919,7 +9921,7 @@ $$[\hat{a},\hat{a}^{\dagger}]=1$$</pre>
 <div created="20150205173637225" creator="a9lara" modified="20150205173742776" modifier="a9lara" tags="Atómica Física" title="Desintegración Radioactiva">
 <pre>Es la emisión de partículas desde un núcleo atómico inestable. Solo sucede cuando hay un excedente de energía en el radio de la órbita.</pre>
 </div>
-<div created="20210210183337436" creator="a9lara" modified="20210210185541536" modifier="a9lara" tags="Julia Estadística" title="Desviación Media Absoluta (MAD)">
+<div created="20210210183337436" creator="a9lara" modified="20210222194612627" modifier="a9lara" tags="Julia Estadística" title="Desviación Absoluta Media (MAD)">
 <pre>@@text-align:justify;
 La Desviación Media Absoluta (MAD - Mean Absolute Deviation) nos permite describir en un solo número el promedio de la distancia en un conjunto de datos entre los valores del conjunto y el promedio del conjunto. 
 
@@ -9951,6 +9953,56 @@ Ver: [[Fundamentales de Estadística]]
 @@
 
 </pre>
+</div>
+<div created="20210222192237685" creator="a9lara" modified="20210222201702660" modifier="a9lara" tags="Brilliant" title="Desviación Estándar y Varianza">
+<pre>@@text-align:justify;
+
+Ya vimos @@color:blue;Rango@@, [[Desviación Absoluta Media (MAD)]] y @@color:blue;Desviación Absoluta Promedio@@. Todas estas son medidas para saber cómo están dispersados los datos.
+
+Las ''medidas de dispersión'' que comúnmente se utilizan son la @@color:blue;Varianza ($$\sigma^2$$)@@ y la @@color:blue;Desviación Estándar ($$\sigma$$)@@.
+
+Dado que la  @@color:blue;Desviación Absoluta Promedio@@ no da suficiente información de qué tan lejos o cerca estaba cada punto que fue utilizado para obtener el promedio absoluto, lo que se hace es tomar el cuadrado de las diferencias. Esto hace que conforme más alejado esté un punto del promedio, más amplificado va a ser su efecto en la dispersión. A esto se le conoce como   @@color:blue;Desviación Promedio al Cuadrado@@, más conocida como @@color:blue;Varianza@@.
+
+''Ejemplo en Julia:''
+
+```
+function mi_función_varianza(A)
+
+       mean(A) = sum(A)/length(A)
+       B = mean(A)
+       C = A .- B
+       D = abs.(C)
+       E = D .* D
+       F = mean(E)
+
+end
+
+```
+
+Al haberle aplicado el cuadrado, la varianza se vuelve abstracta, por lo que para recuperar el sentido intuitivo se saca su raiz cuadrada. 
+
+A la  ''razi cuadrada de la @@color:blue;Varianza@@'' se le llama @@color:blue;Desviación Estándar@@.
+
+
+''Ejemplo en Julia:''
+
+```
+function mi_función_desviación_estándar(A)
+
+       mean(A) = sum(A)/length(A)
+       B = mean(A)
+       C = A .- B
+       D = abs.(C)
+       E = D .* D
+       F = mean(E)
+       G = sqrt(F)
+
+end
+
+```
+
+Ver: [[Fundamentales de Estadística]]
+@@</pre>
 </div>
 <div created="20210219010045433" creator="a9lara" modified="20210219013713133" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Diccionario (Chandra)">
 <pre># ''ANCRFILE ''- the name of the  [[ARF]] for the source.
@@ -10701,14 +10753,15 @@ $$A=n\left(\frac{m}{2\pi kT}\right)^{\frac{3}{2}}$$
 
 $$U=\frac{3}{2}nKT$$</pre>
 </div>
-<div created="20210202200115444" creator="a9lara" modified="20210210185034402" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Fundamentales de Estadística">
+<div created="20210202200115444" creator="a9lara" modified="20210222193423381" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Fundamentales de Estadística">
 <pre>#[[Regresión Lineal]]
 #[[Coeficiente de Correlación (r)]]
 #[[Coeficiente de Determinación (R²)]]
 #[[Suma del cuadrado de los residuos (SSR)]]
 #[[Suma total de los cuadrados (SST)]]
 #[[Mismos ajustes en diferentes gráficas]]
-#[[Desviación Media Absoluta (MAD)]]
+#[[Desviación Absoluta Media (MAD)]]
+#[[Desviación Estándar y Varianza]]
 
 Ver: [[Índice]]</pre>
 </div>
@@ -12028,7 +12081,7 @@ Ver: [[Índice]]</pre>
 <pre>The β-Model. A commonly used method consists of fitting the X-ray data by a so-called β-model. This model is based on the assumption that the density profile of
 the total matter (dark and luminous) is described by an isothermal distribution, i.e., it is assumed that the temperature of the gas is independent of radius, and at the same time that the mass distribution in the cluster is described by the isothermal model.</pre>
 </div>
-<div created="20210219010000746" creator="a9lara" modified="20210219013507310" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Threads (CIAO)">
+<div created="20210219010000746" creator="a9lara" modified="20210222193105900" modifier="a9lara" tags="CIAO Astrophysics PhD" title="Threads (CIAO)">
 <pre>#[[Reducción de Datos (CIAO)]] 
 #[[Sumar y Agrupar Espectros (CIAO)]]
 # [[Ajuste de Datos de Rejilla en Sherpa (CIAO)]]
