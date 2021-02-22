@@ -291,6 +291,8 @@ Error message and password prompt
 
 <li>Ajuste de Datos de Rejilla en Sherpa (CIAO)</li>
 
+<li>Ajustes de rayos-x (PhD)</li>
+
 <li>ARF</li>
 
 <li>Astringente</li>
@@ -518,6 +520,8 @@ Error message and password prompt
 <li>Permeabilidad Magnética</li>
 
 <li>PHA</li>
+
+<li>PhD</li>
 
 <li>Pokémon EVs &amp; IVs</li>
 
@@ -8470,7 +8474,7 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210222201732379" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20210222232721674" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -9070,7 +9074,7 @@ $$a_{o}=0.388  \frac{\mathrm{pc}}{\mathrm{s}^2}$$</pre>
 <div created="20171202031724658" creator="a9lara" modified="20171202032747872" modifier="a9lara" tags="Extragaláctica" title="Agujeros Negros">
 <pre>$$M_{\bullet}\simeq\frac{r\sigma^2}{G}$$</pre>
 </div>
-<div created="20210218222149862" creator="a9lara" modified="20210222192830184" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
+<div created="20210218222149862" creator="a9lara" modified="20210222221810596" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
 <pre>@@text-align:justify;
 
 Aquí muestro un resumen de lo que viene en el [[Thread de Sherpa Fitting Grating Data|https://cxc.cfa.harvard.edu/sherpa/threads/grating/]].
@@ -9208,6 +9212,197 @@ show_fit(&quot;17576_estdísticas_chi2datavar_resutados_de_ajuste_3C120.txt&quot
 ```
 
 Ver [[Threads (CIAO)]]
+@@</pre>
+</div>
+<div created="20210222220723541" creator="a9lara" modified="20210222232453337" modifier="a9lara" tags="PhD CIAO Sherpa" title="Ajustes de rayos-x (PhD)">
+<pre>@@text-align:justify;
+
+''1. Descargar los datos.''
+
+```
+download_obsid 
+```
+
+''2. Reducir los datos.''
+
+```
+chandra_repro
+```
+
+''3. Sumamos los espectros de orden 1. Tanto para MEG como para HEG.''
+
+
+```
+punlearn combine_grating_spectra
+pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
+pset combine_grating_spectra outroot=17576_Work/17576
+pset combine_grating_spectra add_plusminus=yes
+pset combine_grating_spectra garm=MEG
+pset combine_grating_spectra order=1
+pset combine_grating_spectra arf=&quot;17576_Work/tg/*meg*.arf&quot;
+pset combine_grating_spectra rmf=&quot;17576_Work/tg/*meg*.rmf&quot;
+combine_grating_spectra 
+
+punlearn combine_grating_spectra
+pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
+pset combine_grating_spectra outroot=17576_Work/17576
+pset combine_grating_spectra add_plusminus=yes
+pset combine_grating_spectra garm=HEG
+pset combine_grating_spectra order=1
+pset combine_grating_spectra arf=&quot;17576_Work/tg/*heg*.arf&quot;
+pset combine_grating_spectra rmf=&quot;17576_Work/tg/*heg*.rmf&quot;
+combine_grating_spectra 
+
+```
+
+''4. Vemos el número de canales que tiene el MEG y el HEG.''
+
+```
+prism 7576_Work/17576_meg_abs1.pha
+
+prism 7576_Work/17576_heg_abs1.pha
+```
+
+''5. Agrupamos 4 canales para tener más cuentas. Tanto para MEG como para HEG.''
+
+
+```
+dmgroup infile=&quot;17576_Work/17576_meg_abs1.pha&quot; outfile=17576_Work/17576_meg_abs1_bin4.pha \
+      binspec=&quot;1:8192:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
+      xcolumn=&quot;channel&quot;
+
+
+dmgroup infile=&quot;17576_Work/17576_heg_abs1.pha&quot; outfile=17576_Work/17576_heg_abs1_bin4.pha \
+      binspec=&quot;1:8192:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
+      xcolumn=&quot;channel&quot;    
+```
+
+''6. Cargar los datos reducidos, sumados y agrupados de Chandra en Sherpa para MEG y para HEG.''
+
+
+```
+load_pha(1, &quot;17576_Work/17576_meg_abs1_bin4.pha&quot;)
+
+load_pha(2, &quot;17576_Work/17576_heg_abs1_bin4.pha&quot;)
+```
+
+''7. Establecer el análisis en longitud de onda.''
+
+```
+set_analysis(&quot;wave&quot;)
+```
+
+''8. Graficar el espectro para ver el rango donde hay suficientes datos.''
+
+
+```
+plot(&quot;data&quot;, 1, &quot;data&quot;, 2)
+```
+
+''9. Seleccionamos la región del espectro que queremos.''
+
+
+```
+ignore()
+notice(2, 12.5)
+```
+
+''10. Graficamos para ver  qué modelo le queremos aplicar.''
+
+```
+plot(&quot;data&quot;, 1, &quot;data&quot;, 2)
+```
+
+''11. Definimos la componente-de-nuestro-modelo para la absorición que produce el medio interestelar de la Vía Láctea con una función-de-atenuación que llamaremos abs1 fijándonos en la [[densidad columnar de hidrógeno (hcol)|https://cxc.harvard.edu/toolkit/colden.jsp]] correspondiente.''
+
+```
+create_model_component(&quot;atten&quot;, &quot;abs1&quot;)
+abs1.hcol = 10.89e20 
+freeze(abs1)
+```
+
+''12. Definimos la componente-de-nuestro-modelo para el background con una función-de-ley-de-potencias y le ponemos de nombre background_pow1.''
+
+```
+create_model_component(&quot;xspowerlaw&quot;,&quot;background_pow1d&quot;)
+```
+
+''13. Definimos la componente-de-nuestro-modelo para la fuente con una función-de-ley-de-potencias-rota y le ponemos de nombre source_bkpow1.''
+
+```
+create_model_component(&quot;xsbknpower&quot;, &quot;source_bkpow1&quot;)
+
+```
+
+''14. Asignamos  como modelo de origen para todos los conjuntos de datos el producto de abs1 y source_pow1 y lo llamamos mdl.''
+
+```
+mdl = abs1 * source_bkpow1
+set_source (1, mdl)
+set_source (2, mdl)
+
+```
+
+''15. Asignamos como modelo del background el producto de abs1 y background_pow1 y lo llamamos background_mdl.''
+
+```
+background_mdl = abs1 * background_pow1
+set_bkg_model (1,background_mdl)
+set_bkg_model (2,background_mdl)
+
+```
+
+''15. Ajustmos MEG y HEG.''
+
+```
+fit(1)
+
+fit(2)
+```
+
+''16. Graficamos para ver dónde aplicar gaussianas.''
+
+```
+plot(&quot;fit&quot;, 1, &quot;fit&quot;, 2)
+plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;)
+for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;) 
+plt.gcf().axes[0].text(x=10,y=0.1,s=&quot;MEG&quot;,color=&quot;lime&quot;)
+plt.gcf().axes[1].text(x=10,y=0.1,s=&quot;HEG&quot;,color=&quot;lime&quot;)
+```
+
+''17. Definimos la componente-de-nuestro-modelo para las absorciones con una función-Gaussina y le ponemos de nombre gauss1.''
+
+```
+create_model_component(&quot;gauss1d&quot;, &quot;gauss1&quot;)
+```
+
+''18. Asignamos como modelo la suma de source_bkpow1, background_mdl y gauss1 tanto para MEG como para HEG.''
+
+```
+set_source(1, (source_bkpow1 + background_mdl + gauss1))
+
+set_source(1, (source_bkpow1 + background_mdl + gauss1))
+
+```
+
+''19. Ajustmos para MEG y HEG.''
+
+```
+fit(1)
+
+fit(2)
+```
+
+''20. Graficamos.''
+
+```
+plot(&quot;fit&quot;, 1, &quot;fit&quot;, 2)
+plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;)
+for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;) 
+plt.gcf().axes[0].text(x=10,y=0.1,s=&quot;MEG&quot;,color=&quot;lime&quot;)
+plt.gcf().axes[1].text(x=10,y=0.1,s=&quot;HEG&quot;,color=&quot;lime&quot;)
+```
+Ver [[PhD]]
 @@</pre>
 </div>
 <div created="20210206010104910" creator="a9lara" modified="20210219011507092" modifier="a9lara" title="ARF">
@@ -11084,8 +11279,10 @@ $$\frac{1}{\rho_g}\frac{dP}{dr} = -\frac{GM(r)}{r^2}$$</pre>
 
 $$\nabla\times(A  \times B)=(B \cdot \nabla)A-(A\cdot \nabla)B+A(\nabla \cdot B)-B(\nabla \cdot A)$$</pre>
 </div>
-<div created="20210202200902969" creator="a9lara" modified="20210219221620895" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]] $:/tags/SideBar" title="Índice">
-<pre>#''Constantes''
+<div created="20210202200902969" creator="a9lara" modified="20210222232557262" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]] $:/tags/SideBar" title="Índice">
+<pre>#''Academia''
+##[[PhD]]
+#''Constantes''
 ##[[Prefijo de Unidades]]
 #''Estadística''
 ##[[Fundamentales de Estadística]]
@@ -11094,6 +11291,7 @@ $$\nabla\times(A  \times B)=(B \cdot \nabla)A-(A\cdot \nabla)B+A(\nabla \cdot B)
 ##[[Julia]]
 #''Reducción y Ajuste de Datos''
 ##[[Chandra]]
+
 </pre>
 </div>
 <div created="20170604233727902" creator="a9lara" modified="20170604235708032" modifier="a9lara" tags="Matemáticas" title="Integrales">
@@ -11535,6 +11733,11 @@ $$\mu_0 = 4\pi \times 10 ^{-7} \frac{N}{A^2}$$
 Ver: [[Diccionario (Chandra)]]
 @@</pre>
 </div>
+<div created="20210222232459633" creator="a9lara" modified="20210222232559693" modifier="a9lara" title="PhD">
+<pre>#[[Ajustes de rayos-x (PhD)]]
+
+Ver: [[Índice]]</pre>
+</div>
 <div created="20180924201535200" creator="a9lara" modified="20180924202127697" modifier="a9lara" tags="Pokémon [[EVs &amp; IVs]]" title="Pokémon EVs &amp; IVs">
 <pre>Max ''EVs'' ''en total:'' ''510'' 
 
@@ -11959,7 +12162,7 @@ $$SST = \displaystyle \sum_{i=1}^{n}\left(y_i-\bar{y}_i\right)^2$$
 Ver: [[Fundamentales de Estadística]]
 @@</pre>
 </div>
-<div created="20210218172537665" creator="a9lara" modified="20210219013516118" modifier="a9lara" tags="Astrophysics PhD CIAO Chandra" title="Sumar y Agrupar Espectros (CIAO)">
+<div created="20210218172537665" creator="a9lara" modified="20210222221748437" modifier="a9lara" tags="Astrophysics PhD CIAO Chandra" title="Sumar y Agrupar Espectros (CIAO)">
 <pre>Aquí muestro un resumen de lo que viene en los Threads de CIAO [[Extract Coadded and Grouped Nth-Order Source &amp; Background Spectra and ARFs |https://cxc.cfa.harvard.edu/ciao/threads/spectra_grouping/]] y  [[Grouping a Grating Spectrum Thread|https://cxc.cfa.harvard.edu/ciao/threads/spectra_grouping/]].
 
 Supongamos que acabamos de descargar la observación 17576 de 3C120. Y que ya hicimos la reducción de datos con lo cuál se nos generó una carpeta llamada ''17576_Work''.
