@@ -9074,7 +9074,7 @@ $$a_{o}=0.388  \frac{\mathrm{pc}}{\mathrm{s}^2}$$</pre>
 <div created="20171202031724658" creator="a9lara" modified="20171202032747872" modifier="a9lara" tags="Extragaláctica" title="Agujeros Negros">
 <pre>$$M_{\bullet}\simeq\frac{r\sigma^2}{G}$$</pre>
 </div>
-<div created="20210218222149862" creator="a9lara" modified="20210222221810596" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
+<div created="20210218222149862" creator="a9lara" modified="20210222234750241" modifier="a9lara" tags="Astrophysics PhD Sherpa CIAO Chandra" title="Ajuste de Datos de Rejilla en Sherpa (CIAO)">
 <pre>@@text-align:justify;
 
 Aquí muestro un resumen de lo que viene en el [[Thread de Sherpa Fitting Grating Data|https://cxc.cfa.harvard.edu/sherpa/threads/grating/]].
@@ -9214,7 +9214,7 @@ show_fit(&quot;17576_estdísticas_chi2datavar_resutados_de_ajuste_3C120.txt&quot
 Ver [[Threads (CIAO)]]
 @@</pre>
 </div>
-<div created="20210222220723541" creator="a9lara" modified="20210222233252818" modifier="a9lara" tags="PhD CIAO Sherpa" title="Ajustes de rayos-x (PhD)">
+<div created="20210222220723541" creator="a9lara" modified="20210223003246496" modifier="a9lara" tags="PhD CIAO Sherpa" title="Ajustes de rayos-x (PhD)">
 <pre>@@text-align:justify;
 
 ''1. Inicializar desde la terminal CIAO''
@@ -9226,7 +9226,7 @@ CIAO
 ''2. Descargar los datos.''
 
 ```
-download_obsid 
+download_chandra_obsid 17576
 ```
 
 ''3. Reducir los datos.''
@@ -9247,7 +9247,9 @@ pset combine_grating_spectra order=1
 pset combine_grating_spectra arf=&quot;17576_Work/tg/*meg*.arf&quot;
 pset combine_grating_spectra rmf=&quot;17576_Work/tg/*meg*.rmf&quot;
 combine_grating_spectra 
+```
 
+```
 punlearn combine_grating_spectra
 pset combine_grating_spectra infile=17576_Work/acisf17576_repro_pha2.fits 
 pset combine_grating_spectra outroot=17576_Work/17576
@@ -9264,7 +9266,9 @@ combine_grating_spectra
 
 ```
 prism 7576_Work/17576_meg_abs1.pha
+```
 
+```
 prism 7576_Work/17576_heg_abs1.pha
 ```
 
@@ -9274,8 +9278,9 @@ prism 7576_Work/17576_heg_abs1.pha
 dmgroup infile=&quot;17576_Work/17576_meg_abs1.pha&quot; outfile=17576_Work/17576_meg_abs1_bin4.pha \
       binspec=&quot;1:8192:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
       xcolumn=&quot;channel&quot;
+```
 
-
+```
 dmgroup infile=&quot;17576_Work/17576_heg_abs1.pha&quot; outfile=17576_Work/17576_heg_abs1_bin4.pha \
       binspec=&quot;1:8192:4&quot; grouptypeval=&quot;&quot; grouptype=BIN ycolumn=&quot;counts&quot; \
       xcolumn=&quot;channel&quot;    
@@ -9292,7 +9297,9 @@ sherpa
 
 ```
 load_pha(1, &quot;17576_Work/17576_meg_abs1_bin4.pha&quot;)
+```
 
+```
 load_pha(2, &quot;17576_Work/17576_heg_abs1_bin4.pha&quot;)
 ```
 
@@ -9314,7 +9321,7 @@ plot(&quot;data&quot;, 1, &quot;data&quot;, 2)
 
 ```
 ignore()
-notice(2, 12.5)
+notice(9, 10)
 ```
 
 ''13. Graficamos para ver  qué modelo le queremos aplicar.''
@@ -9323,7 +9330,7 @@ notice(2, 12.5)
 plot(&quot;data&quot;, 1, &quot;data&quot;, 2)
 ```
 
-''14. Definimos la componente-de-nuestro-modelo para la absorición que produce el medio interestelar de la Vía Láctea con una función-de-atenuación que llamaremos abs1 fijándonos en la [[densidad columnar de hidrógeno (hcol)|https://cxc.harvard.edu/toolkit/colden.jsp]] correspondiente.''
+''14. Definimos la componente-de-nuestro-modelo para la absorición que produce el medio interestelar de la Vía Láctea con una función-de-atenuación ([[atten|https://cxc.cfa.harvard.edu/sherpa/ahelp/atten.html]]) que llamaremos abs1 fijándonos en la [[densidad columnar de hidrógeno (hcol)|https://cxc.harvard.edu/toolkit/colden.jsp]] correspondiente.''
 
 ```
 create_model_component(&quot;atten&quot;, &quot;abs1&quot;)
@@ -9331,13 +9338,13 @@ abs1.hcol = 10.89e20
 freeze(abs1)
 ```
 
-''15. Definimos la componente-de-nuestro-modelo para el background con una función-de-ley-de-potencias y le ponemos de nombre background_pow1.''
+''15. Definimos la componente-de-nuestro-modelo para el background con una función-de-ley-de-potencias ([[xspowerlaw|https://cxc.cfa.harvard.edu/sherpa/ahelp/xspowerlaw.html]]) y le ponemos de nombre background_pow1.''
 
 ```
 create_model_component(&quot;xspowerlaw&quot;,&quot;background_pow1d&quot;)
 ```
 
-''16. Definimos la componente-de-nuestro-modelo para la fuente con una función-de-ley-de-potencias-rota y le ponemos de nombre source_bkpow1.''
+''16. Definimos la componente-de-nuestro-modelo para la fuente con una función-de-ley-de-potencias-rota ([[xsbknpower|https://cxc.cfa.harvard.edu/sherpa/ahelp/xsbknpower.html]]) y le ponemos de nombre source_bkpow1.''
 
 ```
 create_model_component(&quot;xsbknpower&quot;, &quot;source_bkpow1&quot;)
@@ -9347,16 +9354,16 @@ create_model_component(&quot;xsbknpower&quot;, &quot;source_bkpow1&quot;)
 ''17. Asignamos  como modelo de origen para todos los conjuntos de datos el producto de abs1 y source_pow1 y lo llamamos mdl.''
 
 ```
-mdl = abs1 * source_bkpow1
-set_source (1, mdl)
-set_source (2, mdl)
+source_mdl = abs1 * source_bkpow1
+set_source(1, source_mdl)
+set_source(2, source_mdl)
 
 ```
 
 ''18. Asignamos como modelo del background el producto de abs1 y background_pow1 y lo llamamos background_mdl.''
 
 ```
-background_mdl = abs1 * background_pow1
+background_mdl = abs1 * background_pow1d
 set_bkg_model (1,background_mdl)
 set_bkg_model (2,background_mdl)
 
@@ -9365,9 +9372,7 @@ set_bkg_model (2,background_mdl)
 ''19. Ajustmos MEG y HEG.''
 
 ```
-fit(1)
-
-fit(2)
+fit()
 ```
 
 ''20. Graficamos para ver dónde aplicar gaussianas.''
@@ -9389,28 +9394,28 @@ create_model_component(&quot;gauss1d&quot;, &quot;gauss1&quot;)
 ''22. Asignamos como modelo la suma de source_bkpow1, background_mdl y gauss1 tanto para MEG como para HEG.''
 
 ```
-set_source(1, (source_bkpow1 + background_mdl + gauss1))
+set_source(1, (source_mdl + background_mdl + gauss1 + gauss1))
+```
 
-set_source(1, (source_bkpow1 + background_mdl + gauss1))
+```
+set_source(2, (source_mdl + background_mdl + gauss1 + gauss1))
 
 ```
 
 ''23. Ajustmos para MEG y HEG.''
 
 ```
-fit(1)
-
-fit(2)
+fit()
 ```
 
 ''24. Graficamos.''
 
 ```
-plot(&quot;fit&quot;, 1, &quot;fit&quot;, 2)
-plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;)
-for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;) 
-plt.gcf().axes[0].text(x=10,y=0.1,s=&quot;MEG&quot;,color=&quot;lime&quot;)
-plt.gcf().axes[1].text(x=10,y=0.1,s=&quot;HEG&quot;,color=&quot;lime&quot;)
+plot(&quot;fit&quot;, 1, &quot;fit&quot;, 2) 
+plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;) 
+for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;)  
+plt.gcf().axes[0].text(x=9.9,y=0.095,s=&quot;MEG&quot;,color=&quot;black&quot;) 
+plt.gcf().axes[1].text(x=9.9,y=0.06,s=&quot;HEG&quot;,color=&quot;black&quot;)
 ```
 Ver [[PhD]]
 @@</pre>
