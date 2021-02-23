@@ -9214,7 +9214,7 @@ show_fit(&quot;17576_estdísticas_chi2datavar_resutados_de_ajuste_3C120.txt&quot
 Ver [[Threads (CIAO)]]
 @@</pre>
 </div>
-<div created="20210222220723541" creator="a9lara" modified="20210223003246496" modifier="a9lara" tags="PhD CIAO Sherpa" title="Ajustes de rayos-x (PhD)">
+<div created="20210222220723541" creator="a9lara" modified="20210223024756111" modifier="a9lara" tags="PhD CIAO Sherpa" title="Ajustes de rayos-x (PhD)">
 <pre>@@text-align:justify;
 
 ''1. Inicializar desde la terminal CIAO''
@@ -9364,14 +9364,16 @@ set_source(2, source_mdl)
 
 ```
 background_mdl = abs1 * background_pow1d
-set_bkg_model (1,background_mdl)
-set_bkg_model (2,background_mdl)
+set_bkg_model(1,background_mdl)
+set_bkg_model(2,background_mdl)
 
 ```
 
-''19. Ajustmos MEG y HEG.''
+''19. Definimos el método y la estadística y ajustmos.''
 
 ```
+set_method(&quot;neldermead&quot;)
+set_stat(&quot;cstat&quot;)
 fit()
 ```
 
@@ -9381,24 +9383,24 @@ fit()
 plot(&quot;fit&quot;, 1, &quot;fit&quot;, 2)
 plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;)
 for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;) 
-plt.gcf().axes[0].text(x=10,y=0.1,s=&quot;MEG&quot;,color=&quot;lime&quot;)
-plt.gcf().axes[1].text(x=10,y=0.1,s=&quot;HEG&quot;,color=&quot;lime&quot;)
+plt.gcf().axes[0].text(x=9.9,y=0.095,s=&quot;MEG&quot;,color=&quot;black&quot;) 
+plt.gcf().axes[1].text(x=9.9,y=0.06,s=&quot;HEG&quot;,color=&quot;black&quot;)
 ```
 
-''21. Definimos la componente-de-nuestro-modelo para las absorciones con una función-Gaussina y le ponemos de nombre gauss1.''
+''21. Definimos la componente-de-nuestro-modelo para las absorciones-que-queremos-ver con una función-Gaussina y le ponemos de nombre gauss1.''
 
 ```
 create_model_component(&quot;gauss1d&quot;, &quot;gauss1&quot;)
 ```
 
-''22. Asignamos como modelo la suma de source_bkpow1, background_mdl y gauss1 tanto para MEG como para HEG.''
+''22. Asignamos como modelo la suma de source_bkpow1 más las gaussianas que queramos tanto para el MEG como para HEG.''
 
 ```
-set_source(1, (source_mdl + background_mdl + gauss1 + gauss1))
+set_source(1, (source_mdl + gauss1 + gauss1))
 ```
 
 ```
-set_source(2, (source_mdl + background_mdl + gauss1 + gauss1))
+set_source(2, (source_mdl + gauss1 + gauss1))
 
 ```
 
@@ -9416,7 +9418,51 @@ plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;)
 for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;)  
 plt.gcf().axes[0].text(x=9.9,y=0.095,s=&quot;MEG&quot;,color=&quot;black&quot;) 
 plt.gcf().axes[1].text(x=9.9,y=0.06,s=&quot;HEG&quot;,color=&quot;black&quot;)
+plt.savefig(&quot;17576_3C120_MEG_y_HEG.png&quot;)
 ```
+
+''25. Ponemos una estadística Chi Squared with data variance.''
+
+```
+set_stat(&quot;chi2datavar&quot;) 
+
+```
+
+
+''26. Graficamos MEG''
+
+```
+plot_fit_delchi(1)
+plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;) 
+for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;)  
+plt.gcf().axes[0].text(x=9.9,y=0.095,s=&quot;MEG&quot;,color=&quot;black&quot;) 
+plt.gcf().axes[1].text(x=9.9,y=0.06,s=&quot;MEG&quot;,color=&quot;black&quot;)
+plt.savefig(&quot;17576_3C120_MEG.png&quot;)
+```
+
+
+''27. Graficamos HEG''
+
+```
+plot_fit_delchi(2)
+plt.suptitle(&quot;3C 120 (ObsID 17576)&quot;) 
+for ax in plt.gcf().axes: plt.sca(ax) ; plt.title(&quot;&quot;)  
+plt.gcf().axes[0].text(x=9.9,y=0.095,s=&quot;HEG&quot;,color=&quot;black&quot;) 
+plt.gcf().axes[1].text(x=9.9,y=0.06,s=&quot;HEG&quot;,color=&quot;black&quot;)
+plt.savefig(&quot;17576_3C120_HEG.png&quot;)
+```
+
+''28. Imprimimos los resultados.''
+
+```
+show_fit(&quot;17576_3C120_ajuste.txt&quot;, clobber=True)
+```
+''29. Salvamos elscritp.''
+
+```
+show_fit(&quot;17576_3C120_script.log&quot;, clobber=True)
+```
+
 Ver [[PhD]]
 @@</pre>
 </div>
