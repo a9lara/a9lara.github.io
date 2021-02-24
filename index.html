@@ -359,6 +359,8 @@ Error message and password prompt
 
 <li>Derivación de la Luminosidad de Eddington</li>
 
+<li>Descargar Archivos de Calibración (XMM-Newton)</li>
+
 <li>Descripción de Heisenberg del oscilador armónico</li>
 
 <li>Desintegración Radioactiva</li>
@@ -606,6 +608,8 @@ Error message and password prompt
 <li>Transformación de Unidades</li>
 
 <li>Transformaciónes de Lorentz en Electro</li>
+
+<li>XMM-Newton</li>
 
 </ul>
 </p>
@@ -10168,6 +10172,15 @@ Y finalmente despejamos la luminosidad de Eddington
 $$L_{Edd}=\frac{GM4c\pi}{k}$$
 </pre>
 </div>
+<div created="20210223221807610" creator="a9lara" modified="20210223222019282" modifier="a9lara" tags="PhD XMM-Newton [[Calibration Files]]" title="Descargar Archivos de Calibración (XMM-Newton)">
+<pre>En la carpeta donde se encuentra la carpeta ccf escribir en la terminal:
+
+```
+rsync -v -a --delete --delete-after --force --include='*.CCF' --exclude='*/' sasdev-xmm.esac.esa.int::XMM_CCF ~/ccf/
+```
+
+Ver: [[XMM-Newton]]</pre>
+</div>
 <div created="20170504022137831" creator="a9lara" modified="20170504023121943" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Descripción de Heisenberg del oscilador armónico">
 <pre>El Hamiltoniano del sistema es
 
@@ -11348,7 +11361,7 @@ $$\frac{1}{\rho_g}\frac{dP}{dr} = -\frac{GM(r)}{r^2}$$</pre>
 
 $$\nabla\times(A  \times B)=(B \cdot \nabla)A-(A\cdot \nabla)B+A(\nabla \cdot B)-B(\nabla \cdot A)$$</pre>
 </div>
-<div created="20210202200902969" creator="a9lara" modified="20210222232557262" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]] $:/tags/SideBar" title="Índice">
+<div created="20210202200902969" creator="a9lara" modified="20210223222104237" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]] $:/tags/SideBar" title="Índice">
 <pre>#''Academia''
 ##[[PhD]]
 #''Constantes''
@@ -11360,6 +11373,7 @@ $$\nabla\times(A  \times B)=(B \cdot \nabla)A-(A\cdot \nabla)B+A(\nabla \cdot B)
 ##[[Julia]]
 #''Reducción y Ajuste de Datos''
 ##[[Chandra]]
+##[[XMM-Newton]]
 
 </pre>
 </div>
@@ -12426,6 +12440,11 @@ $$\mathbf{F}=q(\mathbf{E}+\frac{1}{c} \mathbf{u} \times \mathbf{B})$$
 $$\mathbf{F'} =q(\mathbf{E'}+\frac{1}{c} \mathbf{u'} \times \mathbf{B'})$$
 
 $$\mathbf{F}=\frac{\gamma_{\mathbf{u'}}}{\gamma_{\mathbf{u}}}\left[\mathbf{F'}  +\frac{\mathbf{v}}{|\mathbf{v}|^2}(\gamma-1)(\mathbf{F'} \cdot\mathbf{v})+\frac{\gamma \mathbf{v}}{c^2}(\mathbf{u '}\cdot\mathbf{F'} )\right]$$</pre>
+</div>
+<div created="20210223222025266" creator="a9lara" modified="20210223222047729" modifier="a9lara" tags="PhD" title="XMM-Newton">
+<pre>#[[Descargar Archivos de Calibración (XMM-Newton)]]
+
+Ver: [[Índice]]</pre>
 </div>
 
 </div>
