@@ -563,6 +563,8 @@ Error message and password prompt
 
 <li>Propiedades de los sistemas termodinámicos</li>
 
+<li>PyPlot</li>
+
 <li>Radiative Processes Overview</li>
 
 <li>Radio Galaxies</li>
@@ -10626,7 +10628,7 @@ La divergencia de cualquier rotacional es cero.
 
 </pre>
 </div>
-<div created="20210203194522453" creator="a9lara" modified="20210203195725697" modifier="a9lara" tags="Julia" title="Documentation of a function">
+<div created="20210203194522453" creator="a9lara" modified="20210512212421347" modifier="a9lara" tags="Julia" title="Documentation of a function">
 <pre>```
 begin
 	&quot;&quot;&quot;
@@ -11622,8 +11624,9 @@ $$I = \sum_{\lambda} I_{\lambda}$$
 
  (catión &lt;&lt; - &lt;&lt; anión).</pre>
 </div>
-<div created="20210203194438279" creator="a9lara" modified="20210210184935300" modifier="a9lara" tags="[[Programming Languages]] Programación" title="Julia">
-<pre>#[[Documentation of a function]].
+<div created="20210203194438279" creator="a9lara" modified="20210512212329858" modifier="a9lara" tags="[[Programming Languages]] Programación" title="Julia">
+<pre>#[[Documentation of a function]]
+#[[PyPlot]]
 
 Ver: [[Índice]]</pre>
 </div>
@@ -12191,6 +12194,44 @@ $$\delta Q=0$$
 No intercambia materia.
 
 $$dN=0$$</pre>
+</div>
+<div created="20210512212336977" creator="a9lara" modified="20210512212403204" modifier="a9lara" tags="Julia" title="PyPlot">
+<pre>```
+
+using CSV
+using DataFrames
+using PyPlot
+
+csv_data = CSV.File(&quot;data_ClassF_RGS1_17.0-20.0A.qdp&quot;; startingbyteposition=51);
+
+data = DataFrame(csv_data) 
+rename!(data, 1 =&gt; &quot;wavelength_Å&quot;, 2 =&gt; &quot;error_wavelength_Å&quot;, 3 =&gt; &quot;counts&quot;, 4 =&gt; &quot;error_counts&quot;, 5 =&gt; &quot;model&quot; );
+
+λ=data[!,1]
+error_λ=data[!,2]
+counts=data[!,3]
+error_counts=data[!,4]
+model=data[!,5]
+
+clf()
+errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
+errorbar(λ,model*1e20,fmt=&quot;-&quot;,elinewidth=30, color=&quot;red&quot;,label=&quot;model&quot;)
+title(&quot;Class F - RGS 1&quot;,fontsize=19)
+xlabel(&quot;Wavelength (Å)&quot;,fontsize=15)
+ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize=15)
+xlim(17,20)
+ylim(0,4)
+marker = 0.5
+plot([18.627,18.627],[0,4],label=&quot;O VII Kβ (18.627 Å)&quot;,color=&quot;blue&quot;)
+plot([18.969,18.969],[0,4],label=&quot;O VIII Kα (18.969 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
+xticks(fontsize = 15)
+yticks(fontsize = 15)
+legend(fontsize = 15,loc=2)
+savefig(&quot;ClassF-RGS1_17.0-20.0A.jpg&quot;)
+
+```
+Ver: [[Julia]]
+</pre>
 </div>
 <div created="20210106182229756" creator="a9lara" modified="20210106182626657" modifier="a9lara" tags="Radiative Phd recombination" title="Radiative Processes Overview">
 <pre>`DIELECTRONIC RECMOBINATION` Is thre process in which the energy which becomes available during the capture process is carried away by the promotion of a bound electron to another bound orbit: 
