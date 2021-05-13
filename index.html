@@ -359,6 +359,8 @@ Error message and password prompt
 
 <li>Cúmulos de Galaxias</li>
 
+<li>Data Frames</li>
+
 <li>Delta de Dirac - Integración</li>
 
 <li>Delta de Dirac - Propiedad</li>
@@ -604,6 +606,8 @@ Error message and password prompt
 <li>Sistemas de Coordenadas</li>
 
 <li>Softwares (XMM-Newton)</li>
+
+<li>Subplots</li>
 
 <li>Suma del cuadrado de los residuos (SSR)</li>
 
@@ -10223,6 +10227,44 @@ Las Galaxias en un Cúmulo de Galaxias no están Termalizadas, porque no tienen 
 
 Las estrellas visibles en galaxias contribuyen menos que el 5 $$\%$$ de la masa total en los Cúmulos de Galaxias.</pre>
 </div>
+<div created="20210512212336977" creator="a9lara" modified="20210513234022345" modifier="a9lara" tags="Julia" title="Data Frames">
+<pre>```
+
+using CSV
+using DataFrames
+using PyPlot
+
+csv_data = CSV.File(&quot;data_ClassF_RGS1_17.0-20.0A.qdp&quot;; startingbyteposition=51);
+
+data = DataFrame(csv_data) 
+rename!(data, 1 =&gt; &quot;wavelength_Å&quot;, 2 =&gt; &quot;error_wavelength_Å&quot;, 3 =&gt; &quot;counts&quot;, 4 =&gt; &quot;error_counts&quot;, 5 =&gt; &quot;model&quot; );
+
+λ=data[!,1]
+error_λ=data[!,2]
+counts=data[!,3]
+error_counts=data[!,4]
+model=data[!,5]
+
+clf()
+errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
+errorbar(λ,model*1e20,fmt=&quot;-&quot;,elinewidth=30, color=&quot;red&quot;,label=&quot;model&quot;)
+title(&quot;Class F - RGS 1&quot;,fontsize=19)
+xlabel(&quot;Wavelength (Å)&quot;,fontsize=15)
+ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize=15)
+xlim(17,20)
+ylim(0,4)
+marker = 0.5
+plot([18.627,18.627],[0,4],label=&quot;O VII Kβ (18.627 Å)&quot;,color=&quot;blue&quot;)
+plot([18.969,18.969],[0,4],label=&quot;O VIII Kα (18.969 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
+xticks(fontsize = 15)
+yticks(fontsize = 15)
+legend(fontsize = 15,loc=2)
+savefig(&quot;ClassF-RGS1_17.0-20.0A.jpg&quot;)
+
+```
+Ver: [[Julia]]
+</pre>
+</div>
 <div created="20141128030649311" creator="a9lara" modified="20170514005449585" modifier="a9lara" tags="Matemáticas" title="Delta de Dirac - Integración">
 <pre>$$\int_{-\infty}^{\infty} f(x)\delta(x-a)dx=f(a)$$
 
@@ -11624,9 +11666,10 @@ $$I = \sum_{\lambda} I_{\lambda}$$
 
  (catión &lt;&lt; - &lt;&lt; anión).</pre>
 </div>
-<div created="20210203194438279" creator="a9lara" modified="20210512212329858" modifier="a9lara" tags="[[Programming Languages]] Programación" title="Julia">
+<div created="20210203194438279" creator="a9lara" modified="20210513234258480" modifier="a9lara" tags="[[Programming Languages]] Programación" title="Julia">
 <pre>#[[Documentation of a function]]
 #[[PyPlot]]
+#[[Data Frames]]
 
 Ver: [[Índice]]</pre>
 </div>
@@ -12195,43 +12238,10 @@ No intercambia materia.
 
 $$dN=0$$</pre>
 </div>
-<div created="20210512212336977" creator="a9lara" modified="20210512212403204" modifier="a9lara" tags="Julia" title="PyPlot">
-<pre>```
+<div created="20210513233926855" creator="a9lara" modified="20210513234115853" modifier="a9lara" tags="Julia" title="PyPlot">
+<pre>#[[Subplots]]
 
-using CSV
-using DataFrames
-using PyPlot
-
-csv_data = CSV.File(&quot;data_ClassF_RGS1_17.0-20.0A.qdp&quot;; startingbyteposition=51);
-
-data = DataFrame(csv_data) 
-rename!(data, 1 =&gt; &quot;wavelength_Å&quot;, 2 =&gt; &quot;error_wavelength_Å&quot;, 3 =&gt; &quot;counts&quot;, 4 =&gt; &quot;error_counts&quot;, 5 =&gt; &quot;model&quot; );
-
-λ=data[!,1]
-error_λ=data[!,2]
-counts=data[!,3]
-error_counts=data[!,4]
-model=data[!,5]
-
-clf()
-errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
-errorbar(λ,model*1e20,fmt=&quot;-&quot;,elinewidth=30, color=&quot;red&quot;,label=&quot;model&quot;)
-title(&quot;Class F - RGS 1&quot;,fontsize=19)
-xlabel(&quot;Wavelength (Å)&quot;,fontsize=15)
-ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize=15)
-xlim(17,20)
-ylim(0,4)
-marker = 0.5
-plot([18.627,18.627],[0,4],label=&quot;O VII Kβ (18.627 Å)&quot;,color=&quot;blue&quot;)
-plot([18.969,18.969],[0,4],label=&quot;O VIII Kα (18.969 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
-xticks(fontsize = 15)
-yticks(fontsize = 15)
-legend(fontsize = 15,loc=2)
-savefig(&quot;ClassF-RGS1_17.0-20.0A.jpg&quot;)
-
-```
-Ver: [[Julia]]
-</pre>
+Ver: [[Julia]]</pre>
 </div>
 <div created="20210106182229756" creator="a9lara" modified="20210106182626657" modifier="a9lara" tags="Radiative Phd recombination" title="Radiative Processes Overview">
 <pre>`DIELECTRONIC RECMOBINATION` Is thre process in which the energy which becomes available during the capture process is carried away by the promotion of a bound electron to another bound orbit: 
@@ -12580,6 +12590,202 @@ $$h_\rho=h_z=1,\ h_\varphi=\rho$$
 <pre>#[[SAS (XMM-Newton)]]
 
 Ver: [[XMM-Newton]]</pre>
+</div>
+<div created="20210513233948808" creator="a9lara" modified="20210513234048961" modifier="a9lara" tags="Julia" title="Subplots">
+<pre>
+```
+using CSV
+using DataFrames
+using PyPlot
+
+#########################################
+#|	 ClassD_RGS2_11.0-14.0A
+#########################################
+
+csv_data = CSV.File(&quot;data_ClassD_RGS2_11.0-14.0A.qdp&quot;; startingbyteposition=51);
+data = DataFrame(csv_data) 
+rename!(data, 1 =&gt; &quot;wavelength_Å&quot;, 2 =&gt; &quot;error_wavelength_Å&quot;, 3 =&gt; &quot;counts&quot;, 4 =&gt; &quot;error_counts&quot;, 5 =&gt; &quot;model&quot; );
+
+λ=data[!,1]
+error_λ=data[!,2]
+counts=data[!,3]
+error_counts=data[!,4]
+model=data[!,5]
+
+
+λ1=λ
+error_λ1=error_λ
+counts1=counts
+error_counts1=error_counts
+model1=model
+
+clf()
+errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
+errorbar(λ,model*1e20,fmt=&quot;-&quot;,linewidth=1.33, color=&quot;red&quot;,label=&quot;model&quot;)
+title(&quot;Class D - RGS 2&quot;,fontsize=9)
+xlabel(&quot;Wavelength (Å)&quot;,fontsize = 9)
+ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize = 9)
+xlim(11,14)
+ylim(1,2.5)
+marker = 0.5
+plot([12.134,12.134],[0,25],label=&quot;Ne X Kα (12.134 Å)&quot;,color=&quot;blue&quot;)
+plot([13.447,13.447],[0,25],label=&quot;Ne IX Kα (13.447 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
+plot([13.646,13.646],[0,25],label=&quot;Ne VIII Kα &amp; Kβ (13.646 Å, 13.648 Å)&quot;,color=&quot;blue&quot;,&quot;:&quot;)
+xticks(fontsize = 10)
+yticks(fontsize=9)
+legend(fontsize=9,loc=2)
+savefig(&quot;ClassD-RGS2_11.0-14.0A.png&quot;,dpi=200)
+
+#########################################
+#|	 ClassE_RGS2_11.0-14.0A
+#########################################
+
+csv_data = CSV.File(&quot;data_ClassE_RGS2_11.0-14.0A.qdp&quot;; startingbyteposition=51);
+data = DataFrame(csv_data) 
+rename!(data, 1 =&gt; &quot;wavelength_Å&quot;, 2 =&gt; &quot;error_wavelength_Å&quot;, 3 =&gt; &quot;counts&quot;, 4 =&gt; &quot;error_counts&quot;, 5 =&gt; &quot;model&quot; );
+
+λ=data[!,1]
+error_λ=data[!,2]
+counts=data[!,3]
+error_counts=data[!,4]
+model=data[!,5]
+
+λ2=λ
+error_λ2=error_λ
+counts2=counts
+error_counts2=error_counts
+model2=model
+
+clf()
+errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
+errorbar(λ,model*1e20,fmt=&quot;-&quot;,linewidth=1.33, color=&quot;red&quot;,label=&quot;model&quot;)
+title(&quot;Class E - RGS 2&quot;,fontsize=9)
+xlabel(&quot;Wavelength (Å)&quot;,fontsize = 9)
+ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize = 9)
+xlim(11,14)
+ylim(1,2.5)
+marker = 0.5
+plot([12.134,12.134],[0,25],label=&quot;Ne X Kα (12.134 Å)&quot;,color=&quot;blue&quot;)
+plot([13.447,13.447],[0,25],label=&quot;Ne IX Kα (13.447 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
+plot([13.646,13.646],[0,25],label=&quot;Ne VIII Kα &amp; Kβ (13.646 Å, 13.648 Å)&quot;,color=&quot;blue&quot;,&quot;:&quot;)
+xticks(fontsize = 10)
+yticks(fontsize=9)
+legend(fontsize=9,loc=2)
+savefig(&quot;ClassE-RGS2_11.0-14.0A.png&quot;,dpi=200)
+
+#########################################
+#|	 ClassF_RGS2_11.0-14.0A
+#########################################
+
+csv_data = CSV.File(&quot;data_ClassF_RGS2_11.0-14.0A.qdp&quot;; startingbyteposition=51);
+data = DataFrame(csv_data) 
+rename!(data, 1 =&gt; &quot;wavelength_Å&quot;, 2 =&gt; &quot;error_wavelength_Å&quot;, 3 =&gt; &quot;counts&quot;, 4 =&gt; &quot;error_counts&quot;, 5 =&gt; &quot;model&quot; );
+
+λ=data[!,1]
+error_λ=data[!,2]
+counts=data[!,3]
+error_counts=data[!,4]
+model=data[!,5]
+
+λ3=λ
+error_λ3=error_λ
+counts3=counts
+error_counts3=error_counts
+model3=model
+
+clf()
+errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
+errorbar(λ,model*1e20,fmt=&quot;-&quot;,linewidth=1.33, color=&quot;red&quot;,label=&quot;model&quot;)
+title(&quot;Class F - RGS 2&quot;,fontsize=9)
+xlabel(&quot;Wavelength (Å)&quot;,fontsize = 9)
+ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize = 9)
+xlim(11,14)
+ylim(0.1,1.5)
+marker = 0.5
+plot([12.134,12.134],[0,25],label=&quot;Ne X Kα (12.134 Å)&quot;,color=&quot;blue&quot;)
+plot([13.447,13.447],[0,25],label=&quot;Ne IX Kα (13.447 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
+plot([13.646,13.646],[0,25],label=&quot;Ne VIII Kα &amp; Kβ (13.646 Å, 13.648 Å)&quot;,color=&quot;blue&quot;,&quot;:&quot;)
+xticks(fontsize = 10)
+yticks(fontsize=9)
+legend(fontsize=9,loc=2)
+savefig(&quot;ClassF-RGS2_11.0-14.0A.png&quot;,dpi=200)
+
+
+#########################################
+#|	 ClassF_RGS2_11.0-14.0A
+#########################################
+
+subplots(sharex=&quot;col&quot;, sharey=&quot;none&quot;)
+#suptitle(&quot;RGS 2&quot;) 
+ax1 = subplot(311)
+λ=λ1
+error_λ=error_λ1
+counts=counts1
+error_counts=error_counts1
+model=model1
+errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
+errorbar(λ,model*1e20,fmt=&quot;-&quot;,linewidth=1.33, color=&quot;red&quot;,label=&quot;model&quot;)
+title(&quot;RGS 2&quot;,fontsize=9)
+#title(&quot;Class D - RGS 2&quot;,fontsize=9)
+annotate(&quot;Class D&quot;, fontsize = 9, xy=(14, 1.5), rotation=-90)
+xlabel(&quot;Wavelength (Å)&quot;,fontsize = 9)
+#ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize = 9)
+xlim(11,14)
+ax1.set_ylim([1,2.5])
+marker = 0.5
+plot([12.134,12.134],[0,25],label=&quot;Ne X Kα (12.134 Å)&quot;,color=&quot;blue&quot;)
+plot([13.447,13.447],[0,25],label=&quot;Ne IX Kα (13.447 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
+plot([13.646,13.646],[0,25],label=&quot;Ne VIII Kα &amp; Kβ (13.646 Å, 13.648 Å)&quot;,color=&quot;blue&quot;,&quot;:&quot;)
+xticks(fontsize = 10)
+yticks(fontsize=9)
+legend(fontsize=9,loc=2)
+ax2 = subplot(312)
+λ=λ2
+error_λ=error_λ2
+counts=counts2
+error_counts=error_counts2
+model=model2
+errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
+errorbar(λ,model*1e20,fmt=&quot;-&quot;,linewidth=1.33, color=&quot;red&quot;,label=&quot;model&quot;)
+#title(&quot;Class E - RGS 2&quot;,fontsize=9)
+annotate(&quot;Class E&quot;, fontsize = 9, xy=(14, 1.5), rotation=-90)
+xlabel(&quot;Wavelength (Å)&quot;,fontsize = 9)
+ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize = 9)
+xlim(11,14)
+ax2.set_ylim([1,2.5])
+marker = 0.5
+plot([12.134,12.134],[0,25],label=&quot;Ne X Kα (12.134 Å)&quot;,color=&quot;blue&quot;)
+plot([13.447,13.447],[0,25],label=&quot;Ne IX Kα (13.447 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
+plot([13.646,13.646],[0,25],label=&quot;Ne VIII Kα &amp; Kβ (13.646 Å, 13.648 Å)&quot;,color=&quot;blue&quot;,&quot;:&quot;)
+xticks(fontsize = 10)
+yticks(fontsize=9)
+#legend(fontsize=9,loc=2)
+savefig(&quot;ClassE-RGS2_11.0-14.0A.png&quot;,dpi=200)
+ax3 = subplot(313)
+λ=λ3
+error_λ=error_λ3
+counts=counts3
+error_counts=error_counts3
+model=model3
+errorbar(λ,counts*1e20,yerr=error_counts*1e20,fmt=&quot;o&quot;,label=&quot;data&quot;,color=&quot;black&quot;,markersize=3.33)
+errorbar(λ,model*1e20,fmt=&quot;-&quot;,linewidth=1.33, color=&quot;red&quot;,label=&quot;model&quot;)
+#title(&quot;Class F - RGS 2&quot;,fontsize=9)
+annotate(&quot;Class F&quot;, fontsize = 9, xy=(14, 0.6), rotation=-90)
+xlabel(&quot;Wavelength (Å)&quot;,fontsize = 9)
+#ylabel(L&quot;normalized counts  $10 ^{-20}$ s$^{-1}$ Hz$^{-1}$ cm$^{-2}$&quot;,fontsize = 9)
+xlim(11,14)
+ax3.set_ylim([0.1,1.5])
+marker = 0.5
+plot([12.134,12.134],[0,25],label=&quot;Ne X Kα (12.134 Å)&quot;,color=&quot;blue&quot;)
+plot([13.447,13.447],[0,25],label=&quot;Ne IX Kα (13.447 Å)&quot;,color=&quot;blue&quot;,&quot;--&quot;)
+plot([13.646,13.646],[0,25],label=&quot;Ne VIII Kα &amp; Kβ (13.646 Å, 13.648 Å)&quot;,color=&quot;blue&quot;,&quot;:&quot;)
+xticks(fontsize = 10)
+yticks(fontsize=9)
+#legend(fontsize=9,loc=2)
+savefig(&quot;RGS2_11.0-14.0A.png&quot;,dpi=200)
+
+```
+Ver: [[PyPlot]</pre>
 </div>
 <div created="20210202192238830" creator="a9lara" modified="20210412180653798" modifier="a9lara" tags="Ajustes Estadística Brilliant" title="Suma del cuadrado de los residuos (SSR)">
 <pre>@@text-align:justify;
