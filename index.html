@@ -371,6 +371,8 @@ Error message and password prompt
 
 <li>Descargar Archivos de Calibración (XMM-Newton)</li>
 
+<li>Descomprimir Archivos (XMM-Newton)</li>
+
 <li>Descripción de Heisenberg del oscilador armónico</li>
 
 <li>Desintegración Radioactiva</li>
@@ -8544,7 +8546,7 @@ Error message and password prompt
         },
         &quot;$:/info/browser/version&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/version&quot;,
-            &quot;text&quot;: &quot;90.0&quot;
+            &quot;text&quot;: &quot;91.0&quot;
         },
         &quot;$:/info/browser/is/webkit&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/is/webkit&quot;,
@@ -10342,11 +10344,32 @@ Y finalmente despejamos la luminosidad de Eddington
 $$L_{Edd}=\frac{GM4c\pi}{k}$$
 </pre>
 </div>
-<div created="20210223221807610" creator="a9lara" modified="20210223222019282" modifier="a9lara" tags="PhD XMM-Newton [[Calibration Files]]" title="Descargar Archivos de Calibración (XMM-Newton)">
+<div created="20210223221807610" creator="a9lara" modified="20210609220735859" modifier="a9lara" tags="PhD XMM-Newton [[Calibration Files]]" title="Descargar Archivos de Calibración (XMM-Newton)">
 <pre>En la carpeta donde se encuentra la carpeta ccf escribir en la terminal:
 
 ```
 rsync -v -a --delete --delete-after --force --include='*.CCF' --exclude='*/' sasdev-xmm.esac.esa.int::XMM_CCF ~/ccf/
+```
+
+Ver: [[XMM-Newton]]</pre>
+</div>
+<div created="20210609220738441" creator="a9lara" modified="20210609220841125" modifier="a9lara" tags="[[Reducción y Ajuste de Datos]]" title="Descomprimir Archivos (XMM-Newton)">
+<pre>En la carpeta donde se encuentran los obs ids del objeto, por ejemplo en NGC 3783  que contiene varios obsids 
+
+```
+ls -d */ &gt; obs.txt
+set numline = `wc obs.txt`  
+@ line = 1
+while ($line &lt;= $numline[1])
+set obsid = `sed -n ${line}p obs.txt | awk '{print $1}'`
+cat &lt;&lt;EOF &gt;&gt; Descomprimir.csh
+cd ${obsid} 
+tar xvf *.TAR
+cd .. 
+EOF
+@ line ++
+end
+csh Descomprimir.csh
 ```
 
 Ver: [[XMM-Newton]]</pre>
@@ -12592,8 +12615,7 @@ $$h_\rho=h_z=1,\ h_\varphi=\rho$$
 Ver: [[XMM-Newton]]</pre>
 </div>
 <div created="20210513233948808" creator="a9lara" modified="20210513234048961" modifier="a9lara" tags="Julia" title="Subplots">
-<pre>
-```
+<pre>```
 using CSV
 using DataFrames
 using PyPlot
@@ -13010,9 +13032,11 @@ $$\mathbf{F'} =q(\mathbf{E'}+\frac{1}{c} \mathbf{u'} \times \mathbf{B'})$$
 
 $$\mathbf{F}=\frac{\gamma_{\mathbf{u'}}}{\gamma_{\mathbf{u}}}\left[\mathbf{F'}  +\frac{\mathbf{v}}{|\mathbf{v}|^2}(\gamma-1)(\mathbf{F'} \cdot\mathbf{v})+\frac{\gamma \mathbf{v}}{c^2}(\mathbf{u '}\cdot\mathbf{F'} )\right]$$</pre>
 </div>
-<div created="20210223222025266" creator="a9lara" modified="20210304001452461" modifier="a9lara" tags="PhD" title="XMM-Newton">
+<div created="20210223222025266" creator="a9lara" modified="20210609220723589" modifier="a9lara" tags="PhD" title="XMM-Newton">
 <pre>#[[Softwares (XMM-Newton)]]
+#[[Descomprimir Archivos (XMM-Newton)]]
 #[[Descargar Archivos de Calibración (XMM-Newton)]]
+
 
 Ver: [[Índice]]</pre>
 </div>
