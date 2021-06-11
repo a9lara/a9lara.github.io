@@ -12609,7 +12609,7 @@ Ver: [[Recetas Saludables]]
 
 Ver: [[Softwares (XMM-Newton)]]</pre>
 </div>
-<div created="20210611193114767" creator="a9lara" modified="20210611210240984" modifier="a9lara" tags="Terminal" title="Script para Reducir Datos (XMM-Newton)">
+<div created="20210611193114767" creator="a9lara" modified="20210611231021904" modifier="a9lara" tags="Terminal" title="Script para Reducir Datos (XMM-Newton)">
 <pre>```
 cat &lt;&lt;EOF &gt; ScriptReducirDatosXMMNewton.csh
 cd 
@@ -12625,7 +12625,7 @@ mkdir ~/Documents/${obsid}_Work
 cd  ${obsid}_Work
 export SAS_ODF=~/Documents/${obsid}
 EOF
-awk 'BEGIN { print &quot;cifbuild &gt;&amp; cifbuild.log \nexport SAS_CCFPATH=~/ccf \nodfingest &gt;&amp; odfingest.log \nexport SAS_ODF=`pwd`/`ls -1 *SUM.SAS`&quot; }' &gt;&gt; ScriptReducirDatosXMMNewton.csh
+awk 'BEGIN { print &quot;cifbuild &gt;&amp; cifbuild.log \nexport SAS_CCF=`pwd`/ccf.cif  \nodfingest &gt;&amp; odfingest.log \nexport SAS_ODF=`pwd`/`ls -1 *SUM.SAS`&quot; }' &gt;&gt; ScriptReducirDatosXMMNewton.csh
 cat &lt;&lt;EOF &gt;&gt; ScriptReducirDatosXMMNewton.csh
 rgsproc -V 4 &gt;&amp; ${obsid}_rgsproc.log
 cd
