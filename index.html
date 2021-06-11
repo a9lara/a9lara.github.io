@@ -583,6 +583,8 @@ Error message and password prompt
 
 <li>Reducción de Datos (CIAO)</li>
 
+<li>Reducir Datos (XMM-Newton)</li>
+
 <li>Regímenes MONDianos</li>
 
 <li>Regresión Lineal</li>
@@ -8520,8 +8522,8 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210610182444643" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20170422063314490" creator="a9lara" modified="20210611190700473" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
@@ -10344,12 +10346,18 @@ Y finalmente despejamos la luminosidad de Eddington
 $$L_{Edd}=\frac{GM4c\pi}{k}$$
 </pre>
 </div>
-<div created="20210223221807610" creator="a9lara" modified="20210609220735859" modifier="a9lara" tags="PhD XMM-Newton [[Calibration Files]]" title="Descargar Archivos de Calibración (XMM-Newton)">
-<pre>En la carpeta donde se encuentra la carpeta ccf escribir en la terminal:
+<div created="20210223221807610" creator="a9lara" modified="20210611191200599" modifier="a9lara" tags="PhD XMM-Newton [[Calibration Files]]" title="Descargar Archivos de Calibración (XMM-Newton)">
+<pre>Hacer en la carpeta de Home una carpeta que se llame ccf. Entrar a esa carpeta y escribir en la terminal:
 
 ```
 rsync -v -a --delete --delete-after --force --include='*.CCF' --exclude='*/' sasdev-xmm.esac.esa.int::XMM_CCF ~/ccf/
 ```
+Y finalmente escribir en el archivo .bashrc
+
+```
+export SAS_CCFPATH=~/ccf
+```
+
 
 Ver: [[XMM-Newton]]</pre>
 </div>
@@ -12380,6 +12388,33 @@ tg_resolve_events
 
 @@</pre>
 </div>
+<div created="20210611190810636" creator="a9lara" modified="20210611192359085" modifier="a9lara" tags="PhD" title="Reducir Datos (XMM-Newton)">
+<pre>Hacer una carpeta nueva y nos situamos adentro de ella y escribimos en la terminal:
+
+```
+HEAsoft
+SAS
+export SAS_ODF=~/Documents/ObsID
+cifbuild &gt;&amp; cifbuild.log 
+export SAS_CCF=`pwd`/ccf.cif 
+odfingest &gt;&amp; odfingest.log 
+export SAS_ODF=`pwd`/`ls -1 *SUM.SAS`
+xmmextractor -V 4 &gt;&amp; xmmextractor.log
+```
+
+So solo los datos del RGS son de interés, entonces en vez de escribir
+
+```
+xmmextractor -V 4 &gt;&amp; xmmextractor.log
+```
+se escribe:
+
+```
+rgsproc -V 4 &gt;&amp; rgsproc.log
+```
+
+Ver: [[XMM-Newton]]</pre>
+</div>
 <div created="20190615203538781" creator="a9lara" modified="20190615205009094" modifier="a9lara" tags="MOND Astrofísica Cosmología" title="Regímenes MONDianos">
 <pre>Considerando un sistema virializado en el cuál gira un objeto a una velocidad $$\mathrm{v}$$ alrededor de un objeto de masa $$M$$, la velocidad que este llevará bajo un modelo MONDiano cuando su aceleración, a, sea $$a&lt;&lt;a_{o}$$, donde $$a_{0}=1.2 \times 10 ^{-13} \frac{km}{s^2}$$, será:
 
@@ -13032,10 +13067,11 @@ $$\mathbf{F'} =q(\mathbf{E'}+\frac{1}{c} \mathbf{u'} \times \mathbf{B'})$$
 
 $$\mathbf{F}=\frac{\gamma_{\mathbf{u'}}}{\gamma_{\mathbf{u}}}\left[\mathbf{F'}  +\frac{\mathbf{v}}{|\mathbf{v}|^2}(\gamma-1)(\mathbf{F'} \cdot\mathbf{v})+\frac{\gamma \mathbf{v}}{c^2}(\mathbf{u '}\cdot\mathbf{F'} )\right]$$</pre>
 </div>
-<div created="20210223222025266" creator="a9lara" modified="20210609220723589" modifier="a9lara" tags="PhD" title="XMM-Newton">
+<div created="20210223222025266" creator="a9lara" modified="20210611191042372" modifier="a9lara" tags="PhD" title="XMM-Newton">
 <pre>#[[Softwares (XMM-Newton)]]
 #[[Descomprimir Archivos (XMM-Newton)]]
 #[[Descargar Archivos de Calibración (XMM-Newton)]]
+#[[Reducir Datos (XMM-Newton)]]
 
 
 Ver: [[Índice]]</pre>
