@@ -8524,8 +8524,8 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210611195249718" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
-<pre>Índice</pre>
+<div created="20170422063314490" creator="a9lara" modified="20210611210232508" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
@@ -12609,7 +12609,7 @@ Ver: [[Recetas Saludables]]
 
 Ver: [[Softwares (XMM-Newton)]]</pre>
 </div>
-<div created="20210611193114767" creator="a9lara" modified="20210611201301795" modifier="a9lara" tags="Terminal" title="Script para Reducir Datos (XMM-Newton)">
+<div created="20210611193114767" creator="a9lara" modified="20210611210240984" modifier="a9lara" tags="Terminal" title="Script para Reducir Datos (XMM-Newton)">
 <pre>```
 cat &lt;&lt;EOF &gt; ScriptReducirDatosXMMNewton.csh
 cd 
@@ -12625,7 +12625,7 @@ mkdir ~/Documents/${obsid}_Work
 cd  ${obsid}_Work
 export SAS_ODF=~/Documents/${obsid}
 EOF
-awk 'BEGIN { print &quot;cifbuild &gt;&amp; cifbuild.log \nodfingest &gt;&amp; odfingest.log \nexport SAS_ODF=`pwd`/`ls -1 *SUM.SAS`&quot; }' &gt;&gt; ScriptReducirDatosXMMNewton.csh
+awk 'BEGIN { print &quot;cifbuild &gt;&amp; cifbuild.log \nexport SAS_CCFPATH=~/ccf \nodfingest &gt;&amp; odfingest.log \nexport SAS_ODF=`pwd`/`ls -1 *SUM.SAS`&quot; }' &gt;&gt; ScriptReducirDatosXMMNewton.csh
 cat &lt;&lt;EOF &gt;&gt; ScriptReducirDatosXMMNewton.csh
 rgsproc -V 4 &gt;&amp; ${obsid}_rgsproc.log
 cd
