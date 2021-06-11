@@ -605,7 +605,19 @@ Error message and password prompt
 
 <li>SAS (XMM-Newton)</li>
 
+<li>Script - Descomprimir</li>
+
+<li>Script - Enlistar Carpetas</li>
+
+<li>Script - Hacer Carpetas</li>
+
+<li>Script - Hacer Script</li>
+
+<li>Script para Descomprimir (XMM-Newton)</li>
+
 <li>Script para Reducir Datos (XMM-Newton)</li>
+
+<li>Scripts</li>
 
 <li>SED</li>
 
@@ -8524,8 +8536,8 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210611210232508" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20170422063314490" creator="a9lara" modified="20210611235826423" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
 <pre>a9lara</pre>
@@ -10363,7 +10375,7 @@ export SAS_CCFPATH=~/ccf
 
 Ver: [[XMM-Newton]]</pre>
 </div>
-<div created="20210609220738441" creator="a9lara" modified="20210610182502239" modifier="a9lara" tags="[[Reducción y Ajuste de Datos]] Terminal" title="Descomprimir Archivos (XMM-Newton)">
+<div created="20210609220738441" creator="a9lara" modified="20210611234707813" modifier="a9lara" tags="[[Reducción y Ajuste de Datos]] Terminal" title="Descomprimir Archivos (XMM-Newton)">
 <pre>En la carpeta donde se encuentran los obs ids del objeto, por ejemplo en NGC 3783  que contiene varios obsids 
 
 ```
@@ -10382,7 +10394,11 @@ end
 csh Descomprimir.csh
 ```
 
-Ver: [[XMM-Newton]]</pre>
+Ver: [[XMM-Newton]]
+
+Ver: [[Script para Descomprimir (XMM-Newton)]]
+
+Ver: [[Scripts]]</pre>
 </div>
 <div created="20170504022137831" creator="a9lara" modified="20170504023121943" modifier="a9lara" tags="[[Mecánica Cuántica]]" title="Descripción de Heisenberg del oscilador armónico">
 <pre>El Hamiltoniano del sistema es
@@ -12609,6 +12625,95 @@ Ver: [[Recetas Saludables]]
 
 Ver: [[Softwares (XMM-Newton)]]</pre>
 </div>
+<div created="20210611235027579" creator="a9lara" modified="20210611235035968" modifier="a9lara" tags="Terminal" title="Script - Descomprimir">
+<pre>```
+set numline = `wc obs.txt`  
+@ line = 1
+while ($line &lt;= $numline[1])
+set obsid = `sed -n ${line}p obs.txt | awk '{print $1}'`
+cat &lt;&lt;EOF &gt;&gt; Descomprimir.csh
+cd ${obsid} 
+tar xvf *.TAR
+cd .. 
+EOF
+@ line ++
+end
+csh Descomprimir.csh
+rm Descomprimir.csh
+```
+
+Ver: [[Scripts]]</pre>
+</div>
+<div created="20210611235129287" creator="a9lara" modified="20210611235144847" modifier="a9lara" title="Script - Enlistar Carpetas">
+<pre>```
+ls -d */ &gt; obs.txt
+sed -i 's/.$//' obs.txt  
+```
+
+Ver: [[Scripts]]</pre>
+</div>
+<div created="20210611234900251" creator="a9lara" modified="20210611235012233" modifier="a9lara" tags="Terminal" title="Script - Hacer Carpetas">
+<pre>```
+set numline_obsid = `wc obs.txt`
+@ line_obsid = 1
+while ( $line_obsid &lt;= $numline_obsid[1] )
+set obsid = `sed -n ${line_obsid}p obs.txt | awk '{print $1}'`
+mkdir /home/migitalo/Downloads/NGC3783/${obsid}_Work
+@ line_obsid ++
+end
+```
+
+Ver: [[Scripts]]</pre>
+</div>
+<div created="20210611235238444" creator="a9lara" modified="20210611235359852" modifier="a9lara" tags="Terminal" title="Script - Hacer Script">
+<pre>```
+set numline_obsid = `wc obs.txt`
+@ line_obsid = 1
+cat &lt;&lt;EOF &gt; ScriptReducirDatosXMMNewton.csh
+cd 
+HEASOFT 
+SAS 
+EOF
+while ( $line_obsid &lt;= $numline_obsid[1] )
+set obsid = `sed -n ${line_obsid}p obs.txt | awk '{print $1}'`
+cat &lt;&lt;EOF &gt;&gt; ScriptReducirDatosXMMNewton.csh
+cd
+export SAS_ODF=~/Downloads/NGC3783/${obsid}
+cd ~/Downloads/NGC3783/${obsid}_Work
+EOF
+awk 'BEGIN { print &quot;cifbuild &gt;&amp; cifbuild.log \nexport SAS_CCF=`pwd`/ccf.cif  \nodfingest &gt;&amp; odfingest.log \nexport SAS_ODF=`pwd`/`ls -1 *SUM.SAS`&quot; }' &gt;&gt; ScriptReducirDatosXMMNewton.csh
+cat &lt;&lt;EOF &gt;&gt; ScriptReducirDatosXMMNewton.csh
+rgsproc -V 4 &gt;&amp; ${obsid}_rgsproc.log
+EOF
+@ line_obsid ++
+end
+cat &lt;&lt;EOF &gt;&gt; ScriptReducirDatosXMMNewton.csh
+exit 
+EOF
+```
+Ver: [[Scripts]]</pre>
+</div>
+<div created="20210611234541946" creator="a9lara" modified="20210611235021233" modifier="a9lara" tags="Terminal" title="Script para Descomprimir (XMM-Newton)">
+<pre>```
+set numline = `wc obs.txt`  
+@ line = 1
+while ($line &lt;= $numline[1])
+set obsid = `sed -n ${line}p obs.txt | awk '{print $1}'`
+cat &lt;&lt;EOF &gt;&gt; Descomprimir.csh
+cd ${obsid} 
+tar xvf *.TAR
+cd .. 
+EOF
+@ line ++
+end
+csh Descomprimir.csh
+rm Descomprimir.csh
+```
+
+Ver: [[Descomprimir Archivos (XMM-Newton)]]
+
+Ver: [[Scripts]]</pre>
+</div>
 <div created="20210611193114767" creator="a9lara" modified="20210611231021904" modifier="a9lara" tags="Terminal" title="Script para Reducir Datos (XMM-Newton)">
 <pre>```
 cat &lt;&lt;EOF &gt; ScriptReducirDatosXMMNewton.csh
@@ -12638,6 +12743,14 @@ EOF
 ```
 
 Ver: [[Reducir Datos (XMM-Newton)]]</pre>
+</div>
+<div created="20210611234726824" creator="a9lara" modified="20210611235353436" modifier="a9lara" tags="Terminal" title="Scripts">
+<pre>#[[Script - Enlistar Carpetas]]
+#[[Script - Descomprimir]]
+#[[Script - Hacer Carpetas]]
+#[[Script - Hacer Script]]
+
+Ver: [[Índice]]</pre>
 </div>
 <div created="20201120211338713" creator="a9lara" modified="20201120211528621" modifier="a9lara" tags="" title="SED">
 <pre>Spectral Energy Distribution
@@ -13101,14 +13214,15 @@ $$\mathbf{F'} =q(\mathbf{E'}+\frac{1}{c} \mathbf{u'} \times \mathbf{B'})$$
 
 $$\mathbf{F}=\frac{\gamma_{\mathbf{u'}}}{\gamma_{\mathbf{u}}}\left[\mathbf{F'}  +\frac{\mathbf{v}}{|\mathbf{v}|^2}(\gamma-1)(\mathbf{F'} \cdot\mathbf{v})+\frac{\gamma \mathbf{v}}{c^2}(\mathbf{u '}\cdot\mathbf{F'} )\right]$$</pre>
 </div>
-<div created="20210223222025266" creator="a9lara" modified="20210611191042372" modifier="a9lara" tags="PhD" title="XMM-Newton">
+<div created="20210223222025266" creator="a9lara" modified="20210611235453955" modifier="a9lara" tags="PhD" title="XMM-Newton">
 <pre>#[[Softwares (XMM-Newton)]]
 #[[Descomprimir Archivos (XMM-Newton)]]
 #[[Descargar Archivos de Calibración (XMM-Newton)]]
 #[[Reducir Datos (XMM-Newton)]]
 
+Ver: [[Índice]]
 
-Ver: [[Índice]]</pre>
+Ver: [[Scripts]]</pre>
 </div>
 
 </div>
