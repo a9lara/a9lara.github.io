@@ -605,6 +605,8 @@ Error message and password prompt
 
 <li>SAS (XMM-Newton)</li>
 
+<li>Script para Reducir Datos (XMM-Newton)</li>
+
 <li>SED</li>
 
 <li>Sistemas de Coordenadas</li>
@@ -8522,7 +8524,7 @@ Error message and password prompt
 <div created="20190615205717204" creator="a9lara" modified="20210202195316656" modifier="a9lara" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20170422063314490" creator="a9lara" modified="20210611190700473" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
+<div created="20170422063314490" creator="a9lara" modified="20210611195249718" modifier="a9lara" title="$:/state/tab/sidebar--1835078512">
 <pre>Índice</pre>
 </div>
 <div created="20141120000445644" creator="a" modified="20141121011744831" modifier="a9lar" title="$:/status/UserName">
@@ -8973,7 +8975,7 @@ This plugin contains tools to help slice up long texts into individual tiddlers.
 <div created="20190615205728632" creator="a9lara" modified="20210202195308520" modifier="a9lara" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20210222193346865" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20210611195237969" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190615205731476" creator="a9lara" modified="20190615205731476" modifier="a9lara" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/http://tiddlywiki.com/library/v5.1.13/index.html" url="http://tiddlywiki.com/library/v5.1.13/index.html">
@@ -12388,7 +12390,7 @@ tg_resolve_events
 
 @@</pre>
 </div>
-<div created="20210611190810636" creator="a9lara" modified="20210611192359085" modifier="a9lara" tags="PhD" title="Reducir Datos (XMM-Newton)">
+<div created="20210611190810636" creator="a9lara" modified="20210611194908913" modifier="a9lara" tags="PhD" title="Reducir Datos (XMM-Newton)">
 <pre>Hacer una carpeta nueva y nos situamos adentro de ella y escribimos en la terminal:
 
 ```
@@ -12412,6 +12414,8 @@ se escribe:
 ```
 rgsproc -V 4 &gt;&amp; rgsproc.log
 ```
+
+Script: [[Script para Reducir Datos (XMM-Newton)]]
 
 Ver: [[XMM-Newton]]</pre>
 </div>
@@ -12604,6 +12608,36 @@ Ver: [[Recetas Saludables]]
 <pre># [[Grace (XMM-Newton)]]
 
 Ver: [[Softwares (XMM-Newton)]]</pre>
+</div>
+<div created="20210611193114767" creator="a9lara" modified="20210611201301795" modifier="a9lara" tags="Terminal" title="Script para Reducir Datos (XMM-Newton)">
+<pre>```
+cat &lt;&lt;EOF &gt; ScriptReducirDatosXMMNewton.csh
+cd 
+HEASOFT 
+SAS 
+EOF
+set numline_obsid = `wc obs.txt`
+@ line_obsid = 1
+while ( $line_obsid &lt;= $numline_obsid[1] )
+set obsid = `sed -n ${line_obsid}p obs.txt | awk '{print $1}'`
+cat &lt;&lt;EOF &gt;&gt; ScriptReducirDatosXMMNewton.csh
+mkdir ~/Documents/${obsid}_Work
+cd  ${obsid}_Work
+export SAS_ODF=~/Documents/${obsid}
+EOF
+awk 'BEGIN { print &quot;cifbuild &gt;&amp; cifbuild.log \nodfingest &gt;&amp; odfingest.log \nexport SAS_ODF=`pwd`/`ls -1 *SUM.SAS`&quot; }' &gt;&gt; ScriptReducirDatosXMMNewton.csh
+cat &lt;&lt;EOF &gt;&gt; ScriptReducirDatosXMMNewton.csh
+rgsproc -V 4 &gt;&amp; ${obsid}_rgsproc.log
+cd
+EOF
+@ line_obsid ++
+end
+cat &lt;&lt;EOF &gt;&gt; ScriptReducirDatosXMMNewton.csh
+exit 
+EOF
+```
+
+Ver: [[Reducir Datos (XMM-Newton)]]</pre>
 </div>
 <div created="20201120211338713" creator="a9lara" modified="20201120211528621" modifier="a9lara" tags="" title="SED">
 <pre>Spectral Energy Distribution
