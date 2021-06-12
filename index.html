@@ -605,6 +605,8 @@ Error message and password prompt
 
 <li>SAS (XMM-Newton)</li>
 
+<li>Script - Copiar Archivos De Interés</li>
+
 <li>Script - Descomprimir</li>
 
 <li>Script - Enlistar Carpetas</li>
@@ -8987,7 +8989,7 @@ This plugin contains tools to help slice up long texts into individual tiddlers.
 <div created="20190615205728632" creator="a9lara" modified="20210202195308520" modifier="a9lara" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20210611195237969" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20210612015441632" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190615205731476" creator="a9lara" modified="20190615205731476" modifier="a9lara" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/http://tiddlywiki.com/library/v5.1.13/index.html" url="http://tiddlywiki.com/library/v5.1.13/index.html">
@@ -11661,7 +11663,7 @@ $$\frac{1}{\rho_g}\frac{dP}{dr} = -\frac{GM(r)}{r^2}$$</pre>
 
 $$\nabla\times(A  \times B)=(B \cdot \nabla)A-(A\cdot \nabla)B+A(\nabla \cdot B)-B(\nabla \cdot A)$$</pre>
 </div>
-<div created="20210202200902969" creator="a9lara" modified="20210415173825349" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]] $:/tags/SideBar" title="Índice">
+<div created="20210202200902969" creator="a9lara" modified="20210612015426346" modifier="a9lara" tags="Estadística [[Lenguajes de Programación]] $:/tags/SideBar" title="Índice">
 <pre>#''Academia''
 ##[[PhD]]
 #''Constantes''
@@ -11670,8 +11672,9 @@ $$\nabla\times(A  \times B)=(B \cdot \nabla)A-(A\cdot \nabla)B+A(\nabla \cdot B)
 ##[[Fundamentales de Estadística]]
 ##[[Repaso de Estadística]]
 #''Programación''
-##[[Terminal]]
 ##[[Julia]]
+##[[Scripts]]
+##[[Terminal]]
 #''Reducción y Ajuste de Datos''
 ##[[Chandra]]
 ##[[XMM-Newton]]
@@ -12159,7 +12162,7 @@ $$\mu_0 = 4\pi \times 10 ^{-7} \frac{N}{A^2}$$
 Ver: [[Diccionario (Chandra)]]
 @@</pre>
 </div>
-<div created="20210222232459633" creator="a9lara" modified="20210222232559693" modifier="a9lara" title="PhD">
+<div created="20210222232459633" creator="a9lara" modified="20210612015351790" modifier="a9lara" title="PhD">
 <pre>#[[Ajustes de rayos-x (PhD)]]
 
 Ver: [[Índice]]</pre>
@@ -12625,6 +12628,45 @@ Ver: [[Recetas Saludables]]
 
 Ver: [[Softwares (XMM-Newton)]]</pre>
 </div>
+<div created="20210612015751076" creator="a9lara" modified="20210612015815701" modifier="a9lara" tags="Terminal" title="Script - Copiar Archivos De Interés">
+<pre>```
+set numline_obsid = `wc obs.txt`
+@ line_obsid = 1
+while ( $line_obsid &lt;= $numline_obsid[1] )
+set obsid = `sed -n ${line_obsid}p obs.txt | awk '{print $1}'`
+cd All_Work_RGS1
+set path_dir_All_Work_RGS1=`pwd`
+cd ..
+cd All_Work_RGS2
+set path_dir_All_Work_RGS2=`pwd`
+cd ..
+cd ${obsid}_Work
+ls *SRSPEC1001.FIT *BGSPEC1001.FIT *SPMAT1001.FIT &gt;&amp; lista_de_archivos_FIT_para_analizar_${obsid}.txt
+@ indexFIT_R1_BGSPEC1001_FIT = 1
+@ indexFIT_R1_RSPMAT1001_FIT = 2
+@ indexFIT_R1_SRSPEC1001_FIT = 3
+@ indexFIT_R2_BGSPEC1001_FIT = 4
+@ indexFIT_R2_RSPMAT1001_FIT = 5
+@ indexFIT_R2_SRSPEC1001_FIT = 6
+set R1_BGSPEC1001_FIT = `sed -n ${indexFIT_R1_BGSPEC1001_FIT}p lista_de_archivos_FIT_para_analizar_${obsid}.txt  | awk '{print $1}'`
+set R1_RSPMAT1001_FIT = `sed -n ${indexFIT_R1_RSPMAT1001_FIT}p lista_de_archivos_FIT_para_analizar_${obsid}.txt  | awk '{print $1}'`
+set R1_SRSPEC1001_FIT = `sed -n ${indexFIT_R1_SRSPEC1001_FIT}p lista_de_archivos_FIT_para_analizar_${obsid}.txt  | awk '{print $1}'`
+set R2_BGSPEC1001_FIT = `sed -n ${indexFIT_R2_BGSPEC1001_FIT}p lista_de_archivos_FIT_para_analizar_${obsid}.txt  | awk '{print $1}'`
+set R2_RSPMAT1001_FIT = `sed -n ${indexFIT_R2_RSPMAT1001_FIT}p lista_de_archivos_FIT_para_analizar_${obsid}.txt  | awk '{print $1}'`
+set R2_SRSPEC1001_FIT = `sed -n ${indexFIT_R2_SRSPEC1001_FIT}p lista_de_archivos_FIT_para_analizar_${obsid}.txt  | awk '{print $1}'`
+cp ${R1_SRSPEC1001_FIT} $path_dir_All_Work_RGS1
+cp ${R1_BGSPEC1001_FIT} $path_dir_All_Work_RGS1
+cp ${R1_RSPMAT1001_FIT} $path_dir_All_Work_RGS1
+cp ${R2_SRSPEC1001_FIT} $path_dir_All_Work_RGS2
+cp ${R2_BGSPEC1001_FIT} $path_dir_All_Work_RGS2
+cp ${R2_RSPMAT1001_FIT} $path_dir_All_Work_RGS2
+cd ..
+@ line_obsid ++
+end
+```
+
+Ver: [[Scripts]]</pre>
+</div>
 <div created="20210611235027579" creator="a9lara" modified="20210611235035968" modifier="a9lara" tags="Terminal" title="Script - Descomprimir">
 <pre>```
 set numline = `wc obs.txt`  
@@ -12744,11 +12786,12 @@ EOF
 
 Ver: [[Reducir Datos (XMM-Newton)]]</pre>
 </div>
-<div created="20210611234726824" creator="a9lara" modified="20210611235353436" modifier="a9lara" tags="Terminal" title="Scripts">
+<div created="20210611234726824" creator="a9lara" modified="20210612015733488" modifier="a9lara" tags="Terminal" title="Scripts">
 <pre>#[[Script - Enlistar Carpetas]]
 #[[Script - Descomprimir]]
 #[[Script - Hacer Carpetas]]
 #[[Script - Hacer Script]]
+#[[Script - Copiar Archivos De Interés]]
 
 Ver: [[Índice]]</pre>
 </div>
