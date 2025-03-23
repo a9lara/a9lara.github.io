@@ -8919,7 +8919,7 @@ This plugin contains tools to help slice up long texts into individual tiddlers.
 <div created="20190615205728632" creator="a9lara" modified="20210202195308520" modifier="a9lara" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20250323042823586" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20250323043834570" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190615205731476" creator="a9lara" modified="20190615205731476" modifier="a9lara" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/http://tiddlywiki.com/library/v5.1.13/index.html" url="http://tiddlywiki.com/library/v5.1.13/index.html">
@@ -10928,47 +10928,33 @@ $$P=\rho(\gamma-1)U$$
 
 $$PV=kT\ln(Z)$$</pre>
 </div>
-<div created="20250323042133967" creator="a9lara" modified="20250323042601838" modifier="a9lara" title="Ecuaciones en Julia">
+<div created="20250323042133967" creator="a9lara" modified="20250323043829340" modifier="a9lara" title="Ecuaciones en Julia">
 <pre>@@text-align:justify;
 
 $${\lambda_{\mathrm{obs}}} = (1+z){\lambda_{\mathrm{teor}}}{}$$
 
 ```
-# Función para calcular la longitud de onda teórica
-function calcular_linea_teorica(z_agn, lambda_obs)
-    # z_agn: redshift del AGN
-    # lambda_obs: longitud de onda observada en angstroms
-    
-    # La relación entre longitud de onda observada y teórica es:
-    # λ_observada = λ_teórica * (1 + z)
-    # Por lo tanto: λ_teórica = λ_observada / (1 + z)
-    
-    lambda_teorica = lambda_obs / (1 + z_agn)
-    
-    return lambda_teorica
-end
+# Definimos constantes y valores dados
+const c = 299792.458  # velocidad de la luz en km/s
+v_outflow_1 = 100.0   # velocidad de outflow en km/s
+z_AGN = 0.1           # valor arbitrario para z_AGN, puedes modificarlo
+lambda_obs = 5000.0   # valor fijo para λ_obs en Angstroms, puedes cambiarlo
 
-# Ejemplo de uso
-function main()
-    # Solicitar input al usuario
-    println(&quot;Ingrese el valor del redshift (z_AGN): &quot;)
-    z_agn = parse(Float64, readline())
-    
-    println(&quot;Ingrese la longitud de onda observada (en Ångstroms): &quot;)
-    lambda_obs = parse(Float64, readline())
-    
-    # Calcular la línea teórica
-    lambda_teorica = calcular_linea_teorica(z_agn, lambda_obs)
-    
-    # Mostrar resultados
-    println(&quot;\nResultados:&quot;)
-    println(&quot;Redshift (z): &quot;, z_agn)
-    println(&quot;Longitud de onda observada: &quot;, lambda_obs, &quot; Å&quot;)
-    println(&quot;Longitud de onda teórica: &quot;, round(lambda_teorica, digits=2), &quot; Å&quot;)
-end
+# Calculamos las tres lambdas con las variaciones
+lambda_obs_menos = lambda_obs - 0.0115
+lambda_obs_base = lambda_obs
+lambda_obs_mas = lambda_obs + 0.0115
 
-# Ejecutar el programa
-main()
+# Calculamos λ_teor para cada caso usando la fórmula
+lambda_teor_menos = lambda_obs_menos / (1 + z_AGN - v_outflow_1 / c)
+lambda_teor_base = lambda_obs_base / (1 + z_AGN - v_outflow_1 / c)
+lambda_teor_mas = lambda_obs_mas / (1 + z_AGN - v_outflow_1 / c)
+
+# Mostramos los resultados
+println(&quot;Resultados:&quot;)
+println(&quot;λ_obs = $lambda_obs_menos -&gt; λ_teor = $lambda_teor_menos&quot;)
+println(&quot;λ_obs = $lambda_obs_base -&gt; λ_teor = $lambda_teor_base&quot;)
+println(&quot;λ_obs = $lambda_obs_mas -&gt; λ_teor = $lambda_teor_mas&quot;)
 ```
 
 Ver: [[Julia]]
