@@ -427,6 +427,8 @@ Error message and password prompt
 
 <li>Ecuaciónes de Estado Termodinámicos</li>
 
+<li>Ecuaciones en Julia</li>
+
 <li>Ecuaciones para el Artículo</li>
 
 <li>Eigenfuncion de la Onda para Pozo de Potencial Infinito</li>
@@ -8917,7 +8919,7 @@ This plugin contains tools to help slice up long texts into individual tiddlers.
 <div created="20190615205728632" creator="a9lara" modified="20210202195308520" modifier="a9lara" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20170504021536989" creator="a9lara" modified="20250319193825402" modifier="a9lara" title="$:/temp/search">
+<div created="20170504021536989" creator="a9lara" modified="20250323042823586" modifier="a9lara" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190615205731476" creator="a9lara" modified="20190615205731476" modifier="a9lara" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/http://tiddlywiki.com/library/v5.1.13/index.html" url="http://tiddlywiki.com/library/v5.1.13/index.html">
@@ -10855,7 +10857,7 @@ $$\nabla^2 =\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+...+
 
 El cuál es un escalar.</pre>
 </div>
-<div created="20250318175236034" creator="a9lara" modified="20250319184705853" modifier="a9lara" title="Ecuaciónes">
+<div created="20250318175236034" creator="a9lara" modified="20250323042541846" modifier="a9lara" title="Ecuaciónes">
 <pre>@@text-align:justify;
 
 #[[Astrofísica Estelar - Ecuaciones]]
@@ -10925,6 +10927,52 @@ $$P=\rho(\gamma-1)U$$
 ''?''
 
 $$PV=kT\ln(Z)$$</pre>
+</div>
+<div created="20250323042133967" creator="a9lara" modified="20250323042601838" modifier="a9lara" title="Ecuaciones en Julia">
+<pre>@@text-align:justify;
+
+$${\lambda_{\mathrm{obs}}} = (1+z){\lambda_{\mathrm{teor}}}{}$$
+
+```
+# Función para calcular la longitud de onda teórica
+function calcular_linea_teorica(z_agn, lambda_obs)
+    # z_agn: redshift del AGN
+    # lambda_obs: longitud de onda observada en angstroms
+    
+    # La relación entre longitud de onda observada y teórica es:
+    # λ_observada = λ_teórica * (1 + z)
+    # Por lo tanto: λ_teórica = λ_observada / (1 + z)
+    
+    lambda_teorica = lambda_obs / (1 + z_agn)
+    
+    return lambda_teorica
+end
+
+# Ejemplo de uso
+function main()
+    # Solicitar input al usuario
+    println(&quot;Ingrese el valor del redshift (z_AGN): &quot;)
+    z_agn = parse(Float64, readline())
+    
+    println(&quot;Ingrese la longitud de onda observada (en Ångstroms): &quot;)
+    lambda_obs = parse(Float64, readline())
+    
+    # Calcular la línea teórica
+    lambda_teorica = calcular_linea_teorica(z_agn, lambda_obs)
+    
+    # Mostrar resultados
+    println(&quot;\nResultados:&quot;)
+    println(&quot;Redshift (z): &quot;, z_agn)
+    println(&quot;Longitud de onda observada: &quot;, lambda_obs, &quot; Å&quot;)
+    println(&quot;Longitud de onda teórica: &quot;, round(lambda_teorica, digits=2), &quot; Å&quot;)
+end
+
+# Ejecutar el programa
+main()
+```
+
+Ver: [[Julia]]
+@@</pre>
 </div>
 <div created="20181005191326702" creator="a9lara" modified="20250319193820715" modifier="a9lara" tags="Artículo BL NL BLR NLR Cuasares Netzer Masa Cosmología OBervacional Espectros BH [[Masa MB]] FWHM Transformación CIV MgII Dinámica [[Radio Gravitacional]]" title="Ecuaciones para el Artículo">
 <pre>''Transformar el FWHM de $$\left[\mathrm{\mathrm{\AA}}\right]$$ a $$\left[\dfrac{\text{km}}{\text{s}}\right]$$ de las líneas de CIV y MgII''
@@ -11884,11 +11932,12 @@ $${\frac{n_e n_i}{n_n} = \frac{2 U_i}{U_n} \left( \frac{2 \pi m_e k T}{h^2} \rig
 Ver: [[Procesos de Ionización]]
 @@</pre>
 </div>
-<div created="20210203194438279" creator="a9lara" modified="20240318163716216" modifier="a9lara" tags="[[Programming Languages]] Programación" title="Julia">
+<div created="20210203194438279" creator="a9lara" modified="20250323042314854" modifier="a9lara" tags="[[Programming Languages]] Programación" title="Julia">
 <pre>#[[Documentation of a function]]
 #[[PyPlot]]
 #[[Data Frames]]
 #[[Pluto]]
+#[[Ecuaciones en Julia]]
 
 Ver: [[Index]]</pre>
 </div>
@@ -12341,7 +12390,7 @@ Ver [[Astrophysics]]
 
 Ver [[Concepts &amp; Quantities]]</pre>
 </div>
-<div created="20240318163606044" creator="a9lara" modified="20240318163733827" modifier="a9lara" title="Pluto">
+<div created="20240318163606044" creator="a9lara" modified="20250323042227865" modifier="a9lara" title="Pluto">
 <pre>* Run Pluto
 
 ```
@@ -12532,8 +12581,10 @@ Ver: [[Index]]</pre>
 
 Ver: [[Recetas]]</pre>
 </div>
-<div created="20250318175428432" creator="a9lara" modified="20250322235146208" modifier="a9lara" title="Redshifts y Longitudes de Onda">
+<div created="20250318175428432" creator="a9lara" modified="20250323042739745" modifier="a9lara" title="Redshifts y Longitudes de Onda">
 <pre>@@text-align:justify;
+
+Disponibles en: [[Ecuaciones en Julia]]
 
 ''Corrimiento al Rojo''
 
